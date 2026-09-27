@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script type="text/javascript" src="assets/papaparse.min.js"></script>
+    <script type="text/javascript" src="assets/script.js"></script>
+</head>
+<body>
+    <button onclick="clickinput()">converter csv em json</button>
+    <input type="file" id="csvfile" name="csvfile" accept=".csv" onchange="loadfile(this.files[0])" style="display:none">
+    <a class="download_link" style="display: none">baixar resultado</a>
+</body>

@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'AdwaitaSans-Regular';
+    src: url('https://techhero1.github.io/shared/fonts/adwaita-sans/AdwaitaSans-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AdwaitaMono-Bold';
+    src: url('https://techhero1.github.io/shared/fonts/adwaita-mono/AdwaitaMono-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '8bitoperator-JVE-Mono';
+    src: url('../assets/fonts/8bitoperator-JVE-Mono.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ProphecyType';
+    src: url('../assets/fonts/PROPHECYTYPE.ttf') format('truetype');
+    font-display: swap;
+}
+
+:root {
+    --color-black: #000;
+    --color-red: #f00;
+    --color-red-200: oklch(88.5% 0.062 18.334);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-novel: #e6cff2;
+    --color-anime: #bfe1f6;
+    --color-manga: #d4edbc;
+    --color-jogo: #ffcfc9;
+    --color-filme: #c6dbe1;
+    --color-audio: #ffc8aa;
+    --color-doramaserie: #fe3967;
+    --color-stage: #efe80e;
+    --color-fanfic: #a8a8a8;
+    --color-shortstory: #ce5add;
+    --color-ensaio: #ffffff;
+    --color-moji: #ebd46e;
+
+    --spacing: 0.25rem;
+
+    --8bitoperator: '8bitoperator-JVE-Mono';
+    --ProphecyType: 'ProphecyType';
+}
+
+@keyframes scroll-background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 512px 512px;
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.bg-item-pos {
+    background-color: #d4edbc;
+}
+
+.bg-item-neg {
+    background-color: #ff8787;
+}
+
+.tab button.active {
+    background-color: var(--color-slate-500) !important;
+}
+
+.button {
+    background-color: inherit;
+    color: inherit;
+    padding: calc(var(--spacing) * 2);
+    border: 1px solid var(--color-black);
+    border-radius: var(--spacing);
+    cursor: pointer;
+    transition: all;
+    transition-duration: 150ms;
+}
+
+.button:hover {
+    background-color: var(--color-gray-200);
+}
+
+.button-danger {
+    border-color: 1px solid var(--color-red);
+    color: var(--color-red);
+}
+
+.button-danger:hover {
+    background-color: var(--color-red-200);
+}
+
+.grid-list-view {
+    grid-template-columns: 1fr;
+}
+
+@media (width >= 48rem) {
+    .grid-list-view > div {
+        flex-direction: row;
+        gap: 50px;
+        align-items: center;
+    }
+    .grid-list-view > div > .nota_div {
+        max-width: 65%;
+    }
+}
+
+.textinput {
+    background-color: inherit;
+    padding: calc(var(--spacing) * 2);
+    border: 1px solid var(--color-black);
+    border-radius: var(--spacing);
+    cursor: text;
+    transition: all;
+    transition-duration: 150ms;
+}

@@ -1,0 +1,1077 @@
+{
+    "caracteres": [
+        {
+            "funcao": "Quebrar linha",
+            "comando": "<code>\\n</code>",
+            "render": "Linha 1<br>Linha 2"
+        },
+        {
+            "funcao": "Divisória",
+            "comando": "<code>\\l</code>",
+            "render": "Linha 1<hr>Linha 2"
+        },
+        {
+            "funcao": "Valores padrões",
+            "comando": "<code>$progresso<br>$final<br>$volumes<br>$moji<br>$repeticoes<br><br>$h<br>$H<br>$m<br>$M<br><br>$prog_min<br>$tempo<br><br>$tempo_h<br>$tempo_H<br>$tempo_m<br>$tempo_M</code>",
+            "render": "Progresso<br>Final<br>Volumes<br>Caracteres (moji)<br>Repetições<br><br>Horas (H)<br>Horas (HH)<br>Minutos (M)<br>Minutos (MM)<br><br>Minutos por progresso<br>Tempo automático (HH:MM)<br><br>Horas automáticas (H)<br>Horas automáticas (HH)<br>Minutos automáticos (M)<br>Minutos automáticos (MM)"
+        },
+        {
+            "funcao": "Valores personalizados",
+            "comando": "Dê um nome a qualquer texto e o reutilize facilmente.<br><br><b>No campo de \"Valores personalizados\":</b><br><code>nome=valor</code><br><br><b>No campo de \"Anotações\":</b><br><code>$nome</code><br><br>Escreva um valor por linha.",
+            "render": "<b>No campo de \"Valores personalizados\":</b><br><code>valor1=Este é o primeiro valor</code><br><br><b>No campo de \"Anotações\":</b><br>O texto final será: <code>$valor1</code>.<br><br><b>Depois de salvar:</b><br>O texto final será: Este é o primeiro valor."
+        }
+    ],
+    "elementos": [
+        {
+            "nome": "Ícones",
+            "comando": "icon",
+            "modelo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "nome"
+                        },
+                        {
+                            "nome": "estilo"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "check-square"
+                        },
+                        {
+                            "nome": "regular"
+                        }
+                    ],
+                    "render": "<i class='fa-regular fa-check-square'></i>",
+                    "break": false
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "check-square"
+                        },
+                        {
+                            "nome": "solid"
+                        }
+                    ],
+                    "render": "<i class='fa-solid fa-check-square'></i>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "square"
+                        },
+                        {
+                            "nome": "regular"
+                        }
+                    ],
+                    "render": "<i class='fa-regular fa-square'></i>",
+                    "break": false
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "square"
+                        },
+                        {
+                            "nome": "solid"
+                        }
+                    ],
+                    "render": "<i class='fa-solid fa-square'></i>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "youtube"
+                        },
+                        {
+                            "nome": "brands"
+                        }
+                    ],
+                    "render": "<i class='fa-brands fa-youtube'></i>",
+                    "break": false
+                }
+            ],
+            "notas": "Ícones podem ter os estilos: <i>regular</i>, <i>solid</i> ou <i>brands</i><br><br>Compatível com qualquer ícone gratuito da<br><a href='https://fontawesome.com/search?ic=free-collection' target='_blank' class='text-blue-500'>Font Awesome v7</a>"
+        },
+        {
+            "nome": "Barras de progresso",
+            "comando": "bar",
+            "modelo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "atual"
+                        },
+                        {
+                            "nome": "máximo"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "10"
+                        },
+                        {
+                            "nome": "100"
+                        }
+                    ],
+                    "render": "<progress class='rounded-md shadow-md border border-gray-400' value='10' max='100'></progress>",
+                    "break": false
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "290"
+                        },
+                        {
+                            "nome": "367"
+                        }
+                    ],
+                    "render": "<progress class='rounded-md shadow-md border border-gray-400' value='290' max='367'></progress>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Marco",
+            "comando": "mark",
+            "modelo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "começo"
+                        },
+                        {
+                            "nome": "atual"
+                        },
+                        {
+                            "nome": "final"
+                        },
+                        {
+                            "nome": "tipo"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "100"
+                        },
+                        {
+                            "nome": "200"
+                        },
+                        {
+                            "nome": "300"
+                        },
+                        {
+                            "nome": "simples"
+                        }
+                    ],
+                    "render": "<span>100/200</span>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "100"
+                        },
+                        {
+                            "nome": "200"
+                        },
+                        {
+                            "nome": "300"
+                        },
+                        {
+                            "nome": "porcentagem"
+                        }
+                    ],
+                    "render": "<span>50%</span>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "100"
+                        },
+                        {
+                            "nome": "200"
+                        },
+                        {
+                            "nome": "300"
+                        },
+                        {
+                            "nome": "barra"
+                        }
+                    ],
+                    "render": "<progress class='rounded-md shadow-md border border-gray-400' value='100' max='200'></progress>",
+                    "break": false
+                }
+            ]
+        }
+    ],
+    "comandos": [
+        {
+            "nome": "Negrito",
+            "comando": "b",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<b>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Itálico",
+            "comando": "i",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<i>$texto</i>"
+                }
+            ]
+        },
+        {
+            "nome": "Texto colorido",
+            "comando": "cor",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "codigo_hexadecimal"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#FF0000"
+                        }
+                    ],
+                    "render": "<span class='text-[#FF0000]'>$texto</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Fundo colorido",
+            "comando": "bg",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "cor"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#3CB371"
+                        }
+                    ],
+                    "render": "<span class='bg-[#3CB371]'>$texto</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Badge",
+            "comando": "bdg",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "cor_texto"
+                        },
+                        {
+                            "nome": "cor_fundo",
+                            "opcional": true
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#000000"
+                        }
+                    ],
+                    "render": "<span class='text-[#000000] rounded-md shadow-md py-1 px-2 h-min w-fit'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#4E380E"
+                        },
+                        {
+                            "nome": "#00FFCF"
+                        }
+                    ],
+                    "render": "<span class='bg-[#00FFCF] text-[#4E380E] rounded-md shadow-md py-1 px-2 h-min w-fit'>$texto</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Borda",
+            "comando": "brd",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "cor",
+                            "opcional": true
+                        },
+                        {
+                            "nome": "tamanho",
+                            "opcional": true
+                        }
+                        
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span class='border-1'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#0000FF"
+                        },
+                        {
+                            "nome": "1"
+                        }
+                    ],
+                    "render": "<span class='border-1 border-[#0000FF]'>$texto</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Sombra Suave",
+            "comando": "sdw",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "cor"
+                        },
+                        {
+                            "nome": "tamanho",
+                            "opcional": true
+                        },
+                        {
+                            "nome": "opacidade",
+                            "opcional": true
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#37CCCC"
+                        }
+                    ],
+                    "render": "<span class='text-shadow-md text-shadow-[#00F0F0]'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#FE0BFF"
+                        },
+                        {
+                            "nome": "lg"
+                        },
+                        {
+                            "nome": "80"
+                        }
+                    ],
+                    "render": "<span class='text-shadow-lg text-shadow-[#FE0BFF]/80'>$texto</span>",
+                    "break": false
+                }
+            ],
+            "notas": "Tamanhos: 2xs / xs / sm / md / lg<br>Opacidade precisa ser: 0-100"
+        },
+        {
+            "nome": "Sombra Sólida",
+            "comando": "ssdw",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "cor"
+                        },
+                        {
+                            "nome": "distancia_horizontal",
+                            "opcional": true
+                        },
+                        {
+                            "nome": "distancia_vertical",
+                            "opcional": true
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#0077EF"
+                        }
+                    ],
+                    "render": "<span class='drop-shadow-[1px_1px_#0077EF]'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "1px"
+                        },
+                        {
+                            "nome": "3px"
+                        }
+                    ],
+                    "render": "<span class='drop-shadow-[1px_3px_#FF0000]'>$texto</span>",
+                    "break": false
+                }
+            ],
+            "notas": "Qualquer <a href='https://www.w3schools.com/cssref/css_units.php' target='_blank' class='text-blue-500'>unidade do CSS</a> funciona, mas é recomendado usar <b>px</b> (pixels).<br>O valor também pode ser fracionário na forma decimal (Ex: 0.5px)."
+        },
+        {
+            "nome": "Degradê",
+            "comando": "grd",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "direção"
+                        },
+                        {
+                            "nome": "cor_1"
+                        },
+                        {
+                            "nome": "cor_2"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "VERTICAL",
+                    "parametros": [
+                        {
+                            "nome": "vertical"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-b from-[#FF0000] to-[#0000FF] bg-clip-text text-transparent'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "HORIZONTAL",
+                    "parametros": [
+                        {
+                            "nome": "horizontal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-r from-[#FF0000] to-[#0000FF] bg-clip-text text-transparent'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "DIAGONAL",
+                    "parametros": [
+                        {
+                            "nome": "diagonal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-br from-[#FF0000] to-[#0000FF] bg-clip-text text-transparent'>$texto</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Degradê ajustável",
+            "comando": "grd",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "direção"
+                        },
+                        {
+                            "nome": "cor_1"
+                        },
+                        {
+                            "nome": "cor_2"
+                        },
+                        {
+                            "nome": "foco_1"
+                        },
+                        {
+                            "nome": "foco_2"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "horizontal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        },
+                        {
+                            "nome": "20%"
+                        },
+                        {
+                            "nome": "40%"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-r from-[#FF0000] from-[20%] to-[#0000FF] to-[40%] bg-clip-text text-transparent'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "horizontal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        },
+                        {
+                            "nome": "0%"
+                        },
+                        {
+                            "nome": "100%"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-r from-[#FF0000] from-[0%] to-[#0000FF] to-[100%] bg-clip-text text-transparent'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "horizontal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        },
+                        {
+                            "nome": "60%"
+                        },
+                        {
+                            "nome": "80%"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-r from-[#FF0000] from-[60%] to-[#0000FF] to-[80%] bg-clip-text text-transparent'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "horizontal"
+                        },
+                        {
+                            "nome": "#FF0000"
+                        },
+                        {
+                            "nome": "#0000FF"
+                        },
+                        {
+                            "nome": "50%"
+                        },
+                        {
+                            "nome": "50%"
+                        }
+                    ],
+                    "render": "<span class='bg-linear-to-r from-[#FF0000] from-[50%] to-[#0000FF] to-[50%] bg-clip-text text-transparent'>$texto</span>",
+                    "break": false
+                }
+            ],
+            "notas": "As duas porcentagens são as posições onde cada cor irá focar.<br><br>Porcentagem menor = foco da cor desviado para a esquerda<br>Porcentagem maior = foco da cor desviado para a direita<br><br>Quanto mais distantes estiverem os dois focos, mais suave será o degradê.<br>Também é possível usar duas porcentagens iguais para eliminar totalmente a suavidade na troca das cores."
+        },
+        {
+            "nome": "Furigana",
+            "comando": "furi",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "pronúncia"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "零",
+                    "parametros": [
+                        {
+                            "nome": "ゼロ"
+                        }
+                    ],
+                    "render": "<ruby>$texto<rt>ゼロ</rt></ruby>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Hiragana",
+            "comando": "hira",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "ohayou",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>おはよう</span>",
+                    "break": true
+                },
+                {
+                    "texto": "kon'nichiha",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>こんにちは</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Katakana",
+            "comando": "kata",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "ohayou",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>オハヨウ</span>",
+                    "break": true
+                },
+                {
+                    "texto": "kon'nichiha",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>コンニチハ</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Katakana (largura normal para meia largura)",
+            "comando": "hkat",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "オハヨウ",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>ｵﾊﾖｳ</span>",
+                    "break": true
+                },
+                {
+                    "texto": "コンニチハ",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>ｺンﾆﾁﾊ</span>",
+                    "break": false
+                }
+            ]
+        },
+        {
+            "nome": "Katakana (meia largura para largura normal)",
+            "comando": "fkat",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "ｵﾊﾖｳ",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>オハヨウ</span>",
+                    "break": true
+                },
+                {
+                    "texto": "ｺンﾆﾁﾊ",
+                    "parametros": [
+                        
+                    ],
+                    "render": "<span>コンニチハ</span>",
+                    "break": false
+                }
+            ]
+        }
+    ],
+    "estilos": [
+        {
+            "nome": "Legenda de YouTube",
+            "exemplo": [
+                {
+                    "id": "legenda",
+                    "texto": "Texto",
+                    "render": "<span class='bg-black text-white px-1'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Sombreado",
+            "exemplo": [
+                {
+                "id": "sombra",
+                "texto": "Texto",
+                "render": "<span class='text-shadow-md text-shadow-black/20'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Sombra DELTARUNE",
+            "exemplo": [
+                {
+                "id": "sombra_deltarune",
+                "texto": "Texto",
+                "render": "<span class='font-(family-name:--8bitoperator) text-[1.2rem] text-white drop-shadow-[0.7px_0.7px_#0f0f71]'>$texto</span>"
+                },
+                {
+                "id": "sombra_deltarune_cor",
+                "texto": "Texto",
+                "render": "<span class='text-white drop-shadow-[0.7px_0.7px_#0f0f71]'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Amarelo DELTARUNE",
+            "exemplo": [
+                {
+                "id": "amarelo_deltarune",
+                "texto": "Texto",
+                "render": "<span class='font-(family-name:--8bitoperator) text-[1.2rem] bg-linear-to-b from-[#ffffc3] from-[25%] to-[#ffff2c] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#4c4c00]'>$texto</span>"
+                },
+                {
+                "id": "amarelo_deltarune_cor",
+                "texto": "Texto",
+                "render": "<span class='bg-linear-to-b from-[#ffffc3] from-[25%] to-[#ffff2c] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#4c4c00]'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Vermelho DELTARUNE",
+            "exemplo": [
+                {
+                "id": "vermelho_deltarune",
+                "texto": "Texto",
+                "render": "<span class='font-(family-name:--8bitoperator) text-[1.2rem] bg-linear-to-b from-[#ffc3c3] from-[25%] to-[#ff3c3c] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#4c0000]'>$texto</span>"
+                },
+                {
+                "id": "vermelho_deltarune_cor",
+                "texto": "Texto",
+                "render": "<span class='bg-linear-to-b from-[#ffc3c3] from-[25%] to-[#ff3c3c] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#4c0000]'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Azul DELTARUNE",
+            "exemplo": [
+                {
+                "id": "azul_deltarune",
+                "texto": "Texto",
+                "render": "<span class='font-(family-name:--8bitoperator) text-[1.2rem] bg-linear-to-b from-[#c3c3ff] from-[25%] to-[#3c3cff] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#00004c]'>$texto</span>"
+                },
+                {
+                "id": "azul_deltarune_cor",
+                "texto": "Texto",
+                "render": "<span class='bg-linear-to-b from-[#c3c3ff] from-[25%] to-[#3c3cff] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#00004c]'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Verde DELTARUNE",
+            "exemplo": [
+                {
+                "id": "verde_deltarune",
+                "texto": "Texto",
+                "render": "<span class='font-(family-name:--8bitoperator) text-[1.2rem] bg-linear-to-b from-[#a8ffa8] from-[25%] to-[#0eff0e] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#004c00]'>$texto</span>"
+                },
+                {
+                "id": "verde_deltarune_cor",
+                "texto": "Texto",
+                "render": "<span class='bg-linear-to-b from-[#a8ffa8] from-[25%] to-[#0eff0e] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#004c00]'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "A Profecia",
+            "exemplo": [
+                {
+                "id": "profecia",
+                "texto": "Profecia",
+                "render": "<div class='text-center' style='animation: floating 3s ease-in-out alternate infinite;'><span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span></div>"
+                },
+                {
+                "id": "profecia_cor",
+                "texto": "Sem fonte",
+                "render": "<div class='text-center' style='animation: floating 3s ease-in-out alternate infinite;'><span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span></div>"
+                },
+                {
+                "id": "profecia_simples",
+                "texto": "Sem animacao",
+                "render": "<span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span>"
+                },
+                {
+                "id": "profecia_cor_simples",
+                "texto": "Sem fonte/sem animação",
+                "render": "<span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Vermelho Umineko",
+            "exemplo": [
+                {
+                "id": "vermelho_umineko",
+                "texto": "Vermelho",
+                "render": "<span class='text-[#f50000] drop-shadow-[1px_1px_#000000]'>$texto</span>"
+                },
+                {
+                "id": "vermelho_umineko_mod",
+                "texto": "Vermelho (Mod)",
+                "render": "<b class='bg-linear-to-b from-[#ff0000] from-[40%] to-[#ff8b8b] to-[95%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]'>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Azul Umineko",
+            "exemplo": [
+                {
+                "id": "azul_umineko",
+                "texto": "Azul",
+                "render": "<span class='text-[#5DECFF] drop-shadow-[1px_1px_#000000]'>$texto</span>"
+                },
+                {
+                "id": "azul_umineko_mod",
+                "texto": "Azul (Mod)",
+                "render": "<b class='bg-linear-to-b from-[#1d97c9] from-[40%] to-[#7ff1f3] to-[95%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]'>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Roxo Umineko",
+            "exemplo": [
+                {
+                "id": "roxo_umineko",
+                "texto": "Roxo",
+                "render": "<span class='text-[#CC99FF] drop-shadow-[1px_1px_#000000]'>$texto</span>"
+                },
+                {
+                "id": "roxo_umineko_mod",
+                "texto": "Roxo (Mod)",
+                "render": "<b class='bg-linear-to-b from-[#6b5dab] from-[40%] to-[#e7d0f1] to-[80%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]'>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Dourado Umineko",
+            "exemplo": [
+                {
+                "id": "dourado_umineko",
+                "texto": "Dourado",
+                "render": "<span class='text-[#DAA520] drop-shadow-[1px_1px_#000000]'>$texto</span>"
+                },
+                {
+                "id": "dourado_umineko_mod",
+                "texto": "Dourado (Mod)",
+                "render": "<b class='bg-linear-to-b from-[#d19214] from-[40%] to-[#f8df59] to-[75%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]'>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Verde Umineko",
+            "exemplo": [
+                {
+                "id": "verde_umineko_mod",
+                "texto": "Verde",
+                "render": "<b class='bg-linear-to-b from-[#78cf79] from-[40%] to-[#ddffef] to-[75%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]'>$texto</b>"
+                }
+            ]
+        },
+        {
+            "nome": "Badges",
+            "exemplo": [
+                {
+                "id": "badge_pos",
+                "texto": "Positivo",
+                "render": "<span class='bg-[#d4edbc] rounded-md shadow-md py-1 px-2 h-min w-fit'>$texto</span>"
+                },
+                {
+                "id": "badge_neg",
+                "texto": "Negativo",
+                "render": "<span class='bg-[#ff8787] rounded-md shadow-md py-1 px-2 h-min w-fit'>$texto</span>"
+                }
+            ]
+        },
+        {
+            "nome": "Arco-íris",
+            "exemplo": [
+                {
+                "id": "rainbow_h",
+                "texto": "Horizontal",
+                "render": "<b style='background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)' class='bg-clip-text text-transparent'>$texto</b>"
+                },
+                {
+                "id": "rainbow_v",
+                "texto": "Vertical",
+                "render": "<b style='background-image: linear-gradient(to bottom, red,orange,yellow,green,blue,indigo,violet)' class='bg-clip-text text-transparent'>$texto</b>"
+                }
+            ]
+        }
+    ]
+}

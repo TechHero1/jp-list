@@ -1,0 +1,1282 @@
+{
+    "sites": [
+        {
+            "nome": "Magcomi",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://magcomi.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                }
+            ],
+            "desc": "<p>Capítulo alugado por pontos<br>Duração do aluguel: 2 dias</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Shonen Magazine Pocket (Magapoke)",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://pocket.shonenmagazine.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tickets"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Capítulo atual pago"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por pontos ou alugado por ticket<br>Duração do ticket: 3 dias</p><p>Recarga dos tickets:<br>1 a cada 23h<br>3 por login diário</p><p>Azul: grátis<br>Laranja: grátis com ticket, imediatamente acessível<br>Cinza: grátis com ticket, acessível somente em ordem (ou pagando)<br>Verde: pago com pontos</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Manga Oukoku (K-Manga)",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://comic.k-manga.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros volumes grátis temporariamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Previews"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Limitado a volumes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Cmoa",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://www.cmoa.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros volumes grátis temporariamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Previews"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Limitado a volumes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Getsumagakichi",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://getsumagakichi.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiro volume grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Penúltimo capítulo grátis (em lançamento)"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Pontos só por assinatura"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por pontos</p><p>Pontos são obtidos apenas através da assinatura:<br>300 pontos no primeiro mês<br>200 pontos nos meses seguintes</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Mecha Comic",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://mechacomic.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Vários capítulos grátis por tempo limitado"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Nenhum capítulo recente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Painéis recortados igual webcomic"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por pontos</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Booklive",
+            "midia": "Mangá/Novel",
+            "classes": "streaming_item_manga streaming_item_novel streaming_item_novpn",
+            "link": "https://booklive.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiro volume, raramente 2 a 3 volumes, grátis temporariamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Preview"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Limitado a volumes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Sukima",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://www.sukima.me/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Nicho"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Muitas séries completamente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Censura (inconsistente)"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tickets"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por moedas/pontos ou alugado por ticket<br>Duração do ticket: 3 dias</p><p>Recarga dos tickets (diariamente):<br>1 de obra específica<br>3 gerais<br>1 a 3 no gacha</p>",
+            "ativo": false
+        },
+        {
+            "nome": "Comic Border",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://comicborder.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Nicho"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Impossível de ler capítulos não grátis"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Kadokawa",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_novpn",
+            "link": "https://www.kadokawa.co.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Preview"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Só preview"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "ABEMA",
+            "midia": "Anime",
+            "classes": "streaming_item_anime",
+            "link": "https://abema.tv/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Muito conteúdo"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Episódios grátis temporariamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa baixar o app"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Nico Nico Douga",
+            "midia": "Anime",
+            "classes": "streaming_item_anime",
+            "link": "https://www.nicovideo.jp/video_top",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Qualquer um pode postar"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN para alguns conteúdos"
+                }
+            ],
+            "desc": "<p>Necessidade de VPN à escolha do usuário que fez o envio</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Nico Nico Live",
+            "midia": "Anime",
+            "classes": "streaming_item_anime",
+            "link": "https://live.nicovideo.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Qualquer um pode postar"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN para alguns conteúdos"
+                }
+            ],
+            "desc": "<p>Nico Nico Namahousou precisa de VPN</p>",
+            "ativo": true
+        },
+        {
+            "nome": "TVer",
+            "midia": "Anime",
+            "classes": "streaming_item_anime",
+            "link": "https://tver.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de login"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa baixar o app"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Aozora Bunko",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_novpn",
+            "link": "https://www.aozora.gr.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Site datado"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Download em formato proprietário de Ebook"
+                }
+            ],
+            "desc": "<object><a class='nota_link text-blue-500' href='https://archive.org/details/aozorabunko' target='_blank'>Aozora Bunko no Internet Archive</a></object>",
+            "ativo": true
+        },
+        {
+            "nome": "DLsite",
+            "midia": "Jogo",
+            "classes": "streaming_item_jogo streaming_item_novpn",
+            "link": "https://www.dlsite.com/soft/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Itens grátis sem cartão de crédito"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de login"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Honto",
+            "midia": "Mangá/Novel",
+            "classes": "streaming_item_manga streaming_item_novel streaming_item_novpn",
+            "link": "https://honto.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiro volume, raramente 2 a 3 volumes, grátis temporariamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Previews"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Limitado a volumes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Champion Cross",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://championcross.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Antepenúltimo capítulo grátis (em lançamento)"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos extras grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Mais capítulos grátis com login"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por moedas"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por moedas</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Soseki Collection<br>Touhoku Daigaku Fuzoku Toshokan<br>(Biblioteca da Universidade de Tohoku)",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_soseki streaming_item_novpn",
+            "link": "https://touda.tohoku.ac.jp/collection/en/database/library/collection/soseki",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Metade das coisas não é japonês"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Só em fotos"
+                }
+            ],
+            "desc": "<object><a class='nota_link text-blue-500' href='https://www.library.tohoku.ac.jp/en/collections/soseki/index.html' target='_blank'>Página inicial com mais informações sobre Natsume Soseki e sua coleção</a></object>",
+            "ativo": true
+        },
+        {
+            "nome": "The Sōseki Poetry Project",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_soseki streaming_item_novpn",
+            "link": "https://sosekipoetry.org/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Além das traduções, textos originais em japonês disponíveis"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Sōseki Project",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_soseki streaming_item_novpn",
+            "link": "https://www.sosekiproject.org/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Focado em estudantes de japonês (ferramentas de aprendizagem)"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Coleção muito pequena"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Kanabun<br>Kanagawa Bungaku Shinkokai<br>(Museu da Literatura Moderna de Kanagawa)",
+            "midia": "Novel",
+            "classes": "streaming_item_novel streaming_item_soseki streaming_item_novpn",
+            "link": "https://www.kanabun.or.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Antiguidades"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Só em fotos"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Reader Store",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://ebookstore.sony.jp/free/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros volumes grátis temporariamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Previews"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Limitado a volumes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Majoritariamente pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Shosetsu wo Yomou!",
+            "midia": "Web Novel",
+            "classes": "streaming_item_webnovel streaming_item_novpn",
+            "link": "https://yomou.syosetu.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Completamente grátis"
+                }
+            ],
+            "desc": "<object><a class='nota_link text-blue-500' href='https://syosetu.com/' target='_blank'>Shosetsuka ni Narou!</a></object>",
+            "ativo": true
+        },
+        {
+            "nome": "Alphapolis",
+            "midia": "Web Novel/Novel/Mangá",
+            "classes": "streaming_item_webnovel streaming_item_novel streaming_item_manga streaming_item_novpn",
+            "link": "https://www.alphapolis.co.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Mais capítulos grátis com login"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Previews"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Algumas séries pagas"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                }
+            ],
+            "desc": "<p>Capítulos alugáveis com pontos</p>",
+            "ativo": true
+        },
+        {
+            "nome": "TakeComic",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://takecomic.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Mais capítulos grátis com login"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por moedas"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por moedas</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Ichijin Plus",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://ichicomi.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Comic Yuri Hime"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Grátis por tempo limitado"
+                }
+            ],
+            "desc": "<p>Capítulos comprados por pontos<br><br>Capítulos mais recentes podem ser acessados gratuitamente por um tempo limitado próximo à data de lançamento</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Sunday Webry",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://www.sunday-webry.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Muitos capítulos recentes grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns mangás completamente grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "GUNDAM CHANNEL INTL",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@GundamInfo/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Várias temporadas e filmes grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Conteúdo disponível sem tempo limite aparente"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "プリキュア公式YouTubeチャンネル<br>(Precure Canal Oficial no YouTube)",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@precure/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "ぷちきゅあ (PetitCure)"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Raramente libera conteúdo relevante"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Marcas d'água"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "hololive ホロライブ - VTuber Group",
+            "midia": "Anime/Música",
+            "classes": "streaming_item_anime streaming_item_music streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@hololive/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Holo no Graffiti"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Músicas às vezes"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Todo o resto é só marketing"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "(Love Live! series)ラブライブ！シリーズ公式チャンネル",
+            "midia": "Anime/Música/Rádio",
+            "classes": "streaming_item_anime streaming_item_music streaming_item_radio streaming_item_youtube streaming_item_lovelive streaming_item_novpn",
+            "link": "https://www.youtube.com/@lovelive_series/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Muito conteúdo extra com as seiyuus"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Várias músicas, algumas com clipe"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Anime postado uma vez a cada eclipse solar total"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "アニプレックス チャンネル<br>(Aniplex Channel)",
+            "midia": "Anime/Rádio",
+            "classes": "streaming_item_anime streaming_item_radio streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@aniplex/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Muito conteúdo extra com os seiyuus"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Animes curtos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Raramente, transmissões ao vivo de séries completas"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Transmissões só podem ser vistas durante a estreia"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "It's Anime powered by REMOW",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@ItsAnimeJP/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos da temporada grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Animes já lançados voltam depois em formato de maratona"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Certos animes continuam disponíveis indefinidamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Disponibilidade limitada por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "TRIGGER CHANNEL",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@studiotrigger/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Animes exclusivos para web"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "STUDIO4C",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@portstudio4c/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Filmes e episódios disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Disponibilidade limitada por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "アーティスウィッチ チャンネル【Artiswitch channel】",
+            "midia": "Anime/Música",
+            "classes": "streaming_item_anime streaming_item_music streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@artiswitch/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Artiswitch."
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Bandai Namco Filmworks Channel",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@bandainamcofilmworks/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Disponibilizado por tempo indeterminado"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "AMG公式チャンネル<br>(AMG Canal Oficial)",
+            "midia": "Dorama",
+            "classes": "streaming_item_dorama streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@amg_entertainment/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Conteúdo disponível gratuitamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Disponibilizado por tempo indeterminado"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "孤独のグルメ / Solitary Gourmet - TV TOKYO",
+            "midia": "Dorama",
+            "classes": "streaming_item_dorama streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@kodokunogourmet-tvtokyo/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Conteúdo disponível gratuitamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Disponibilizado por tempo indeterminado"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "TOEI TOKUSATSU WORLD OFFICIAL",
+            "midia": "Tokusatsu",
+            "classes": "streaming_item_tokusatsu streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@toeitokusatsuworldofficial2399/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns clássicos disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "ウルトラマン公式 ULTRAMAN OFFICIAL by TSUBURAYA PROD.",
+            "midia": "Tokusatsu",
+            "classes": "streaming_item_tokusatsu streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@ultraman_official/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns clássicos disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Disponibilizado por tempo indeterminado"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "テレ東公式 ドラマチャンネル<br>(TV Tokyo Drama Channel)",
+            "midia": "Dorama",
+            "classes": "streaming_item_dorama streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@tvtokyodrama/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns episódios disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "COMIC FUZ",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://comic-fuz.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiro capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos antes dos recentes grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por energia"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por medalhas"
+                }
+            ],
+            "desc": "<p>Capítulo acessível por energia ou comprado por medalhas</p><p>Para ler capítulos não grátis intermediários, é necessário 1 energia para cada capítulo lido.<br>Cada conta tem acesso a 1 energia por dia, que se recupera automaticamente depois de 24 horas.<br><br>Capítulos recentes podem ser lidos com medalhas, sejam elas de prata ou de ouro.<br>Magazines e tankoubons só podem ser acessados por medalhas de ouro.<br><br>Medalhas de prata são obtidas através de eventos ou missões no aplicativo.<br>Medalhas de ouro são obtidas apenas por compras ou assinaturas.</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Comic Days",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://comic-days.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                }
+            ],
+            "desc": "<p>Capítulo comprado por pontos<br><br>Com Premium ou Motto Premium, 100 pontos iniciais + 200 pontos mensais</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Kuragebunch",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://kuragebunch.com/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Capítulos recentes grátis"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Capítulo atual pago"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "Yanmaga",
+            "midia": "Mangá",
+            "classes": "streaming_item_manga streaming_item_novpn",
+            "link": "https://yanmaga.jp/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Primeiros capítulos grátis"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Penúltimo capítulo grátis (em lançamento)"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por pontos"
+                }
+            ],
+            "desc": "<p>Capítulo alugado por pontos</p><p>Pontos são obtidos através de compra direta ou da assinatura mensal.<br>Pontos têm data de validade.<br>Acesso ao capítulo alugado dura 10 dias.</p>",
+            "ativo": true
+        },
+        {
+            "nome": "Anime Times Official",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube",
+            "link": "https://youtube.com/@animetimes-ch/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Animes disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Disponibilidade limitada por tempo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "infinite channel",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube",
+            "link": "https://www.youtube.com/@infiniteanime/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Animes disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Disponibilidade limitada por tempo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Precisa de VPN"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "TokuSato",
+            "midia": "Tokusatsu",
+            "classes": "streaming_item_tokusatsu streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/channel/UCzLtKasUj5agj2Gjvw83ZoQ",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Lançamentos"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns clássicos disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Acesso limitado por tempo"
+                }
+            ],
+            "desc": "Depois de 2 semanas, o episódio em lançamento se torna exclusivo para membros",
+            "ativo": true
+        },
+        {
+            "nome": "(Love Live! hasu)蓮ノ空女学院スクールアイドルクラブ公式チャンネル",
+            "midia": "Anime/Música/Rádio",
+            "classes": "streaming_item_anime streaming_item_music streaming_item_radio streaming_item_youtube streaming_item_lovelive streaming_item_novpn",
+            "link": "https://www.youtube.com/@lovelive_hasu/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "MUITO \"anime\""
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Muito conteúdo extra com as seiyuus"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Várias músicas, algumas com clipe"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Alguns conteúdos exclusivos para membros"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "(IKIZULIVE!)イキヅライブ! LOVELIVE! BLUEBIRD公式チャンネル",
+            "midia": "Anime/Música/Rádio",
+            "classes": "streaming_item_anime streaming_item_music streaming_item_radio streaming_item_youtube streaming_item_lovelive streaming_item_novpn",
+            "link": "https://www.youtube.com/@IKIZULIVE/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Alguns conteúdos extras com as seiyuus"
+                },
+                {
+                    "tipo": "pos",
+                    "texto": "Várias músicas, algumas com clipe"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "O \"anime\" não é tão anime assim"
+                }
+            ],
+            "desc": "",
+            "ativo": true
+        },
+        {
+            "nome": "イキヅライブ！LOVELIVE!BLUEBIRD Xアーカイブ",
+            "midia": "Web Novel",
+            "classes": "streaming_item_webnovel streaming_item_lovelive streaming_item_novpn",
+            "link": "https://gsm-app.com/lovelive/ikizulive-x-archive/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Arquivo completo"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Algumas imagens não carregam"
+                }
+            ],
+            "desc": "Arquivo completo dos posts, de todas as personagens, com datas.",
+            "ativo": true
+        }
+    ]
+}

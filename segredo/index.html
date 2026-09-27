@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>SEGREDO</title>
+    <script type="text/javascript" src="segredo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://techhero1.github.io/shared/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="https://techhero1.github.io/shared/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="https://techhero1.github.io/shared/fontawesome/css/solid.min.css" rel="stylesheet" />
+    <link href="https://techhero1.github.io/shared/fontawesome/css/regular.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../assets/styles.css" media="all" />
+</head>
+<body class="font-[AdwaitaSans-Regular] bg-gray-200" onload="remote_open_tab('Arquivo')">
+    <nav class="bg-gray-800 sticky top-0 w-[100%] text-white flex flex-col sm:flex-row items-center z-10">
+        <div class="tab w-[100%] sm:w-[50%]">
+            <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150 hidden" onclick="open_tab(event, 'Arquivo')" id="Arquivo_tab"><i class="fa-solid fa-key"></i></button>
+            <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150 info_tab hidden" onclick="open_tab(event, 'Visualizar');update_string('update')" id="Visualizar_tab"><i class="fa-solid fa-video-camera"></i></button>
+            <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150 user_tab hidden" onclick="open_tab(event, 'Username')" id="Username_tab"><i class="fa-solid fa-user"></i></button>
+            <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150 cemiterio_tab hidden" onclick="open_tab(event, 'Cemiterio');update_string('cemiterio')" id="Cemiterio_tab"><i class="fa-solid fa-cross"></i></button>
+        </div>
+    </nav>
+
+    <div id="Arquivo" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md">
+        <div class="p-2 flex flex-col gap-10 w-fit">
+        <div class="pt-2 sm:pt-0">
+            <label class="button" for="jsonfile"><i class="fa fa-upload"></i> INSERIR CONTEÚDO</label>
+            <br>
+            <input class="hidden" type="file" id="jsonfile" name="jsonfile" accept="application/json" onchange="upload_content(this.files[0])">
+        </div>
+        <div>
+            <div class="text-center font-black font-[AdwaitaMono-Bold]">SEM VIDA,<br>NÃO SE<br>MOVERÁ.</div>
+        </div>
+        </div>
+    </div>
+
+    <div id="Username" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+        <div class="user_list p-2 grid grid-cols-1 gap-2">
+
+        </div>
+    </div>
+
+    <div id="Visualizar" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+        <div class="p-2 w-[100%] flex flex-row-reverse gap-2">
+            <div class="update_string p-2"></div>
+        </div>
+        <div class="content_list p-2 flex flex-col gap-2">
+
+        </div>
+    </div>
+
+    <div id="Cemiterio" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+        <div class="p-2 w-[100%] flex flex-row-reverse gap-2">
+            <div class="cemiterio_string p-2"></div>
+        </div>
+        <div class="cemiterio_list p-2 flex flex-col gap-2">
+
+        </div>
+    </div>
+</body>
