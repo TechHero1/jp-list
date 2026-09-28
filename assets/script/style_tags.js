@@ -325,7 +325,7 @@ export function style_text_with_tags(text,item_data) {
 }
 
 const tag_regex = /\[(?<tag>[a-zA-Z_]+)(?::(?<params>[^\]]*))?\](?<real_text>(?:(?!\[\/?[a-zA-Z_]+[:\]])[\s\S])*?)\[\/\k<tag>\]/g;
-const tag_regex_notext = /\{(?<tag>[a-zA-Z_]+)(?::(?<params>[^}]*))?\}/g;
+const tag_regex_notext = /\{(?<tag>[a-zA-Z_]+)(?::(?<params>[^{}]*))?\}/g;
 
 //GRADIENT DIRECTION
 const direction_classes = {
@@ -413,6 +413,7 @@ const style_tags = {
     return `<ruby>${text}<rt>${furigana}</rt></ruby>`;
   },
 
+  //NÃO DOCUMENTADA
   fltr: (text, [type, value]) => {
     if (type == "blur") return `<span class="blur-${value}">${text}</span>`;
     if (type == "brightness") return `<span class="brightness-${value}">${text}</span>`;
@@ -483,7 +484,68 @@ const style_tags_notext = {
     if (type == "barra") return `<progress class="rounded-md shadow-md border border-gray-400" value="${real_value}" max="${max}"></progress>`;
     return `<span>${real_value}/${max}</span>`;
   },
+
+  //NÃO DOCUMENTADA
+  calc: ([tipo, operacao, valor1, valor2]) => {
+
+    if (tipo == "normal") {
+      if (operacao == "soma") {
+        let resultado = Number(valor1) + Number(valor2);
+        return `<span>${resultado}</span>`;
+      }
+
+      if (operacao == "sub") {
+        let resultado = Number(valor1) - Number(valor2);
+        return `<span>${resultado}</span>`;
+      }
+      if (operacao == "mult") {
+        let resultado = Number(valor1) * Number(valor2);
+        return `<span>${resultado}</span>`;
+      }
+
+      if (operacao == "div") {
+        let resultado = Number(valor1) / Number(valor2);
+        return `<span>${resultado}</span>`;
+      }
+    }
+
+    if (tipo == "tempo") {
+      if (operacao == "soma" || operacao == "sub") {
+        let resultado = get_tempo_procentagem(operacao,valor1,valor2);
+        return resultado;
+      }
+    }
+
+    if (tipo == "especial") {
+      if (operacao == "porcentagem") {
+        let resultado = (Number(valor1) / Number(valor2)) * 100;
+        return `<span>${resultado}%</span>`;
+      }
+    }
+  },
 };
+
+function get_tempo_procentagem(operacao, valor1, valor2) {
+  //00:00:00 = tempoX[0],tempoX[1],tempoX[2]
+  let tempo1 = valor1.split("-");
+  let tempo2 = valor2.split("-");
+
+  tempo1 = [Number(tempo1[0]), Number(tempo1[1]), Number(tempo1[2])];
+  tempo2 = [Number(tempo2[0]), Number(tempo2[1]), Number(tempo2[2])];
+
+  tempo1[0] = tempo1[0] * 60 * 60;
+  tempo1[1] = tempo1[1] * 60;
+
+  tempo2[0] = tempo2[0] * 60 * 60;
+  tempo2[1] = tempo2[1] * 60;
+
+  let resultado_interno = tempo1[0] + tempo1[1] + tempo1[2];
+  if (operacao == "soma") resultado_interno += tempo2[0] + tempo2[1] + tempo2[2];
+  if (operacao == "sub") resultado_interno -= tempo2[0] + tempo2[1] + tempo2[2];
+  
+  let resultado = [Math.trunc((resultado_interno/60)/60), Math.trunc((resultado_interno/60)%60), Math.trunc(((resultado_interno%60)%60)%60)];
+  return `<span>${resultado[0]}:${String(resultado[1]).padStart(2, '0')}:${String(resultado[2]).padStart(2, '0')}</span>`;
+}
 
 function apply_tags(text) {
   let before_str;
