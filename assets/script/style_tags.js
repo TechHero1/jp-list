@@ -265,7 +265,16 @@ function update_item_values(text) {
 
 window.update_item_values = update_item_values;
 
+function get_string_url(text) {
+  return text.linkify({
+    className: "nota_link text-blue-500",
+    target: "_blank"
+  });
+}
+
 export function style_text_with_tags(text,item_data) {
+  text = get_string_url(text);
+
   //SECRET ELEMENTS
   text = text.replaceAll(/\{chap_prog_moji}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
   text = text.replaceAll(/\{chap_prog_page}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");

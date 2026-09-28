@@ -30,36 +30,14 @@ export function update_preview() {
 
   let nota_input = document.querySelector(".nota_input").value;
   document.querySelector(".nota_input_preview").innerHTML = estilos.style_text_with_tags(nota_input,cur_preview_item.dados);
-  if (nota_input.includes("\\") || nota_input.includes("[") || nota_input.includes("$") || nota_input.includes("{")) document.querySelector(".nota_preview_container").classList.remove('hidden');
+  if (nota_input.includes("\\") || nota_input.includes("[") || nota_input.includes("$") || nota_input.includes("{") || /[\S]+\.[\S]+/g.test(nota_input)) document.querySelector(".nota_preview_container").classList.remove('hidden');
   else document.querySelector(".nota_preview_container").classList.add('hidden');
 }
 
 window.update_preview_nota = update_preview;
 
-var item_custom_values = {};
-const values_regex = /^(?<nome>.+?)=(?<valor>.+?)$/g;
-
-export function update_values(text) {
-  item_custom_values = {};
-  let text_lines = text.split("\n");
-  for (var i = 0; i < text_lines.length; i++) {
-    for (var itag = 0; itag < (text_lines[i].match(values_regex) || []).length; itag++) {
-      let values_regex_match;
-
-      while ((values_regex_match = values_regex.exec(text_lines[i])) !== null) {
-        item_custom_values[values_regex_match.groups.nome] = values_regex_match.groups.valor;
-        update_preview();
-      }
-    }
-  }
-}
-
 export function get_nota(item) {
   let result = item.dados.nota;
-  result = result.linkify({
-    className: "nota_link text-blue-500",
-    target: "_blank"
-  });
   result = estilos.style_text_with_tags(result,item.dados);
 
   return result;

@@ -1,5 +1,5 @@
 import * as nota from "./nota.js";
-import * as style_tags from "./style_tags.js";
+import * as estilos from "./style_tags.js";
 import * as constants from "./constants.js";
 
 var i;
@@ -45,7 +45,7 @@ function update_old_data() {
     if (!list.itens[i].hasOwnProperty("custom_media_name")) list.itens[i].custom_media_name = "";
     if (!list.itens[i].hasOwnProperty("custom_media_color")) list.itens[i].custom_media_color = constants.SITE_COLORS.default;
 
-    list.itens[i].dados.nota = style_tags.update_old_tags(list.itens[i].dados.nota);
+    list.itens[i].dados.nota = estilos.update_old_tags(list.itens[i].dados.nota);
 
     if (!list.itens[i].hasOwnProperty("id")) list.itens[i].id = i;
     list.itens[i].id = Number(list.itens[i].id);
@@ -167,8 +167,8 @@ function edit_item(id) {
     document.querySelector(".img_preview").classList.add('hidden');
 
     update_autotime();
+    update_item_values("");
     nota.update_preview();
-    nota.update_values("");
     check_selected_type(document.querySelector(".tipo_input").value);
   } else {
     //não resetar em new
@@ -198,8 +198,8 @@ function edit_item(id) {
     else document.querySelector(".img_preview").classList.remove('hidden');
 
     update_autotime();
+    update_item_values(list.itens[id].dados.custom_values);
     nota.update_preview();
-    nota.update_values(list.itens[id].dados.custom_values);
     check_selected_type(list.itens[id].tipo);
   }
 

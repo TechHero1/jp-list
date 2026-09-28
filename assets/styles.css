@@ -125,3 +125,7 @@
     transition: all;
     transition-duration: 150ms;
 }
+
+.nota_link:hover {
+    text-decoration: underline;
+}
