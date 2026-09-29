@@ -554,7 +554,7 @@ function apply_tags(text) {
     text = text.replace(tag_regex_notext, (match, ...args) => {
       const { tag, params } = args.at(-1);
       const render = style_tags_notext[tag];
-      if (!render) return text;
+      if (!render) return tag;
       return render(params ? params.split(":") : []);
     });
   } while (text !== before_str);
