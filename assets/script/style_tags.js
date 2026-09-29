@@ -195,6 +195,16 @@ window.addEventListener('click', function(e){
     document.querySelector(".custom_dropdown_icon_kana").classList.add('fa-angle-down');
     document.querySelector(".custom_dropdown_icon_kana").classList.remove('fa-angle-up');
   }
+  if (!document.querySelector(".custom_dropdown_button_calc").contains(e.target)){
+    document.querySelector(".custom_dropdown_calc").classList.add('hidden');
+    document.querySelector(".custom_dropdown_icon_calc").classList.add('fa-angle-down');
+    document.querySelector(".custom_dropdown_icon_calc").classList.remove('fa-angle-up');
+  }
+  if (!document.querySelector(".custom_dropdown_button_fltr").contains(e.target)){
+    document.querySelector(".custom_dropdown_fltr").classList.add('hidden');
+    document.querySelector(".custom_dropdown_icon_fltr").classList.add('fa-angle-down');
+    document.querySelector(".custom_dropdown_icon_fltr").classList.remove('fa-angle-up');
+  }
 });
 
 //CUSTOMIZAÇÃO - FUNCIONALIDADE
