@@ -276,33 +276,33 @@ export function style_text_with_tags(text,item_data) {
   text = get_string_url(text);
 
   //SECRET ELEMENTS
-  text = text.replaceAll(/\{chap_prog_moji}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
-  text = text.replaceAll(/\{chap_prog_page}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
-  text = text.replaceAll(/\{chap_prog_arc}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
-  text = text.replaceAll(/\{mashutan}/g,"<img src='assets/img/mashutan.png' class='w-[59px] h-[68px] inline'>");
-  text = text.replaceAll(/\{mashutan_med}/g,"<img src='assets/img/mashutan.png' class='w-[131px] h-[151px] inline'>");
-  text = text.replaceAll(/\{mashutan_big}/g,"<img src='assets/img/mashutan.png' class='w-[227px] h-[262px] inline'>");
-  text = text.replaceAll(/\{mashutanzilla}/g,"<img src='assets/img/mashutan.png' class='max-w-[revert] w-[717px] h-[830px] inline'>");
-  text = text.replaceAll(/\{iichan}/g,"<img src='assets/img/iichan.png' class='w-full'>");
-  text = text.replaceAll(/\{iichan_face}/g,"<img src='assets/img/iichan_face.png' class='w-[96px] h-[103px] inline'>");
-  text = text.replaceAll(/\{eto_bleh}/g,"<img src='https://media.tenor.com/XnGK5CaQTt4AAAAd/ah-eto-bleh-anime.gif' class='w-full'>");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_arc}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
+  text = text.replaceAll(/(?<!\\)\{mashutan}/g,"<img src='assets/img/mashutan.png' class='w-[59px] h-[68px] inline'>");
+  text = text.replaceAll(/(?<!\\)\{mashutan_med}/g,"<img src='assets/img/mashutan.png' class='w-[131px] h-[151px] inline'>");
+  text = text.replaceAll(/(?<!\\)\{mashutan_big}/g,"<img src='assets/img/mashutan.png' class='w-[227px] h-[262px] inline'>");
+  text = text.replaceAll(/(?<!\\)\{mashutanzilla}/g,"<img src='assets/img/mashutan.png' class='max-w-[revert] w-[717px] h-[830px] inline'>");
+  text = text.replaceAll(/(?<!\\)\{iichan}/g,"<img src='assets/img/iichan.png' class='w-full'>");
+  text = text.replaceAll(/(?<!\\)\{iichan_face}/g,"<img src='assets/img/iichan_face.png' class='w-[96px] h-[103px] inline'>");
+  text = text.replaceAll(/(?<!\\)\{eto_bleh}/g,"<img src='https://media.tenor.com/XnGK5CaQTt4AAAAd/ah-eto-bleh-anime.gif' class='w-full'>");
 
   //VALORES
-  text = text.replaceAll(/\$progresso\b/g,item_data.progresso);
-  text = text.replaceAll(/\$final\b/g,item_data.final);
-  text = text.replaceAll(/\$moji\b/g,item_data.moji);
-  text = text.replaceAll(/\$volumes\b/g,item_data.volumes);
-  text = text.replaceAll(/\$repeticoes\b/g,item_data.repeticoes);
-  text = text.replaceAll(/\$h\b/g,item_data.horas);
-  text = text.replaceAll(/\$H\b/g,String(item_data.horas).padStart(2, '0'));
-  text = text.replaceAll(/\$m\b/g,item_data.minutos);
-  text = text.replaceAll(/\$M\b/g,String(item_data.minutos).padStart(2, '0'));
-  text = text.replaceAll(/\$prog_min\b/g,item_data.prog_min);
-  text = text.replaceAll(/\$tempo\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0')+":"+String((item_data.progresso*item_data.prog_min)%60).padStart(2, '0'));
-  text = text.replaceAll(/\$tempo_h\b/g,Math.trunc((item_data.progresso*item_data.prog_min)/60));
-  text = text.replaceAll(/\$tempo_H\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0'));
-  text = text.replaceAll(/\$tempo_m\b/g,Math.trunc((item_data.progresso*item_data.prog_min)%60));
-  text = text.replaceAll(/\$tempo_M\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)%60)).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\$progresso\b/g,item_data.progresso);
+  text = text.replaceAll(/(?<!\\)\$final\b/g,item_data.final);
+  text = text.replaceAll(/(?<!\\)\$moji\b/g,item_data.moji);
+  text = text.replaceAll(/(?<!\\)\$volumes\b/g,item_data.volumes);
+  text = text.replaceAll(/(?<!\\)\$repeticoes\b/g,item_data.repeticoes);
+  text = text.replaceAll(/(?<!\\)\$h\b/g,item_data.horas);
+  text = text.replaceAll(/(?<!\\)\$H\b/g,String(item_data.horas).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\$m\b/g,item_data.minutos);
+  text = text.replaceAll(/(?<!\\)\$M\b/g,String(item_data.minutos).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\$prog_min\b/g,item_data.prog_min);
+  text = text.replaceAll(/(?<!\\)\$tempo\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0')+":"+String((item_data.progresso*item_data.prog_min)%60).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\$tempo_h\b/g,Math.trunc((item_data.progresso*item_data.prog_min)/60));
+  text = text.replaceAll(/(?<!\\)\$tempo_H\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\$tempo_m\b/g,Math.trunc((item_data.progresso*item_data.prog_min)%60));
+  text = text.replaceAll(/(?<!\\)\$tempo_M\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)%60)).padStart(2, '0'));
 
   if(item_data.custom_values != "" && item_data.custom_values != null) update_item_values(item_data.custom_values);
 
@@ -321,11 +321,17 @@ export function style_text_with_tags(text,item_data) {
 
   text = apply_tags(text);
 
+  text = text.replace(/\\(\[)/g, "[");
+  text = text.replace(/\\(\])/g, "]");
+
+  text = text.replace(/\\(\{)/g, "{");
+  text = text.replace(/\\(\})/g, "}");
+
   return text;
 }
 
-const tag_regex = /\[(?<tag>[a-zA-Z_]+)(?::(?<params>[^\]]*))?\](?<real_text>(?:(?!\[\/?[a-zA-Z_]+[:\]])[\s\S])*?)\[\/\k<tag>\]/g;
-const tag_regex_notext = /\{(?<tag>[a-zA-Z_]+)(?::(?<params>[^{}]*))?\}/g;
+const tag_regex = /(?<!\\)\[(?<tag>[a-zA-Z_]+)(?::(?<params>[^\]]*))?\](?<real_text>(?:(?!(?<!\\)\[\/?[a-zA-Z_]+[:\]])[\s\S])*?)(?<!\\)\[\/\k<tag>\]/g;
+const tag_regex_notext = /(?<!\\)\{(?<tag>[a-zA-Z_]+)(?::(?<params>[^{}]*))?\}/g;
 
 //GRADIENT DIRECTION
 const direction_classes = {
