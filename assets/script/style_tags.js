@@ -429,7 +429,6 @@ const style_tags = {
     return `<ruby>${text}<rt>${furigana}</rt></ruby>`;
   },
 
-  //NÃO DOCUMENTADA
   fltr: (text, [type, value]) => {
     if (type == "blur") return `<span class="blur-${value}">${text}</span>`;
     if (type == "brightness") return `<span class="brightness-${value}">${text}</span>`;
@@ -501,7 +500,6 @@ const style_tags_notext = {
     return `<span>${real_value}/${max}</span>`;
   },
 
-  //NÃO DOCUMENTADA
   calc: ([tipo, operacao, valor1, valor2]) => {
 
     if (tipo == "normal") {

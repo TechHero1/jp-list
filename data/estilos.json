@@ -236,6 +236,109 @@
                     "break": false
                 }
             ]
+        },
+        {
+            "nome": "Cálculos",
+            "comando": "calc",
+            "modelo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "tipo"
+                        },
+                        {
+                            "nome": "operacao"
+                        },
+                        {
+                            "nome": "valor1"
+                        },
+                        {
+                            "nome": "valor2"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "normal"
+                        },
+                        {
+                            "nome": "soma"
+                        },
+                        {
+                            "nome": "1"
+                        },
+                        {
+                            "nome": "2"
+                        }
+                    ],
+                    "render": "<span>3</span>",
+                    "break": false
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "normal"
+                        },
+                        {
+                            "nome": "sub"
+                        },
+                        {
+                            "nome": "4"
+                        },
+                        {
+                            "nome": "3"
+                        }
+                    ],
+                    "render": "<span>1</span>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "tempo"
+                        },
+                        {
+                            "nome": "soma"
+                        },
+                        {
+                            "nome": "01-00-00"
+                        },
+                        {
+                            "nome": "00-30-00"
+                        }
+                    ],
+                    "render": "<span>1:30:00</span>",
+                    "break": true
+                },
+                {
+                    "texto": "",
+                    "parametros": [
+                        {
+                            "nome": "especial"
+                        },
+                        {
+                            "nome": "porcentagem"
+                        },
+                        {
+                            "nome": "1"
+                        },
+                        {
+                            "nome": "10"
+                        }
+                    ],
+                    "render": "<span>10%</span>",
+                    "break": false
+                }
+            ],
+            "notas": "<b>Operações disponíveis:</b><br><b>Soma:</b> normal - soma<br><b>Subtração:</b> normal - sub<br><b>Multiplicação:</b> normal - mult<br><b>Divisão:</b> normal - div<br><br><b>Soma de tempos:</b> tempo - soma<br><b>Subtração de tempos:</b> tempo - sub<br><br><b>Porcentagem:</b> especial - porcentagem"
         }
     ],
     "comandos": [
@@ -850,6 +953,79 @@
                     "break": false
                 }
             ]
+        },
+        {
+            "nome": "Filtros",
+            "comando": "fltr",
+            "modelo": [
+                {
+                    "texto": "Texto",
+                    "parametros": [
+                        {
+                            "nome": "nome"
+                        },
+                        {
+                            "nome": "quantidade"
+                        }
+                    ],
+                    "render": ""
+                }
+            ],
+            "exemplo": [
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "blur"
+                        },
+                        {
+                            "nome": "sm"
+                        }
+                    ],
+                    "render": "<span class='text-red-500 blur-sm'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "grayscale"
+                        },
+                        {
+                            "nome": "80"
+                        }
+                    ],
+                    "render": "<span class='text-red-500 grayscale-80'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "hue-rotate"
+                        },
+                        {
+                            "nome": "180"
+                        }
+                    ],
+                    "render": "<span class='text-red-500 hue-rotate-180'>$texto</span>",
+                    "break": true
+                },
+                {
+                    "texto": "EXEMPLO",
+                    "parametros": [
+                        {
+                            "nome": "invert"
+                        },
+                        {
+                            "nome": "100"
+                        }
+                    ],
+                    "render": "<span class='text-red-500 invert-100'>$texto</span>",
+                    "break": true
+                }
+            ],
+            "notas": "Obs: a cor vermelha foi aplicada em todos os exemplos apenas para facilitar a visualização.<br><br><b>Filtros disponíveis</b><br>blur (xs, sm, md, lg, xl, 2xl, 3xl)<br>brightness (%)<br>contrast (%)<br>grayscale (%)<br>hue-rotate (0-360)<br>invert (%)<br>saturate (%)<br>sepia (%)"
         }
     ],
     "estilos": [
