@@ -215,14 +215,21 @@ function edit_item(id) {
 
   if (document.querySelector('.nota_link') != null) {
     window.addEventListener('click', function(e){   
-      if (document.querySelector('.nota_link').contains(e.target)){
-        remote_open_tab('Visualizar');
-      }
+      if (document.querySelector('.nota_link').contains(e.target)) remote_open_tab('Visualizar');
     });
   }
 }
 
 window.edit_item = edit_item;
+
+function quick_edit(id) {
+  list.itens[id].dados.progresso++;
+  if (list.itens[id].dados.final > 0 && list.itens[id].dados.progresso >= list.itens[id].dados.final) list.itens[id].dados.status = "Completo";
+  list.itens[id].dados.last_edited = Date.now();
+  process_order_list(list.view_mode[0],list.view_mode[1]);
+}
+
+window.quick_edit = quick_edit;
 
 function save_item() {
   //se id for "new", add[id], return
@@ -623,7 +630,6 @@ function manage_item_strings(item) {
 
   let progresso_string = "";
   let volumes_string = "";
-  //let progresso_traco = "";
 
   if ((item.dados.progresso == 1 && item.dados.final == 0) || item.dados.final == 1) {
     progresso_string = nf.format(item.dados.progresso) + final + constants.STRINGS_BY_TYPE.singular[item.tipo];
@@ -633,12 +639,10 @@ function manage_item_strings(item) {
   if (constants.STRINGS_BY_TYPE.volumes.includes(item.tipo)) {
     if (item.dados.volumes <= 1) volumes_string = nf.format(item.dados.volumes) + " volume";
     else volumes_string = nf.format(item.dados.volumes) + " volumes";
-    //progresso_traco = " - ";
   }
 
   if (item.tipo == "Personalizado" && item.dados.volumes == 0) {
     volumes_string = "";
-    //progresso_traco = "";
   }
 
   if (constants.STRINGS_BY_TYPE.nada.includes(item.tipo)) progresso_string = "";
@@ -646,14 +650,12 @@ function manage_item_strings(item) {
   if (item.dados.status == "Planejo" && item.dados.progresso == 0) {
     progresso_string = "";
     volumes_string = "";
-    //progresso_traco = "";
   }
 
-  let add_button = ` <button class="button px-[0.4rem]! py-[0.25rem]!"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
+  let add_button = ` <button class="button px-[0.4rem]! py-[0.25rem]! quick_edit_button" onclick="quick_edit(${item.id});event.stopPropagation();"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
   if (item.dados.status == "Completo" || item.dados.status == "Planejo" || item.dados.status == "Abandonado" || item.dados.status == "Pausado") add_button = "";
   if (item.dados.final > 0 && item.dados.progresso >= item.dados.final) add_button = "";
 
-  //let progresso = progresso_string + add_button + progresso_traco + volumes_string;
   let progresso = progresso_string + add_button;
   
   let progress_element = "";
