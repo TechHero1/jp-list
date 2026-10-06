@@ -36,10 +36,39 @@ window.cancel_debug_action = cancel_debug_action;
 export function do_debug_action(id) {
   console.log(debug_action);
   //DO DEBUG ACTION
-  if (debug_action == "teste") {
-    manage.list.itens[id].dados.nota += "teste\\n\\n$teste2";
-    manage.list.itens[id].dados.custom_values += "teste=teste\nteste2=teste 2";
-    console.log(manage.list.itens[id])
+  if (debug_action == "chap_prog_moji") {
+    manage.list.itens[id].dados.nota += "{chap_prog_moji}";
+    manage.list.itens[id].dados.custom_values += "atual=1\nproximo=2\ncomeco=0\nfim=10";
+  }
+
+  if (debug_action == "chap_prog_page") {
+    manage.list.itens[id].dados.nota += "{chap_prog_page}";
+    manage.list.itens[id].dados.custom_values += "atual=1\nproximo=2\ncomeco=0\npages=0\nfim=10";
+    manage.list.itens[id].dados.last_edited = Date.now();
+  }
+
+  if (debug_action == "chap_prog_arc") {
+    manage.list.itens[id].dados.nota += "{chap_prog_arc}";
+    manage.list.itens[id].dados.custom_values += "atual=1\nproximo=2\ncomeco_real=0\ncomeco=0\natual_real=0\nfim=10";
+    manage.list.itens[id].dados.last_edited = Date.now();
+  }
+
+  if (debug_action == "chap_prog_arc_audiobook") {
+    manage.list.itens[id].dados.nota += "{chap_prog_arc}\\n\\n{calc:tempo:sub:$atual_tempo:$comeco_tempo} de $final_tempo";
+    manage.list.itens[id].dados.custom_values += "atual=1\nproximo=2\ncomeco_real=0\ncomeco=0\natual_real=0\nfim=10\ncomeco_tempo=0-00-00\natual_tempo=0-00-00\nfinal_tempo=0:00:00";
+    manage.list.itens[id].dados.last_edited = Date.now();
+  }
+  if (debug_action == "meitantei") {
+    manage.list.itens[id].tipo = "Anime";
+    manage.list.itens[id].dados.status = "Progredindo";
+    manage.list.itens[id].dados.titulo = "名探偵プリキュア！";
+    manage.list.itens[id].dados.progresso = "35";
+    manage.list.itens[id].dados.final = "51";
+    manage.list.itens[id].dados.autotime = true;
+    manage.list.itens[id].dados.prog_min = "25";
+    manage.list.itens[id].dados.nota = "[fltr:saturate:200][fltr:hue-rotate:150][pre:profecia]que temporada boa[/pre][/fltr][/fltr]";
+    manage.list.itens[id].dados.img = "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx202957-fxZGgJTvwXzP.jpg";
+    manage.list.itens[id].dados.last_edited = Date.now();
   }
 
   debug_action = "";
