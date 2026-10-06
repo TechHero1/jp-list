@@ -1,6 +1,7 @@
 import * as nota from "./nota.js";
 import * as estilos from "./style_tags.js";
 import * as constants from "./constants.js";
+import * as debug from "./debug.js";
 
 var i;
 const nf = new Intl.NumberFormat('fr-FR');
@@ -11,6 +12,7 @@ export var list = {
   "cores": true,
   "apoio": false,
   "values_open": false,
+  "debug_mode": false,
   "last_filter": ['Tudo_tipo','Tudo_status'],
   "view_mode": ['add','normal'],
   "manual_order": []
@@ -19,6 +21,8 @@ export var list = {
 export var ordered_list = [];
 
 function update_old_data() {
+  if (!list.hasOwnProperty("values_open")) list.values_open = false;
+  if (!list.hasOwnProperty("debug_mode")) list.debug_mode = false;
   if (!list.hasOwnProperty("last_filter")) list.last_filter = ['Tudo_tipo','Tudo_status'];
   if (!list.hasOwnProperty("view_mode")) list.view_mode = ['add','normal'];
 
@@ -73,8 +77,9 @@ function check_initial_conditions() {
     document.querySelector(".cores_btn").classList.add('opacity-30');
   }
 
-  if (!list.hasOwnProperty("values_open") || !list.values_open) list.values_open = false;
   document.querySelector(".values_details").open = list.values_open;
+
+  if (list.debug_mode) document.querySelector(".debug_button").classList.remove('hidden');
 }
 
 function change_option(option) {
@@ -141,6 +146,11 @@ var last_item_pos;
 
 function edit_item(id) {
   hook = true;
+  if (debug.debug_action != "" && id == "new") cancel_debug_action();
+  if (debug.debug_action != "") {
+    debug.do_debug_action(id);
+    return;
+  }
   last_item_pos = window.scrollY;
   set_scroll();
   cur_editing_id = id;
@@ -360,6 +370,8 @@ function update_autotime() {
     document.querySelector(".normaltime_number").classList.remove("hidden");
   }
 }
+
+window.update_autotime = update_autotime;
 
 function check_selected_type(type) {
   if (type == "Personalizado") document.querySelector(".personalizado_info").classList.remove("hidden");
