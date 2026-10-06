@@ -198,7 +198,7 @@ function edit_item(id) {
     document.querySelector(".horas_input").value = list.itens[id].dados.horas;
     document.querySelector(".minutos_input").value = list.itens[id].dados.minutos;
     document.querySelector(".autotime_input").checked = list.itens[id].dados.autotime;
-    document.querySelector(".prog_min_input").checked = list.itens[id].dados.prog_min;
+    document.querySelector(".prog_min_input").value = list.itens[id].dados.prog_min;
     document.querySelector(".nota_input").value = list.itens[id].dados.nota;
     document.querySelector(".values_input").value = list.itens[id].dados.custom_values;
 
