@@ -623,7 +623,7 @@ function manage_item_strings(item) {
 
   let progresso_string = "";
   let volumes_string = "";
-  let progresso_traco = "";
+  //let progresso_traco = "";
 
   if ((item.dados.progresso == 1 && item.dados.final == 0) || item.dados.final == 1) {
     progresso_string = nf.format(item.dados.progresso) + final + constants.STRINGS_BY_TYPE.singular[item.tipo];
@@ -633,12 +633,12 @@ function manage_item_strings(item) {
   if (constants.STRINGS_BY_TYPE.volumes.includes(item.tipo)) {
     if (item.dados.volumes <= 1) volumes_string = nf.format(item.dados.volumes) + " volume";
     else volumes_string = nf.format(item.dados.volumes) + " volumes";
-    progresso_traco = " - ";
+    //progresso_traco = " - ";
   }
 
   if (item.tipo == "Personalizado" && item.dados.volumes == 0) {
     volumes_string = "";
-    progresso_traco = "";
+    //progresso_traco = "";
   }
 
   if (constants.STRINGS_BY_TYPE.nada.includes(item.tipo)) progresso_string = "";
@@ -646,14 +646,19 @@ function manage_item_strings(item) {
   if (item.dados.status == "Planejo" && item.dados.progresso == 0) {
     progresso_string = "";
     volumes_string = "";
-    progresso_traco = "";
+    //progresso_traco = "";
   }
 
-  let progresso = progresso_string + progresso_traco + volumes_string;
+  let add_button = ` <button class="button px-[0.4rem]! py-[0.25rem]!"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
+  if (item.dados.status == "Completo" || item.dados.status == "Planejo" || item.dados.status == "Abandonado" || item.dados.status == "Pausado") add_button = "";
+  if (item.dados.final > 0 && item.dados.progresso >= item.dados.final) add_button = "";
+
+  //let progresso = progresso_string + add_button + progresso_traco + volumes_string;
+  let progresso = progresso_string + add_button;
   
   let progress_element = "";
   if (item.dados.progresso > 0 && item.dados.final > 0) {
-    progress_element = `<progress class="rounded-md shadow-md border border-gray-400" id="progress_bar" value="${item.dados.progresso}" max="${item.dados.final}"></progress>`;
+    progress_element = `<div class="py-1"><progress class="rounded-md shadow-md border border-gray-400" id="progress_bar" value="${item.dados.progresso}" max="${item.dados.final}"></progress></div>`;
   }
 
   let moji = "";
@@ -672,8 +677,9 @@ function manage_item_strings(item) {
       <br><br>
       <p class="overflow-hidden text-ellipsis">${item_tipo}</p>
       <p>${item.dados.status}${repeticoes}</p>
-      <p class="flex flex-row gap-2 items-center"><span>${progresso}</span></p>
+      <p class="flex flex-row gap-2 items-center">${progresso}</p>
       <p>${progress_element}</p>
+      <p class="flex flex-row gap-2 items-center">${volumes_string}</p>
       <p>${tempo}</p>
       <p>${moji}</p>
     </div>`;
