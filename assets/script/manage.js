@@ -668,7 +668,7 @@ function manage_item_strings(item) {
   let result = `
     <div class="w-full">
       <b>${item.dados.titulo}</b>
-      <button class="pl-2 float-right sm:opacity-0 group-hover/title:opacity-100"><i class="fa-solid fa-pencil"></i></button>
+      <button class="pl-2 float-right sm:opacity-0 group-hover/title:opacity-100 cursor-pointer"><i class="fa-solid fa-pencil"></i></button>
       <br><br>
       <p class="overflow-hidden text-ellipsis">${item_tipo}</p>
       <p>${item.dados.status}${repeticoes}</p>
