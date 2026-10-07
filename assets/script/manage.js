@@ -654,7 +654,7 @@ function manage_item_strings(item) {
 
   let add_button = ` <button class="button px-[0.4rem]! py-[0.25rem]! quick_edit_button" onclick="quick_edit(${item.id});event.stopPropagation();"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
   if (item.dados.status == "Completo" || item.dados.status == "Planejo" || item.dados.status == "Abandonado" || item.dados.status == "Pausado") add_button = "";
-  if (item.dados.final > 0 && item.dados.progresso >= item.dados.final) add_button = "";
+  if (Number(item.dados.final) > 0 && Number(item.dados.progresso) >= Number(item.dados.final)) add_button = "";
 
   let progresso = progresso_string + add_button;
   
