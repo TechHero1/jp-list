@@ -1277,6 +1277,24 @@
             ],
             "desc": "Arquivo completo dos posts, de todas as personagens, com datas.",
             "ativo": true
+        },
+        {
+            "nome": "スタジオぴえろ【公式】",
+            "midia": "Anime",
+            "classes": "streaming_item_anime streaming_item_youtube streaming_item_novpn",
+            "link": "https://www.youtube.com/@studio_pierrot/",
+            "tags": [
+                {
+                    "tipo": "pos",
+                    "texto": "Animes disponíveis gratuitamente"
+                },
+                {
+                    "tipo": "neg",
+                    "texto": "Disponibilidade limitada por tempo"
+                }
+            ],
+            "desc": "",
+            "ativo": true
         }
     ]
 }
