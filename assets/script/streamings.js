@@ -108,7 +108,7 @@ function load_streaming_items() {
     if (exibir_eos || !exibir_eos && item_ativo) {
       document.querySelector(".streaming_list").innerHTML += `
         <a class="streaming_item ${item_classes}${item_ativo_classe}" href="${item_link}" target="_blank">
-          <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 cursor-pointer transition-all duration-150 group hover:bg-gray-200">
+          <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-background cursor-pointer transition-all duration-150 group hover:bg-background">
             <div class="p-1 w-[100%]">
               <b>${item_nome}</b>
               <br>
@@ -128,7 +128,7 @@ function create_streaming_tags(array) {
   let result = "";
 
   for (var i = 0; i<array.length; i++) {
-    result += `<span class="bg-item-${array[i].tipo} rounded-md shadow-md py-1 px-2 h-min w-fit">${array[i].texto}</span>`;
+    result += `<span class="bg-item-${array[i].tipo} rounded-md shadow-md py-1 px-2 h-min w-fit text-badge">${array[i].texto}</span>`;
   }
 
   return result;

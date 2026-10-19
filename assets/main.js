@@ -48,6 +48,12 @@ function remove_all_of_element(array,element) {
 
 window.remove_all_of_element = remove_all_of_element;
 
+function set_debug_theme(theme) {
+  document.documentElement.setAttribute("data-theme",theme);
+}
+
+window.set_debug_theme = set_debug_theme;
+
 document.addEventListener('DOMContentLoaded', () => {
   const dropZone = document.querySelector('#Arquivo');
 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html data-theme="light">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -14,6 +14,135 @@
     <link href="https://techhero1.github.io/shared/fontawesome/css/solid.min.css" rel="stylesheet" />
     <link href="https://techhero1.github.io/shared/fontawesome/css/regular.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="assets/styles.css" media="all" />
+    <style type="text/tailwindcss">
+        @custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+        @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+        @custom-variant aqua (&:where([data-theme=aqua], [data-theme=aqua] *));
+        @custom-variant sunshine (&:where([data-theme=sunshine], [data-theme=sunshine] *));
+
+        @theme {
+            --color-navbar: var(--color-gray-800);
+            --color-navbar-active: var(--color-slate-500);
+            --color-navbar-content: var(--color-white);
+            --color-content: var(--color-black);
+            --color-content-dropdown: var(--color-black);
+            --color-content-list: var(--color-black);
+            --color-background: var(--color-gray-200);
+            --color-background-content: var(--color-white);
+            --color-background-dropdown: var(--color-gray-100);
+            --color-button-hover: var(--color-gray-200);
+            --color-item-pos: #d4edbc;
+            --color-item-neg: #ff8787;
+            --color-badge: var(--color-black);
+            --color-iichan: var(--color-red-400);
+            --color-border: var(--color-gray-300);
+            --color-border-list: var(--color-gray-200);
+            --color-border-list-hover: var(--color-gray-400);
+            --color-description: var(--color-gray-600);
+            --color-url: var(--color-blue-500);
+            --color-danger: #f00;
+            --color-danger-hover: var(--color-red-200);
+        }
+        @layer theme {
+            * {
+                @variant light {
+                    --color-navbar: var(--color-gray-800);
+                    --color-navbar-active: var(--color-slate-500);
+                    --color-navbar-content: var(--color-white);
+                    --color-content: var(--color-black);
+                    --color-content-dropdown: var(--color-black);
+                    --color-content-list: var(--color-black);
+                    --color-background: var(--color-gray-200);
+                    --color-background-content: var(--color-white);
+                    --color-background-dropdown: var(--color-gray-100);
+                    --color-button-hover: var(--color-gray-200);
+                    --color-item-pos: #d4edbc;
+                    --color-item-neg: #ff8787;
+                    --color-badge: var(--color-black);
+                    --color-iichan: var(--color-red-400);
+                    --color-border: var(--color-gray-300);
+                    --color-border-list: var(--color-gray-200);
+                    --color-border-list-hover: var(--color-gray-400);
+                    --color-description: var(--color-gray-600);
+                    --color-url: var(--color-blue-500);
+                    --color-danger: #f00;
+                    --color-danger-hover: var(--color-red-200);
+                }
+
+                @variant dark {
+                    --color-navbar: #15191e;
+                    --color-navbar-active: #292b2d;
+                    --color-navbar-content: #ecf9ff;
+                    --color-content: #ecf9ff;
+                    --color-content-dropdown: #ecf9ff;
+                    --color-content-list: var(--color-black);
+                    --color-background: #191e24;
+                    --color-background-content: #1d232a;
+                    --color-background-dropdown: #292b2d;
+                    --color-button-hover: #292b2d;
+                    --color-item-pos: #00d390;
+                    --color-item-neg: #ff627d;
+                    --color-badge: var(--color-black);
+                    --color-iichan: var(--color-red-400);
+                    --color-border: var(--color-gray-300);
+                    --color-border-list: var(--color-gray-200);
+                    --color-border-list-hover: var(--color-gray-400);
+                    --color-description: #d1d1d1;
+                    --color-url: #605dff;
+                    --color-danger: #fc143a;
+                    --color-danger-hover: #51000e;
+                }
+
+                @variant aqua {
+                    --color-navbar: #091444;
+                    --color-navbar-active: #1a368b;
+                    --color-navbar-content: #b8e6fe;
+                    --color-content: #b8e6fe;
+                    --color-content-dropdown: #b8e6fe;
+                    --color-content-list: var(--color-black);
+                    --color-background: #162455;
+                    --color-background-content: #1a368b;
+                    --color-background-dropdown: #162455;
+                    --color-button-hover: #162455;
+                    --color-item-pos: #18a34a;
+                    --color-item-neg: #ff7265;
+                    --color-badge: var(--color-black);
+                    --color-iichan: var(--color-red-400);
+                    --color-border: #b8e6fe;
+                    --color-border-list: #b8e6fe;
+                    --color-border-list-hover: #162455;
+                    --color-description: #d2e2ff;
+                    --color-url: #2563eb;
+                    --color-danger: #fc143a;
+                    --color-danger-hover: #51000e;
+                }
+
+                @variant sunshine {
+                    --color-navbar: #feb004;
+                    --color-navbar-active: #f17f39;
+                    --color-navbar-content: #895625;
+                    --color-content: #895625;
+                    --color-content-dropdown: #895625;
+                    --color-content-list: var(--color-black);
+                    --color-background: #dda118;
+                    --color-background-content: #feb204;
+                    --color-background-dropdown: #dda118;
+                    --color-button-hover: #dda118;
+                    --color-item-pos: #20cfa7;
+                    --color-item-neg: #f172d0;
+                    --color-badge: var(--color-black);
+                    --color-iichan: var(--color-red-600);
+                    --color-border: #ffe45b;
+                    --color-border-list: #ffe45b;
+                    --color-border-list-hover: #895625;
+                    --color-description: #fefdf7;
+                    --color-url: #2563eb;
+                    --color-danger: #fc143a;
+                    --color-danger-hover: #f38443;
+                }
+            }
+        }
+    </style>
     <script type="text/javascript">
       var hook = false;
       window.onbeforeunload = function() {
@@ -26,8 +155,8 @@
       }
     </script>
 </head>
-    <body class="font-[AdwaitaSans-Regular] bg-gray-200"></body>
-    <nav class="bg-gray-800 sticky top-0 w-full text-white flex flex-col sm:flex-row items-center z-10">
+    <body class="font-[AdwaitaSans-Regular] bg-background text-content"></body>
+    <nav class="bg-navbar sticky top-0 w-full text-navbar-content flex flex-col sm:flex-row items-center z-10">
         <div class="tab w-full sm:w-[50%]">
             <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Arquivo')" id="Arquivo_tab"><i class="fa-solid fa-file-pen"></i></button>
             <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Visualizar');fetch_custom_info()" id="Visualizar_tab"><i class="fa-solid fa-database"></i></button>
@@ -38,16 +167,16 @@
             <button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150 hidden" onclick="open_tab(event, 'Erro')" id="Erro_tab"><i class="fa-solid fa-bug"></i></button>
         </div>
         <div class="iichan_nav pr-3 flex flex-row-reverse items-center gap-2 w-full sm:w-[50%] hidden">
-            <img class="aspect-[21/9] h-[50px]" src="assets/img/iichan_face.png">
+            <img class="aspect-21/9 h-[50px]" src="assets/img/iichan_face.png">
             <div class="flex flex-row gap-1 items-center">
-                <div class="p-3 w-min text-red-400 font-bold">LIVE</div>
+                <div class="p-3 w-min text-iichan font-bold">LIVE</div>
                 <img class="aspect-square h-[50px]" src="assets/img/iichan_face.png">
-                <div class="p-3 w-min text-red-400 font-bold">REACTION:</div>
+                <div class="p-3 w-min text-iichan font-bold">REACTION:</div>
             </div>
         </div>
     </nav>
 
-    <div id="Arquivo" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md">
+    <div id="Arquivo" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md">
         <div class="p-2 flex flex-col gap-10">
         <div class="pt-2 sm:pt-0">
             <label class="button" for="jsonfile"><i class="fa-solid fa-upload"></i> Importar lista já existente</label>
@@ -65,7 +194,7 @@
         </div>
     </div>
 
-    <div id="Apoio" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+    <div id="Apoio" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md hidden">
         <div class="p-2 flex flex-col gap-2 items-center">
             <span class="p-2">iichan de apoio</span>
             <img src="assets/img/iichan.png">
@@ -74,56 +203,56 @@
 
     <div id="Estatísticas" class="tabcontent m-2 hidden">
         <div class="stats_tab_container flex flex-col gap-2 items-center">
-            <!--<div class="rounded-md bg-white shadow-md p-2">
+            <!--<div class="rounded-md bg-background-content shadow-md p-2">
                 <img class="p-2" src="https://media.tenor.com/XnGK5CaQTt4AAAAd/ah-eto-bleh-anime.gif">
             </div>-->
 
-            <div class="rounded-md bg-white shadow-md p-2">
+            <div class="rounded-md bg-background-content shadow-md p-2">
                 <div class="p-2">
-                    <table class="border-1 table-auto">
+                    <table class="border table-auto">
                         <thead>
-                            <th class="border-1 p-2" colspan="2">
+                            <th class="border p-2" colspan="2">
                                 <div class="text-center">Total</div>
                             </th>
                         </thead>
                         <tbody>
                             <tr class="bg-(--color-anime)">
-                                <td class="border-1 p-2">
-                                    <div class="text-center">Episódios</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge">Episódios</div>
                                 </td>
-                                <td class="border-1 p-2">
-                                    <div class="text-center ep_counter">0</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge ep_counter">0</div>
                                 </td>
                             </tr>
                             <tr class="bg-(--color-manga)">
-                                <td class="border-1 p-2">
-                                    <div class="text-center">Capítulos</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge">Capítulos</div>
                                 </td>
-                                <td class="border-1 p-2">
-                                    <div class="text-center cap_counter">0</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge cap_counter">0</div>
                                 </td>
                             </tr>
                             <tr class="bg-(--color-moji)">
-                                <td class="border-1 p-2">
-                                    <div class="text-center">Caracteres</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge">Caracteres</div>
                                 </td>
-                                <td class="border-1 p-2">
-                                    <div class="text-center moji_counter">0</div>
+                                <td class="border p-2">
+                                    <div class="text-center text-badge moji_counter">0</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="border-1 p-2">
+                                <td class="border p-2">
                                     <div class="text-center">Volumes</div>
                                 </td>
-                                <td class="border-1 p-2">
+                                <td class="border p-2">
                                     <div class="text-center vol_counter">0</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="border-1 p-2">
+                                <td class="border p-2">
                                     <div class="text-center">Horas (HH:MM)</div>
                                 </td>
-                                <td class="border-1 p-2">
+                                <td class="border p-2">
                                     <div class="text-center time_counter">00:00</div>
                                 </td>
                             </tr>
@@ -133,37 +262,37 @@
             </div>
 
             <div class="p-2 flex flex-col md:flex-row gap-2 w-full max-w-[2000px]">
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="tipo_pie"></div></div>
                 </div>
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="tipo_bar"></div></div>
                 </div>
             </div>
 
             <div class="p-2 flex flex-col md:flex-row gap-2 w-full max-w-[2000px]">
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="status_pie"></div></div>
                 </div>
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="status_bar"></div></div>
                 </div>
             </div>
 
             <div class="p-2 flex flex-col md:flex-row gap-2 w-full max-w-[2000px]">
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="prog_tipo_bar"></div></div>
                 </div>
             </div>
 
             <div class="p-2 flex flex-col md:flex-row gap-2 w-full max-w-[2000px]">
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="moji_tipo_bar"></div></div>
                 </div>
             </div>
 
             <div class="p-2 flex flex-col md:flex-row gap-2 w-full max-w-[2000px]">
-                <div class="rounded-md bg-white shadow-md p-2 w-full">
+                <div class="rounded-md bg-background-content shadow-md p-2 w-full">
                     <div><div class="horas_tipo_bar"></div></div>
                 </div>
             </div>
@@ -171,7 +300,7 @@
         </div>
     </div>
 
-    <div id="Editar" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+    <div id="Editar" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md hidden">
         <div class="p-3 flex flex-row gap-3 items-center">
             <div class="edit_title p-2 text-lg font-bold w-full"><i class="fa-solid fa-pencil"></i> Editar informações</div>
             <div class="flex flex-row-reverse gap-3 items-center w-full">
@@ -179,7 +308,7 @@
                 <button class="button w-max" onclick="save_item()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
             </div>
         </div>
-        <div class="p-1 rounded-md m-2 sm:p-5 bg-white shadow-md border border-gray-300">
+        <div class="p-1 rounded-md m-2 sm:p-5 bg-background-content shadow-md border border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
@@ -230,7 +359,7 @@
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 items-stretch w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
@@ -254,7 +383,7 @@
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 items-stretch w-full md:w-[clamp(300px,80%,1300px)] autotime_number">
             <div class="flex flex-col gap-3 w-full">
@@ -281,12 +410,12 @@
                 </div>
                 <div class="">
                     <label for="autotime" class="cursor-pointer">Tempo automático</label>
-                    <p class="text-gray-600"><label for="autotime" class="cursor-pointer">Usa o valor do Progresso como base para o cálculo de tempo</label></p>
+                    <p class="text-description"><label for="autotime" class="cursor-pointer">Usa o valor do Progresso como base para o cálculo de tempo</label></p>
                 </div>
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
@@ -295,7 +424,7 @@
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
@@ -310,7 +439,7 @@
             <img src="" class="img_preview h-[225px] aspect-[1/1.33] object-contain hidden">
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
@@ -336,18 +465,18 @@
                         <button title="Itálico" class="button" onclick="nota_add_style('italic');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-italic"></i></button>
                         <button title="Linha divisória" class="button w-[38px] h-[42px]" onclick="nota_add_style('hr');select_field(this,false);update_preview_nota()">—</button>
 
-                        <button title="Japonês" class="button custom_dropdown_button_kana" onclick="switch_custom_dropdown('kana')"><img class="w-[18px] h-auto mt-[-4px] inline-block" src="assets/yomitan/hiragana-a-black.svg"> <i class="custom_dropdown_icon_kana fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_kana absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <button title="Japonês" class="button custom_dropdown_button_kana" onclick="switch_custom_dropdown('kana')"><svg xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] mt-[-4px] inline-block stroke-content"><path d="M2.42064 2.88601h9.52827M8.92775 14.04106c4.64794-.2324 5.11273-2.78876 5.12992-4.21415.01933-1.60201-1.62623-3.97684-5.22508-4.05209-4.78517-.10004-8.34375 4.35907-6.4074 6.96794 1.72067 2.31827 6.03777-.32848 7.43215-6.3708M5.67419 1.02685c-.2324 6.7395.06942 8.31184.4648 11.61984" fill="none" stroke-width="1.85917" stroke-linejoin="round"/></svg> <i class="custom_dropdown_icon_kana fa-solid fa-angle-down"></i></button>
+                        <div class="custom_dropdown_kana absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('furigana',true);select_field(this,false);update_preview_nota()">Furigana</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('furigana',true);select_field(this,false);update_preview_nota()">Furigana</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('hira',true);select_field(this,false);update_preview_nota()">Hiragana (あ)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('kata',true);select_field(this,false);update_preview_nota()">Katakana (ア)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('hira',true);select_field(this,false);update_preview_nota()">Hiragana (あ)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('kata',true);select_field(this,false);update_preview_nota()">Katakana (ア)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('halfkana',true);select_field(this,false);update_preview_nota()">Katakana (ア -> ｱ)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fullkana',true);select_field(this,false);update_preview_nota()">Katakana (ｱ -> ア)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('halfkana',true);select_field(this,false);update_preview_nota()">Katakana (ア -> ｱ)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fullkana',true);select_field(this,false);update_preview_nota()">Katakana (ｱ -> ア)</a>
                             </div>
                         </div>
 
@@ -359,18 +488,18 @@
                         <button title="Borda" class="button" onclick="nota_add_style('border');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-border-top-left"></i></button>
                         
                         <button title="Degradê" class="button custom_dropdown_button_gradient" onclick="switch_custom_dropdown('gradient')"><i class="fa-solid fa-circle-half-stroke"></i> <i class="custom_dropdown_icon_gradient fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_gradient absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_gradient absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradient',true);select_field(this,false);update_preview_nota()">Degradê Simples</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradpercent',true);select_field(this,false);update_preview_nota()">Degradê Ajustável</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradient',true);select_field(this,false);update_preview_nota()">Degradê Simples</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradpercent',true);select_field(this,false);update_preview_nota()">Degradê Ajustável</a>
                             </div>
                         </div>
 
                         <button title="Sombra" class="button custom_dropdown_button_shadow" onclick="switch_custom_dropdown('shadow')"><i class="fa-solid fa-umbrella-beach"></i> <i class="custom_dropdown_icon_shadow fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_shadow absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_shadow absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('shadow',true);select_field(this,false);update_preview_nota()">Sombra Suave</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('solidshadow',true);select_field(this,false);update_preview_nota()">Sombra Sólida</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('shadow',true);select_field(this,false);update_preview_nota()">Sombra Suave</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('solidshadow',true);select_field(this,false);update_preview_nota()">Sombra Sólida</a>
                             </div>
                         </div>
 
@@ -381,18 +510,18 @@
                         <button title="Ícones" class="button" onclick="nota_add_style('icon');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-icons"></i></button>
 
                         <button title="Marco" class="button custom_dropdown_button_mark" onclick="switch_custom_dropdown('mark')"><i class="fa-solid fa-arrows-down-to-line"></i> <i class="custom_dropdown_icon_mark fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_mark absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_mark absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark',true);select_field(this,false);update_preview_nota()">Marco simples</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark_p',true);select_field(this,false);update_preview_nota()">Marco em porcentagem</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark',true);select_field(this,false);update_preview_nota()">Marco simples</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark_p',true);select_field(this,false);update_preview_nota()">Marco em porcentagem</a>
                             </div>
                         </div>
 
                         <button title="Barras de progresso" class="button custom_dropdown_button_progress" onclick="switch_custom_dropdown('progress')"><i class="fa-solid fa-bars-progress"></i> <i class="custom_dropdown_icon_progress fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar',true);select_field(this,false);update_preview_nota()">Barra de progresso</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar_mark',true);select_field(this,false);update_preview_nota()">Marco em barra</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar',true);select_field(this,false);update_preview_nota()">Barra de progresso</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar_mark',true);select_field(this,false);update_preview_nota()">Marco em barra</a>
                             </div>
                         </div>
 
@@ -400,113 +529,113 @@
                         <p class="py-1 block sm:hidden"></p>
 
                         <button title="Cálculo" class="button custom_dropdown_button_calc" onclick="switch_custom_dropdown('calc')"><i class="fa-solid fa-calculator"></i> <i class="custom_dropdown_icon_calc fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_calc absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_calc absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_soma',true);select_field(this,false);update_preview_nota()">Soma</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_sub',true);select_field(this,false);update_preview_nota()">Subtração</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_mult',true);select_field(this,false);update_preview_nota()">Multiplicação</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_div',true);select_field(this,false);update_preview_nota()">Divisão</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_soma',true);select_field(this,false);update_preview_nota()">Soma</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_sub',true);select_field(this,false);update_preview_nota()">Subtração</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_mult',true);select_field(this,false);update_preview_nota()">Multiplicação</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_div',true);select_field(this,false);update_preview_nota()">Divisão</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_soma',true);select_field(this,false);update_preview_nota()">Soma de tempos</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_sub',true);select_field(this,false);update_preview_nota()">Subtração de tempos</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_soma',true);select_field(this,false);update_preview_nota()">Soma de tempos</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_sub',true);select_field(this,false);update_preview_nota()">Subtração de tempos</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_porcentagem',true);select_field(this,false);update_preview_nota()">Porcentagem</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_porcentagem',true);select_field(this,false);update_preview_nota()">Porcentagem</a>
                             </div>
                         </div>
 
                         <button title="Valores" class="button custom_dropdown_button_values" onclick="switch_custom_dropdown('values')"><i class="fa-solid fa-database"></i> <i class="custom_dropdown_icon_values fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_values absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_values absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_progresso',true);select_field(this,false);update_preview_nota()">Progresso</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_final',true);select_field(this,false);update_preview_nota()">Final</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_volumes',true);select_field(this,false);update_preview_nota()">Volumes</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_moji',true);select_field(this,false);update_preview_nota()">Caracteres (moji)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_repeticoes',true);select_field(this,false);update_preview_nota()">Repetições</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_progresso',true);select_field(this,false);update_preview_nota()">Progresso</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_final',true);select_field(this,false);update_preview_nota()">Final</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_volumes',true);select_field(this,false);update_preview_nota()">Volumes</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_moji',true);select_field(this,false);update_preview_nota()">Caracteres (moji)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_repeticoes',true);select_field(this,false);update_preview_nota()">Repetições</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_h',true);select_field(this,false);update_preview_nota()">Horas (H)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_H',true);select_field(this,false);update_preview_nota()">Horas (HH)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_m',true);select_field(this,false);update_preview_nota()">Minutos (M)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_M',true);select_field(this,false);update_preview_nota()">Minutos (MM)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_h',true);select_field(this,false);update_preview_nota()">Horas (H)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_H',true);select_field(this,false);update_preview_nota()">Horas (HH)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_m',true);select_field(this,false);update_preview_nota()">Minutos (M)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_M',true);select_field(this,false);update_preview_nota()">Minutos (MM)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_prog_min',true);select_field(this,false);update_preview_nota()">Minutos por progresso</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo',true);select_field(this,false);update_preview_nota()">Tempo automático (HH:MM)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_prog_min',true);select_field(this,false);update_preview_nota()">Minutos por progresso</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo',true);select_field(this,false);update_preview_nota()">Tempo automático (HH:MM)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_h',true);select_field(this,false);update_preview_nota()">Horas automáticas (H)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_H',true);select_field(this,false);update_preview_nota()">Horas automáticas (HH)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_m',true);select_field(this,false);update_preview_nota()">Minutos automáticos (M)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_M',true);select_field(this,false);update_preview_nota()">Minutos automáticos (MM)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_h',true);select_field(this,false);update_preview_nota()">Horas automáticas (H)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_H',true);select_field(this,false);update_preview_nota()">Horas automáticas (HH)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_m',true);select_field(this,false);update_preview_nota()">Minutos automáticos (M)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_M',true);select_field(this,false);update_preview_nota()">Minutos automáticos (MM)</a>
                             </div>
                         </div>
 
                         <button title="Filtros" class="button custom_dropdown_button_fltr" onclick="switch_custom_dropdown('fltr')"><i class="fa-solid fa-brush"></i> <i class="custom_dropdown_icon_fltr fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_fltr absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_fltr absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_blur',true);select_field(this,false);update_preview_nota()">Borrar</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_brightness',true);select_field(this,false);update_preview_nota()">Brilho</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_contrast',true);select_field(this,false);update_preview_nota()">Contraste</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_grayscale',true);select_field(this,false);update_preview_nota()">Escala de Cinza</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_hue',true);select_field(this,false);update_preview_nota()">Rotação de Matiz</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_invert',true);select_field(this,false);update_preview_nota()">Inverter</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_saturate',true);select_field(this,false);update_preview_nota()">Saturação</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_sepia',true);select_field(this,false);update_preview_nota()">Sépia</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_blur',true);select_field(this,false);update_preview_nota()">Borrar</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_brightness',true);select_field(this,false);update_preview_nota()">Brilho</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_contrast',true);select_field(this,false);update_preview_nota()">Contraste</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_grayscale',true);select_field(this,false);update_preview_nota()">Escala de Cinza</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_hue',true);select_field(this,false);update_preview_nota()">Rotação de Matiz</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_invert',true);select_field(this,false);update_preview_nota()">Inverter</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_saturate',true);select_field(this,false);update_preview_nota()">Saturação</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_sepia',true);select_field(this,false);update_preview_nota()">Sépia</a>
                             </div>
                         </div>
 
                         <button title="Estilos pré-definidos" class="button custom_dropdown_button_styles" onclick="switch_custom_dropdown('styles')"><i class="fa-solid fa-swatchbook"></i> <i class="custom_dropdown_icon_styles fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_styles absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                        <div class="custom_dropdown_styles absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('legenda',true);select_field(this,false);update_preview_nota()">Legenda de YouTube</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombreado',true);select_field(this,false);update_preview_nota()">Sombreado</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('legenda',true);select_field(this,false);update_preview_nota()">Legenda de YouTube</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombreado',true);select_field(this,false);update_preview_nota()">Sombreado</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune_cor',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune_cor',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE (fonte padrão)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune_cor',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE (fonte padrão)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune_cor',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE (fonte padrão)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune_cor',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE (fonte padrão)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune_cor',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune_cor',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune_cor',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune_cor',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune_cor',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE (fonte padrão)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia',true);select_field(this,false);update_preview_nota()">Profecia</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_simples',true);select_field(this,false);update_preview_nota()">Profecia (simples)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor_simples',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão/simples)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_sangue',true);select_field(this,false);update_preview_nota()">Profecia (sangue)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia',true);select_field(this,false);update_preview_nota()">Profecia</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_simples',true);select_field(this,false);update_preview_nota()">Profecia (simples)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor_simples',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão/simples)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_sangue',true);select_field(this,false);update_preview_nota()">Profecia (sangue)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko',true);select_field(this,false);update_preview_nota()">Vermelho Umineko</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko',true);select_field(this,false);update_preview_nota()">Azul Umineko</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko',true);select_field(this,false);update_preview_nota()">Roxo Umineko</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko',true);select_field(this,false);update_preview_nota()">Dourado Umineko</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko',true);select_field(this,false);update_preview_nota()">Vermelho Umineko</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko',true);select_field(this,false);update_preview_nota()">Azul Umineko</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko',true);select_field(this,false);update_preview_nota()">Roxo Umineko</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko',true);select_field(this,false);update_preview_nota()">Dourado Umineko</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko_mod',true);select_field(this,false);update_preview_nota()">Vermelho Umineko (Mod)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko_mod',true);select_field(this,false);update_preview_nota()">Azul Umineko (Mod)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko_mod',true);select_field(this,false);update_preview_nota()">Roxo Umineko (Mod)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko_mod',true);select_field(this,false);update_preview_nota()">Dourado Umineko (Mod)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_umineko_mod',true);select_field(this,false);update_preview_nota()">Verde Umineko (Mod)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko_mod',true);select_field(this,false);update_preview_nota()">Vermelho Umineko (Mod)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko_mod',true);select_field(this,false);update_preview_nota()">Azul Umineko (Mod)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko_mod',true);select_field(this,false);update_preview_nota()">Roxo Umineko (Mod)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko_mod',true);select_field(this,false);update_preview_nota()">Dourado Umineko (Mod)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_umineko_mod',true);select_field(this,false);update_preview_nota()">Verde Umineko (Mod)</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_pos',true);select_field(this,false);update_preview_nota()">Badge Positiva</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_neg',true);select_field(this,false);update_preview_nota()">Badge Negativa</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_pos',true);select_field(this,false);update_preview_nota()">Badge Positiva</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_neg',true);select_field(this,false);update_preview_nota()">Badge Negativa</a>
                             </div>
                             <div role="none" class="py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_h',true);select_field(this,false);update_preview_nota()">Arco-íris (Horizontal)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_v',true);select_field(this,false);update_preview_nota()">Arco-íris (Vertical)</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_dg',true);select_field(this,false);update_preview_nota()">Arco-íris (Diagonal)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_h',true);select_field(this,false);update_preview_nota()">Arco-íris (Horizontal)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_v',true);select_field(this,false);update_preview_nota()">Arco-íris (Vertical)</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_dg',true);select_field(this,false);update_preview_nota()">Arco-íris (Diagonal)</a>
                             </div>
                         </div>
                     </center>
@@ -520,13 +649,13 @@
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
                 <details class="values_details"><summary class="cursor-pointer">
                     <span>Valores personalizados</span>
-                    <p class="text-gray-600">Um valor por linha, no formato mencionado nas informações abaixo.</p>
+                    <p class="text-description">Um valor por linha, no formato mencionado nas informações abaixo.</p>
                 </summary>
                     <textarea rows="8" class="values_input textinput w-full mt-2" type="textarea" id="values_textarea" name="values_textarea" oninput="update_item_values(this.value)"></textarea>
                 </details>
@@ -536,7 +665,7 @@
             </div>
         </div>
 
-        <hr class="border-gray-300">
+        <hr class="border-border">
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full custom_info"></div>
@@ -554,7 +683,7 @@
         </div>
     </div>
 
-    <div id="Visualizar" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+    <div id="Visualizar" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md hidden">
         <div class="p-2 w-full flex flex-row-reverse gap-2">
             <button class="button" onclick="edit_item('new')"><i class="fa-solid fa-plus"></i></button>
             
@@ -562,51 +691,51 @@
 
             <div class="filter_dropdown_area md:relative inline-block">
                 <button class="button" onclick="switch_filter()"><i class="fa-solid fa-filter"></i></button>
-                <div class="filter_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                <div class="filter_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                     <div role="none" class="custom_filters py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Tudo_tipo','Tudo_status')">Tudo</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Mídia','Tudo_status')"><span class="icon_tipo_midia hidden"><i class="fa-solid fa-check"></i> </span>Mídia</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Short Stories e Fanfics','Tudo_status')"><span class="icon_tipo_short_fanfic hidden"><i class="fa-solid fa-check"></i> </span>Short Stories e Fanfics</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Tudo_tipo','Tudo_status')">Tudo</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Mídia','Tudo_status')"><span class="icon_tipo_midia hidden"><i class="fa-solid fa-check"></i> </span>Mídia</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Short Stories e Fanfics','Tudo_status')"><span class="icon_tipo_short_fanfic hidden"><i class="fa-solid fa-check"></i> </span>Short Stories e Fanfics</a>
                     </div>
                     
                     <div class="flex flex-row items-stretch">
-                        <div class="tipo_all divide-y divide-gray-300 w-full border-r-1 border-gray-300">
+                        <div class="tipo_all divide-y divide-border w-full border-r border-border">
                             <div role="none" class="all_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Tudo_tipo','')"><span class="icon_tipo_tudo"><i class="fa-solid fa-check"></i> </span>Todos os formatos</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Tudo_tipo','')"><span class="icon_tipo_tudo"><i class="fa-solid fa-check"></i> </span>Todos os formatos</a>
                             </div>
                             <div role="none" class="tipo_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Novel','')"><span class="icon_tipo_novel hidden"><i class="fa-solid fa-check"></i> </span>Novel</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Anime','')"><span class="icon_tipo_anime hidden"><i class="fa-solid fa-check"></i> </span>Anime</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Mangá','')"><span class="icon_tipo_manga hidden"><i class="fa-solid fa-check"></i> </span>Mangá</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Jogo','')"><span class="icon_tipo_jogo hidden"><i class="fa-solid fa-check"></i> </span>Jogo</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Filme','')"><span class="icon_tipo_filme hidden"><i class="fa-solid fa-check"></i> </span>Filme</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Áudio','')"><span class="icon_tipo_audio hidden"><i class="fa-solid fa-check"></i> </span>Áudio</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Dorama/Série','')"><span class="icon_tipo_doramaserie hidden"><i class="fa-solid fa-check"></i> </span>Dorama/Série</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Stage','')"><span class="icon_tipo_stage hidden"><i class="fa-solid fa-check"></i> </span>Stage</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Novel','')"><span class="icon_tipo_novel hidden"><i class="fa-solid fa-check"></i> </span>Novel</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Anime','')"><span class="icon_tipo_anime hidden"><i class="fa-solid fa-check"></i> </span>Anime</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Mangá','')"><span class="icon_tipo_manga hidden"><i class="fa-solid fa-check"></i> </span>Mangá</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Jogo','')"><span class="icon_tipo_jogo hidden"><i class="fa-solid fa-check"></i> </span>Jogo</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Filme','')"><span class="icon_tipo_filme hidden"><i class="fa-solid fa-check"></i> </span>Filme</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Áudio','')"><span class="icon_tipo_audio hidden"><i class="fa-solid fa-check"></i> </span>Áudio</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Dorama/Série','')"><span class="icon_tipo_doramaserie hidden"><i class="fa-solid fa-check"></i> </span>Dorama/Série</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Stage','')"><span class="icon_tipo_stage hidden"><i class="fa-solid fa-check"></i> </span>Stage</a>
                             </div>
                             <div role="none" class="extra_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Fanfic','')"><span class="icon_tipo_fanfic hidden"><i class="fa-solid fa-check"></i> </span>Fanfic</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Short Story','')"><span class="icon_tipo_shortstory hidden"><i class="fa-solid fa-check"></i> </span>Short Story</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Ensaio','')"><span class="icon_tipo_ensaio hidden"><i class="fa-solid fa-check"></i> </span>Ensaio</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Fanfic','')"><span class="icon_tipo_fanfic hidden"><i class="fa-solid fa-check"></i> </span>Fanfic</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Short Story','')"><span class="icon_tipo_shortstory hidden"><i class="fa-solid fa-check"></i> </span>Short Story</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Ensaio','')"><span class="icon_tipo_ensaio hidden"><i class="fa-solid fa-check"></i> </span>Ensaio</a>
                             </div>
                             <div role="none" class="custom_all_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('Personalizados','')"><span class="icon_tipo_custom hidden"><i class="fa-solid fa-check"></i> </span>Todos os personalizados</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('Personalizados','')"><span class="icon_tipo_custom hidden"><i class="fa-solid fa-check"></i> </span>Todos os personalizados</a>
                             </div>
                             <div role="none" class="custom_each_filters py-1 hidden">
                                 
                             </div>
                         </div>
-                        <div class="status_all divide-y divide-gray-300 w-full">
+                        <div class="status_all divide-y divide-border w-full">
                             <div role="none" class="all_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Tudo_status')"><span class="icon_status_tudo"><i class="fa-solid fa-check"></i> </span>Todos os status</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Tudo_status')"><span class="icon_status_tudo"><i class="fa-solid fa-check"></i> </span>Todos os status</a>
                             </div>
                             <div role="none" class="status_filters py-1">
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Pendente')"><span class="icon_status_pendente hidden"><i class="fa-solid fa-check"></i> </span>Progredindo</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Planejamento')"><span class="icon_status_planejando hidden"><i class="fa-solid fa-check"></i> </span>Planejando</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Repetindo')"><span class="icon_status_repetindo hidden"><i class="fa-solid fa-check"></i> </span>Repetindo</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Concluído')"><span class="icon_status_concluido hidden"><i class="fa-solid fa-check"></i> </span>Concluído</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Pausado')"><span class="icon_status_pausado hidden"><i class="fa-solid fa-check"></i> </span>Pausado</a>
-                                <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_filter('','Abandonado')"><span class="icon_status_abandonado hidden"><i class="fa-solid fa-check"></i> </span>Abandonado</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Pendente')"><span class="icon_status_pendente hidden"><i class="fa-solid fa-check"></i> </span>Progredindo</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Planejamento')"><span class="icon_status_planejando hidden"><i class="fa-solid fa-check"></i> </span>Planejando</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Repetindo')"><span class="icon_status_repetindo hidden"><i class="fa-solid fa-check"></i> </span>Repetindo</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Concluído')"><span class="icon_status_concluido hidden"><i class="fa-solid fa-check"></i> </span>Concluído</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Pausado')"><span class="icon_status_pausado hidden"><i class="fa-solid fa-check"></i> </span>Pausado</a>
+                                <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_filter('','Abandonado')"><span class="icon_status_abandonado hidden"><i class="fa-solid fa-check"></i> </span>Abandonado</a>
                             </div>
                         </div>
                     </div>
@@ -616,25 +745,25 @@
 
             <div class="order_dropdown_area md:relative inline-block">
                 <button class="button" onclick="switch_order()"><i class="fa-solid fa-up-down"></i></button>
-                <div class="order_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                <div class="order_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                     
                     <div role="none" class="order_manual py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('manual', '')"><i class="fa-solid fa-hand"></i> Manual</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('manual', '')"><i class="fa-solid fa-hand"></i> Manual</a>
                     </div>
 
                     <div role="none" class="order_add py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('add', 'normal')"><i class="fa-solid fa-arrow-down-1-9"></i> Tempo de listagem (Crescente)</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('add', 'reverse')"><i class="fa-solid fa-arrow-up-1-9"></i> Tempo de listagem (Decrescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('add', 'normal')"><i class="fa-solid fa-arrow-down-1-9"></i> Tempo de listagem (Crescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('add', 'reverse')"><i class="fa-solid fa-arrow-up-1-9"></i> Tempo de listagem (Decrescente)</a>
                     </div>
 
                     <div role="none" class="order_edit py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('edit', 'normal')"><i class="fa-solid fa-arrow-down-short-wide"></i> Tempo de edição (Crescente)</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('edit', 'reverse')"><i class="fa-solid fa-arrow-up-short-wide"></i> Tempo de edição (Decrescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('edit', 'normal')"><i class="fa-solid fa-arrow-down-short-wide"></i> Tempo de edição (Crescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('edit', 'reverse')"><i class="fa-solid fa-arrow-up-short-wide"></i> Tempo de edição (Decrescente)</a>
                     </div>
 
                     <div role="none" class="order_alfabeto py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('alphabet', 'normal')"><i class="fa-solid fa-arrow-down-a-z"></i> Ordem alfabética (Crescente)</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="process_order_list('alphabet', 'reverse')"><i class="fa-solid fa-arrow-up-a-z"></i> Ordem alfabética (Decrescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('alphabet', 'normal')"><i class="fa-solid fa-arrow-down-a-z"></i> Ordem alfabética (Crescente)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="process_order_list('alphabet', 'reverse')"><i class="fa-solid fa-arrow-up-a-z"></i> Ordem alfabética (Decrescente)</a>
                     </div>
 
                 </div>
@@ -652,16 +781,23 @@
 
             <div class="debug_dropdown_area md:relative inline-block">
                 <button class="button debug_button hidden" onclick="switch_debug()"><i class="fa-solid fa-toolbox"></i></button>
-                <div class="debug_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                <div class="debug_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                     
                     <div role="none" class="py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_moji')">Progresso em capítulos - Moji</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_page')">Progresso em capítulos - Páginas</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_moji')">ADD / Progresso em capítulos - Moji</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_page')">ADD / Progresso em capítulos - Páginas</a>
                     </div>
 
                     <div role="none" class="py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_arc')">Progresso no arco</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_arc_audiobook')">Progresso no arco (com audiobook)</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_arc')">ADD / Progresso no arco</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_action('chap_prog_arc_audiobook')">ADD / Progresso no arco (com audiobook)</a>
+                    </div>
+
+                    <div role="none" class="py-1">
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_theme('light')">SET / Tema - light</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_theme('dark')">SET / Tema - dark</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_theme('aqua')">SET / Tema - aqua</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="set_debug_theme('sunshine')">SET / Tema - sunshine</a>
                     </div>
 
                 </div>
@@ -673,38 +809,38 @@
         </div>
     </div>
 
-    <div id="Streaming" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+    <div id="Streaming" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md hidden">
         <div class="p-2 w-full flex flex-row-reverse gap-2">
             <div class="streaming_filter_dropdown_area md:relative inline-block">
                 <button class="button" onclick="switch_streaming_dropdown('streaming_filter_dropdown')"><i class="fa-solid fa-filter"></i></button>
-                <div class="streaming_filter_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                <div class="streaming_filter_dropdown absolute right-0 z-10 mt-2 w-full max-h-[400px] overflow-y-auto md:w-112 origin-top-right divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                     <div role="none" class="filters py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('tudo')">Tudo</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('tudo')">Tudo</a>
                     </div>
                     <div role="none" class="filters py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('anime')">Anime</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('manga')">Mangá</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('novel')">Novel</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('webnovel')">Web Novel</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('jogo')">Jogo</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('dorama')">Dorama</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('music')">Música</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('radio')">Rádio</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('tokusatsu')">Tokusatsu</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('anime')">Anime</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('manga')">Mangá</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('novel')">Novel</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('webnovel')">Web Novel</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('jogo')">Jogo</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('dorama')">Dorama</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('music')">Música</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('radio')">Rádio</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('tokusatsu')">Tokusatsu</a>
                     </div>
                     <div role="none" class="filters py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('novpn')">Sem bloqueio por região</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('youtube')">YouTube</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('lovelive')">Love Live</a>
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('soseki')">Natsume Soseki</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('novpn')">Sem bloqueio por região</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('youtube')">YouTube</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('lovelive')">Love Live</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_filter('soseki')">Natsume Soseki</a>
                     </div>
                 </div>
             </div>
             <div class="streaming_config_dropdown_area md:relative inline-block">
                 <button class="button" onclick="switch_streaming_dropdown('streaming_config_dropdown')"><i class="fa-solid fa-gear"></i></button>
-                <div class="streaming_config_dropdown absolute right-0 z-10 mt-2 w-full md:w-112 origin-top-right divide-y divide-gray-300 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden">
+                <div class="streaming_config_dropdown absolute right-0 z-10 mt-2 w-full md:w-112 origin-top-right divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                     <div role="none" class="config_filters py-1">
-                        <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer" onclick="change_streaming_config('eos')"><span class="check_exibir_eos hidden"><i class="fa-solid fa-check"></i> </span>Exibir sites fora do ar</a>
+                        <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="change_streaming_config('eos')"><span class="check_exibir_eos hidden"><i class="fa-solid fa-check"></i> </span>Exibir sites fora do ar</a>
                     </div>
                 </div>
             </div>
@@ -714,7 +850,7 @@
         </div>
     </div>
 
-    <div id="Sort" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">
+    <div id="Sort" class="tabcontent rounded-md m-2 sm:p-5 bg-background-content shadow-md hidden">
         <div class="p-3 flex flex-row gap-3 items-center">
             <div class="p-2 text-lg font-bold w-full"><i class="fa-solid fa-hand"></i> Reorganizar itens da lista</div>
             <div class="flex flex-row-reverse gap-3 items-center w-full">
@@ -722,7 +858,7 @@
                 <button class="button w-max" onclick="save_manual_order()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
             </div>
         </div>
-        <div class="p-1 rounded-md m-2 sm:p-5 bg-white shadow-md border border-gray-300">
+        <div class="p-1 rounded-md m-2 sm:p-5 bg-background-content shadow-md border border-border">
 
             <div class="reorder_list p-2 grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-2 grid-list-view">
 

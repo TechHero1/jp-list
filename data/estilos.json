@@ -106,7 +106,7 @@
                     "break": false
                 }
             ],
-            "notas": "Ícones podem ter os estilos: <i>regular</i>, <i>solid</i> ou <i>brands</i><br><br>Compatível com qualquer ícone gratuito da<br><a href='https://fontawesome.com/search?ic=free-collection' target='_blank' class='text-blue-500'>Font Awesome v7</a>"
+            "notas": "Ícones podem ter os estilos: <i>regular</i>, <i>solid</i> ou <i>brands</i><br><br>Compatível com qualquer ícone gratuito da<br><a href='https://fontawesome.com/search?ic=free-collection' target='_blank' class='text-url'>Font Awesome v7</a>"
         },
         {
             "nome": "Barras de progresso",
@@ -612,7 +612,7 @@
                     "break": false
                 }
             ],
-            "notas": "Qualquer <a href='https://www.w3schools.com/cssref/css_units.php' target='_blank' class='text-blue-500'>unidade do CSS</a> funciona, mas é recomendado usar <b>px</b> (pixels).<br>O valor também pode ser fracionário na forma decimal (Ex: 0.5px)."
+            "notas": "Qualquer <a href='https://www.w3schools.com/cssref/css_units.php' target='_blank' class='text-url'>unidade do CSS</a> funciona, mas é recomendado usar <b>px</b> (pixels).<br>O valor também pode ser fracionário na forma decimal (Ex: 0.5px)."
         },
         {
             "nome": "Degradê",

@@ -395,7 +395,7 @@
                     "texto": "Download em formato proprietário de Ebook"
                 }
             ],
-            "desc": "<object><a class='nota_link text-blue-500' href='https://archive.org/details/aozorabunko' target='_blank'>Aozora Bunko no Internet Archive</a></object>",
+            "desc": "<object><a class='nota_link text-url' href='https://archive.org/details/aozorabunko' target='_blank'>Aozora Bunko no Internet Archive</a></object>",
             "ativo": true
         },
         {
@@ -503,7 +503,7 @@
                     "texto": "Só em fotos"
                 }
             ],
-            "desc": "<object><a class='nota_link text-blue-500' href='https://www.library.tohoku.ac.jp/en/collections/soseki/index.html' target='_blank'>Página inicial com mais informações sobre Natsume Soseki e sua coleção</a></object>",
+            "desc": "<object><a class='nota_link text-url' href='https://www.library.tohoku.ac.jp/en/collections/soseki/index.html' target='_blank'>Página inicial com mais informações sobre Natsume Soseki e sua coleção</a></object>",
             "ativo": true
         },
         {
@@ -613,7 +613,7 @@
                     "texto": "Completamente grátis"
                 }
             ],
-            "desc": "<object><a class='nota_link text-blue-500' href='https://syosetu.com/' target='_blank'>Shosetsuka ni Narou!</a></object>",
+            "desc": "<object><a class='nota_link text-url' href='https://syosetu.com/' target='_blank'>Shosetsuka ni Narou!</a></object>",
             "ativo": true
         },
         {

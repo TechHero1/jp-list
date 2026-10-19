@@ -409,7 +409,7 @@ function create_name_filters() {
   container.classList.remove("hidden");
   for (var i = 0; i < unique_name_filter.length; i++) {
     container.innerHTML += `
-      <a tabindex="-1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-150 cursor-pointer max-w-[230px] overflow-hidden text-ellipsis" onclick="change_filter('${unique_name_filter[i]}','')">
+      <a tabindex="-1" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer max-w-[230px] overflow-hidden text-ellipsis" onclick="change_filter('${unique_name_filter[i]}','')">
         <span class="icon_${unique_name_filter[i]} hidden"><i class="fa-solid fa-check"></i> </span>${unique_name_filter[i]}
       </a>
     `;
@@ -606,7 +606,7 @@ function load_list() {
       let anotacao = nota.get_nota(ordered_list[i]);
 
       document.querySelector(".content_list").innerHTML += `
-        <div class="bg-[${bg_color}] flex flex-col p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 cursor-pointer transition-all duration-150 group/title hover:border-gray-400" id="${ordered_list[i].id}" onclick="edit_item(this.id)">
+        <div class="bg-[${bg_color}] flex flex-col p-1 rounded-md m-2 sm:p-5 shadow-md border border-border-list cursor-pointer transition-all duration-150 group/title hover:border-border-list-hover text-content-list" id="${ordered_list[i].id}" onclick="edit_item(this.id)">
           <div class="p-1 flex flex-row gap-2">
             <img src="${ordered_list[i].dados.img}" class="w-[170px] h-[225px] aspect-[1/1.33] object-contain ${img_hidden}">
             ${manage_item_strings(ordered_list[i])}
@@ -652,7 +652,7 @@ function manage_item_strings(item) {
     volumes_string = "";
   }
 
-  let add_button = ` <button class="button px-[0.4rem]! py-[0.25rem]! quick_edit_button" onclick="quick_edit(${item.id});event.stopPropagation();"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
+  let add_button = ` <button class="button button-list px-[0.4rem]! py-[0.25rem]! quick_edit_button" onclick="quick_edit(${item.id});event.stopPropagation();"><i class="fa-solid fa-plus fa-xs fa-canvas-square"></i></button>`;
   if (item.dados.status == "Completo" || item.dados.status == "Planejo" || item.dados.status == "Abandonado" || item.dados.status == "Pausado") add_button = "";
   if (Number(item.dados.final) > 0 && Number(item.dados.progresso) >= Number(item.dados.final)) add_button = "";
 
@@ -853,7 +853,7 @@ function load_manual_items(temp_list=[]) {
     if (item_tipo == "Personalizado") item_tipo = temp_editing_list[i].custom_media_name;
 
     document.querySelector(".reorder_list").innerHTML += `
-      <div class="bg-[${get_bg_color(temp_editing_list[i])}] flex flex-col p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 transition-all duration-150 group/title hover:border-gray-400" id="0">
+      <div class="bg-[${get_bg_color(temp_editing_list[i])}] flex flex-col p-1 rounded-md m-2 sm:p-5 shadow-md border border-border-list transition-all duration-150 group/title hover:border-border-list-hover text-content-list" id="0">
         <div class="p-1 flex flex-col sm:flex-row gap-2 item-center w-full">
           <div class="flex flex-row gap-2 items-center w-full">
             ${item_img}
@@ -865,10 +865,10 @@ function load_manual_items(temp_list=[]) {
             </div>
           </div>
           <div class="w-max grow-0 text-center place-self-center flex flex-row items-center gap-5">
-            <input id="input-${i}" value="${i+1}" onchange="change_manual_item([${temp_list}],${i},this.value-1)" inputmode="numeric" class="textinput h-[42px] bg-white! max-w-[150px]">
+            <input id="input-${i}" value="${i+1}" onchange="change_manual_item([${temp_list}],${i},this.value-1)" inputmode="numeric" class="textinput textinput-list h-[42px] bg-white! max-w-[150px]">
             <div class="flex flex-col gap-2 h-full">
-              <button onclick="change_manual_item([${temp_list}],${i},${i-1})" class="button bg-white! hover:bg-gray-200!"><i class="fa-solid fa-sort-up"></i></button>
-              <button onclick="change_manual_item([${temp_list}],${i},${i+1})" class="button bg-white! hover:bg-gray-200!"><i class="fa-solid fa-sort-down"></i></button>
+              <button onclick="change_manual_item([${temp_list}],${i},${i-1})" class="button button-list bg-white! hover:bg-border-list!"><i class="fa-solid fa-sort-up"></i></button>
+              <button onclick="change_manual_item([${temp_list}],${i},${i+1})" class="button button-list bg-white! hover:bg-border-list!"><i class="fa-solid fa-sort-down"></i></button>
             </div>
           </div>
         </div>
