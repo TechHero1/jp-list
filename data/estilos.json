@@ -1130,22 +1130,22 @@
                 {
                 "id": "profecia",
                 "texto": "Profecia",
-                "render": "<div class='text-center' style='animation: floating 3s ease-in-out alternate infinite;'><span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span></div>"
+                "render": "<div class='text-center [animation:floating_3s_ease-in-out_alternate_infinite]'><span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]'>$texto</span></div>"
                 },
                 {
                 "id": "profecia_cor",
                 "texto": "Sem fonte",
-                "render": "<div class='text-center' style='animation: floating 3s ease-in-out alternate infinite;'><span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span></div>"
+                "render": "<div class='text-center [animation:floating_3s_ease-in-out_alternate_infinite]'><span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]'>$texto</span></div>"
                 },
                 {
                 "id": "profecia_simples",
                 "texto": "Sem animacao",
-                "render": "<span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span>"
+                "render": "<span class='font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]'>$texto</span>"
                 },
                 {
                 "id": "profecia_cor_simples",
                 "texto": "Sem fonte/sem animação",
-                "render": "<span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat' style='animation: scroll-background 30s linear infinite;'>$texto</span>"
+                "render": "<span class='bg-clip-text text-transparent bg-[url(\"assets/img/IMAGE_DEPTH.png\")] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]'>$texto</span>"
                 }
             ]
         },
@@ -1240,12 +1240,17 @@
                 {
                 "id": "rainbow_h",
                 "texto": "Horizontal",
-                "render": "<b style='background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)' class='bg-clip-text text-transparent'>$texto</b>"
+                "render": "<b class='bg-linear-[to_right,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent'>$texto</b>"
                 },
                 {
                 "id": "rainbow_v",
                 "texto": "Vertical",
-                "render": "<b style='background-image: linear-gradient(to bottom, red,orange,yellow,green,blue,indigo,violet)' class='bg-clip-text text-transparent'>$texto</b>"
+                "render": "<b class='bg-linear-[to_bottom,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent'>$texto</b>"
+                },
+                {
+                "id": "rainbow_dg",
+                "texto": "Diagonal",
+                "render": "<b class='bg-linear-[to_bottom_right,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent'>$texto</b>"
                 }
             ]
         }

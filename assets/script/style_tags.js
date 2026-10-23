@@ -357,9 +357,9 @@ const all_presets = {
   badge_pos:              text => `<span class="bg-[#d4edbc] rounded-md shadow-md py-1 px-2 h-min w-fit">${text}</span>`,
   badge_neg:              text => `<span class="bg-[#ff8787] rounded-md shadow-md py-1 px-2 h-min w-fit">${text}</span>`,
 
-  rainbow_h:              text => `<b style="background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)" class="bg-clip-text text-transparent">${text}</b>`,
-  rainbow_v:              text => `<b style="background-image: linear-gradient(to bottom, red,orange,yellow,green,blue,indigo,violet)" class="bg-clip-text text-transparent">${text}</b>`,
-  rainbow_dg:             text => `<b style="background-image: linear-gradient(to bottom right, red,orange,yellow,green,blue,indigo,violet)" class="bg-clip-text text-transparent">${text}</b>`,
+  rainbow_h:              text => `<b class="bg-linear-[to_right,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent">${text}</b>`,
+  rainbow_v:              text => `<b class="bg-linear-[to_bottom,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent">${text}</b>`,
+  rainbow_dg:             text => `<b class="bg-linear-[to_bottom_right,red,orange,yellow,green,blue,indigo,violet] bg-clip-text text-transparent">${text}</b>`,
 
   sombra_deltarune:       text => `<span class="font-(family-name:--8bitoperator) text-[1.2rem] text-white drop-shadow-[1px_1px_#0f0f70]">${text}</span>`,
   sombra_deltarune_cor:   text => `<span class="text-white drop-shadow-[0.7px_0.7px_#0f0f70]">${text}</span>`,
@@ -374,11 +374,11 @@ const all_presets = {
   azul_deltarune_cor:     text => `<span class="bg-linear-to-b from-[#c3c3ff] from-[25%] to-[#1c1cff] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#00004c]">${text}</span>`,
   verde_deltarune_cor:    text => `<span class="bg-linear-to-b from-[#a8ffa8] from-[25%] to-[#0cff0c] to-[80%] bg-clip-text text-transparent drop-shadow-[1px_1px_#004c00]">${text}</span>`,
 
-  profecia:               text => `<div class="text-center" style="animation: floating 3s ease-in-out alternate infinite;"><span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat" style="animation: scroll-background 30s linear infinite;">${text}</span></div>`,
-  profecia_cor:           text => `<div class="text-center" style="animation: floating 3s ease-in-out alternate infinite;"><span class="bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat" style="animation: scroll-background 30s linear infinite;">${text}</span></div>`,
-  profecia_simples:       text => `<span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat" style="animation: scroll-background 30s linear infinite;">${text}</span>`,
-  profecia_cor_simples:   text => `<span class="bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat" style="animation: scroll-background 30s linear infinite;">${text}</span>`,
-  profecia_sangue:        text => `<div class="text-center hue-rotate-165 saturate-300" style="animation: floating 3s ease-in-out alternate infinite;"><span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat" style="animation: scroll-background 30s linear infinite;">${text}</span></div>`,
+  profecia:               text => `<div class="text-center [animation:floating_3s_ease-in-out_alternate_infinite]"><span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]">${text}</span></div>`,
+  profecia_cor:           text => `<div class="text-center [animation:floating_3s_ease-in-out_alternate_infinite]"><span class="bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]">${text}</span></div>`,
+  profecia_simples:       text => `<span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]">${text}</span>`,
+  profecia_cor_simples:   text => `<span class="bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]">${text}</span>`,
+  profecia_sangue:        text => `<div class="text-center hue-rotate-165 saturate-300 [animation:floating_3s_ease-in-out_alternate_infinite]"><span class="font-(family-name:--ProphecyType) text-[1.85rem] bg-clip-text text-transparent bg-[url('assets/img/IMAGE_DEPTH.png')] bg-size-[256px 256px] bg-repeat [animation:scroll-background_30s_linear_infinite]">${text}</span></div>`,
 
   vermelho_umineko:       text => `<span class="text-[#F50000] drop-shadow-[1px_1px_#000000]">${text}</span>`,
   vermelho_umineko_mod:   text => `<b class="bg-linear-to-b from-[#ff0000] from-[40%] to-[#ff8b8b] to-[95%] bg-clip-text text-transparent drop-shadow-[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]">${text}</b>`,
