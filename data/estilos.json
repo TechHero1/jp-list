@@ -11,14 +11,9 @@
             "render": "<i>Texto</i>"
         },
         {
-            "funcao": "Quebrar linha",
-            "comando": "<code>\\n</code>",
-            "render": "Linha 1<br>Linha 2"
-        },
-        {
             "funcao": "Divisória",
-            "comando": "<code>\\l</code>",
-            "render": "Linha 1<hr>Linha 2"
+            "comando": "<code>---</code><br><br>Linha 1<br><code>---</code><br>Linha 2",
+            "render": "<hr><br><br>Linha 1<hr>Linha 2"
         },
         {
             "funcao": "Valores padrões",

@@ -32,6 +32,10 @@ export function update_old_tags(text="") {
   text = text.replaceAll("[i]","*");
   text = text.replaceAll("[/i]","*");
 
+  text = text.replaceAll("\\n","\n");
+
+  text = text.replaceAll("\\l","\n---\n");
+
   //tags with att
   text = text.replaceAll("[color:","[cor:");
   text = text.replaceAll("[/color]","[/cor]");
@@ -318,12 +322,15 @@ export function style_text_with_tags(text,item_data) {
     text = text.replaceAll(regex, () => util.escape_text(value));
   }
 
-  //NEWLINE TAG
-  text = text.replaceAll(/\\n/g,"<br>");
-
   //LINE TAG
-  text = text.replaceAll(/\\l/g,"<hr>");
-  //text = text.replaceAll(/^---$/g,"<hr>");
+  //text = text.replaceAll(/\\l/g,"<hr>");
+  console.log(text)
+  text = text.replaceAll(/\n---\n/g,"<hr>");
+  text = text.replaceAll(/^---$/gm,"<hr>");
+
+  //NEWLINE TAG
+  //text = text.replaceAll(/\\n/g,"<br>");
+  text = text.replaceAll(/\n/g,"<br>");
 
   //BOLD TAG
   text = text.replaceAll(/(?<!\\)__(.+?)(?<!\\)__/g,`<b>$1</b>`).replaceAll(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/g,`<b>$1</b>`);
