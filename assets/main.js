@@ -2,18 +2,15 @@ import * as manage from "./script/manage.js";
 import * as streamings from "./script/streamings.js";
 import * as stats from "./script/stats.js";
 
-var i;
-const nf = new Intl.NumberFormat('fr-FR');
-
 function remote_open_tab(tab_name) {
   if (!document.body.contains(document.getElementById(tab_name))) return remote_open_tab("Erro");
   var tablinks;
   tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-    if (tab_name+"_tab" == tablinks[i].id) {
-      tablinks[i].click();
-      return
+  for (const link of tablinks) {
+    link.classList.toggle("active", false);
+    if (tab_name+"_tab" == link.id) {
+      link.click();
+      return;
     }
   }
 }
@@ -21,17 +18,15 @@ function remote_open_tab(tab_name) {
 function open_tab(evt, tab_name) {
   if (evt == "" || evt == undefined || evt == null) return remote_open_tab("Erro");
   if (!document.body.contains(document.getElementById(tab_name))) return remote_open_tab("Erro");
-  var tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tab_name).style.display = "block";
-  evt.currentTarget.className += " active";
+
+  let tabcontent = document.getElementsByClassName("tabcontent");
+  for (const tab of tabcontent) tab.classList.toggle("hidden", true);
+
+  let tablinks = document.getElementsByClassName("tablinks");
+  for (const link of tablinks) link.classList.toggle("active", false);
+
+  document.getElementById(tab_name).classList.toggle("hidden", false);
+  evt.currentTarget.classList.toggle("active", true);
 }
 
 window.open_tab = open_tab;
@@ -54,17 +49,24 @@ function set_debug_theme(theme) {
 
 window.set_debug_theme = set_debug_theme;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const dropZone = document.querySelector('#Arquivo');
+//IMPORTAR - DRAG AND DROP
+const dropZone = document.querySelector('#Arquivo');
 
-  dropZone.addEventListener('dragover', (event) =>{
+dropZone.addEventListener('dragover', (event) => {
+  event.preventDefault();
+});
+
+dropZone.addEventListener('drop', (event) => {
+  event.preventDefault();
+  const file = event.dataTransfer.files[0];
+  if (file) upload_list(file);
+});
+
+//DROPDOWN - TECLADO
+document.addEventListener('keydown', (event) => {
+  if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('a[role="menuitem"]')) {
     event.preventDefault();
-
-  });
-
-  dropZone.addEventListener('drop', (event) =>{
-    event.preventDefault();
-    const files = event.dataTransfer.files;
-    upload_list(files[0]);
-  });
+    event.target.click();
+  }
+  if (event.key === 'Escape') document.body.click();
 });

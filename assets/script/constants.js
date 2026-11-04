@@ -86,7 +86,7 @@ export const TAGS_TO_ADD = {
   "newline": "\\n",
   "color": "[cor:#000000]$text[/cor]",
   "bg": "[bg:#FFFFFF]$text[/bg]",
-  "border": "[brd:1:#000000]$text[/brd]",
+  "border": "[brd:#000000:1]$text[/brd]",
   "gradient": "[grd:horizontal:#FF0000:#0000FF]$text[/grd]",
   "gradpercent": "[grd:horizontal:#FF0000:#0000FF:0%:100%]$text[/grd]",
   "shadow": "[sdw:#000000:md:80]$text[/sdw]",

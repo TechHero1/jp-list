@@ -80,7 +80,7 @@
 }
 
 .button-danger {
-    border-color: 1px solid var(--color-danger);
+    border-color: var(--color-danger);
     color: var(--color-danger);
 }
 
@@ -128,4 +128,30 @@
 
 .nota_link:hover {
     text-decoration: underline;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    z-index: 50;
+    max-width: min(90vw, 40rem);
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+    background-color: var(--color-navbar);
+    color: var(--color-navbar-content);
+}
+
+.toast-error {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+.button:focus-visible,
+.textinput:focus-visible,
+a[role="menuitem"]:focus-visible {
+    outline: 2px solid var(--color-outline);
+    outline-offset: 2px;
 }

@@ -20,7 +20,8 @@ function get_preview_item() {
       "autotime": document.querySelector(".autotime_input").checked,
       "prog_min": document.querySelector(".prog_min_input").value,
       "nota": document.querySelector(".nota_input").value,
-      "img": document.querySelector(".img_input").value
+      "img": document.querySelector(".img_input").value,
+      "custom_values": document.querySelector(".values_input").value
     }
   };
 }
@@ -29,7 +30,14 @@ export function update_preview() {
   get_preview_item();
 
   let nota_input = document.querySelector(".nota_input").value;
-  document.querySelector(".nota_input_preview").innerHTML = estilos.style_text_with_tags(nota_input,cur_preview_item.dados);
+  let preview_html;
+  try {
+    preview_html = estilos.style_text_with_tags(nota_input,cur_preview_item.dados);
+  } catch (err) {
+    console.error(err);
+    preview_html = "<span class='text-danger'>Erro ao interpretar a anotação.</span>";
+  }
+  document.querySelector(".nota_input_preview").innerHTML = preview_html;
   if (nota_input.includes("\\") || nota_input.includes("[") || nota_input.includes("$") || nota_input.includes("{") || /[\S]+\.[\S]+/g.test(nota_input)) document.querySelector(".nota_preview_container").classList.remove('hidden');
   else document.querySelector(".nota_preview_container").classList.add('hidden');
 }
@@ -37,8 +45,10 @@ export function update_preview() {
 window.update_preview_nota = update_preview;
 
 export function get_nota(item) {
-  let result = item.dados.nota;
-  result = estilos.style_text_with_tags(result,item.dados);
-
-  return result;
+  try {
+    return estilos.style_text_with_tags(String(item.dados.nota ?? ""),item.dados);
+  } catch (err) {
+    console.error(err);
+    return "<span class='text-danger'>Erro ao interpretar a anotação.</span>";
+  }
 }

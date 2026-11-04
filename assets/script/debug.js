@@ -1,4 +1,5 @@
 import * as manage from "./manage.js";
+import * as util from "./util.js";
 
 function switch_debug() {
   if (document.querySelector(".debug_dropdown").classList.contains('hidden')) {
@@ -88,7 +89,17 @@ export function do_debug_action(id) {
     manage.list.itens[id].dados.last_edited = Date.now();
   }
 
+  if (debug_action.startsWith("stars")) {
+    let debug_nota = `{${debug_action}}`;
+
+    if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
+    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+
+    manage.list.itens[id].dados.last_edited = Date.now();
+  }
+
   debug_action = "";
   document.querySelector(".debug_cancel_button").classList.add('hidden');
+  util.mark_dirty();
   process_order_list(manage.list.view_mode[0],manage.list.view_mode[1]);
 }

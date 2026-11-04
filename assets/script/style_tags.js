@@ -1,6 +1,7 @@
 import * as dicts from "../yomitan/japanese-kana-romaji-dicts.js";
 import * as nota from "./nota.js";
 import * as constants from "./constants.js";
+import * as util from "./util.js";
 
 export function update_old_tags(text="") {
   //old umineko ids
@@ -143,6 +144,13 @@ function kanaHalfToFull(text) {
   return newText;
 }
 
+function map_text_nodes(html, convert) {
+  return html
+    .split(/(<[^>]*>|&[a-zA-Z0-9#]+;)/)
+    .map((part, index) => (index % 2 === 1 ? part : convert(part)))
+    .join("");
+}
+
 //CUSTOMIZAÇÃO - LAYOUT
 function switch_custom_dropdown(dropdown_id) {
   if (document.querySelector(".custom_dropdown_"+dropdown_id).classList.contains('hidden')) {
@@ -159,51 +167,16 @@ function switch_custom_dropdown(dropdown_id) {
 
 window.switch_custom_dropdown = switch_custom_dropdown;
 
+//click fora do dropdown -> fecha
+const CUSTOM_DROPDOWNS = ["gradient", "shadow", "mark", "progress", "styles", "values", "kana", "calc", "fltr"];
+
 window.addEventListener('click', function(e){
-  if (!document.querySelector(".custom_dropdown_button_gradient").contains(e.target)){
-    document.querySelector(".custom_dropdown_gradient").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_gradient").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_gradient").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_shadow").contains(e.target)){
-    document.querySelector(".custom_dropdown_shadow").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_shadow").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_shadow").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_mark").contains(e.target)){
-    document.querySelector(".custom_dropdown_mark").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_mark").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_mark").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_progress").contains(e.target)){
-    document.querySelector(".custom_dropdown_progress").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_progress").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_progress").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_styles").contains(e.target)){
-    document.querySelector(".custom_dropdown_styles").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_styles").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_styles").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_values").contains(e.target)){
-    document.querySelector(".custom_dropdown_values").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_values").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_values").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_kana").contains(e.target)){
-    document.querySelector(".custom_dropdown_kana").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_kana").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_kana").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_calc").contains(e.target)){
-    document.querySelector(".custom_dropdown_calc").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_calc").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_calc").classList.remove('fa-angle-up');
-  }
-  if (!document.querySelector(".custom_dropdown_button_fltr").contains(e.target)){
-    document.querySelector(".custom_dropdown_fltr").classList.add('hidden');
-    document.querySelector(".custom_dropdown_icon_fltr").classList.add('fa-angle-down');
-    document.querySelector(".custom_dropdown_icon_fltr").classList.remove('fa-angle-up');
+  for (const id of CUSTOM_DROPDOWNS) {
+    const button = document.querySelector(".custom_dropdown_button_"+id);
+    if (!button || button.contains(e.target)) continue;
+    document.querySelector(".custom_dropdown_"+id)?.classList.add('hidden');
+    document.querySelector(".custom_dropdown_icon_"+id)?.classList.add('fa-angle-down');
+    document.querySelector(".custom_dropdown_icon_"+id)?.classList.remove('fa-angle-up');
   }
 });
 
@@ -239,7 +212,8 @@ function nota_add_style(tag,dropdown=false) {
   let element = document.querySelector(".nota_input");
 
   if (nota_can_add || (dropdown && nota_can_add_excecao)) {
-    let replace_text = constants.TAGS_TO_ADD[tag].replaceAll("$text",element.value.substring(nota_pos_start, nota_pos_end));
+    const selected_text = element.value.substring(nota_pos_start, nota_pos_end);
+    let replace_text = constants.TAGS_TO_ADD[tag].replaceAll("$text",() => selected_text);
     if (nota_pos_start == nota_pos_end) replace_text = constants.TAGS_TO_ADD[tag].replaceAll("$text","texto");
 
     element.value = element.value.slice(0, nota_pos_start) + replace_text + element.value.slice(nota_pos_end);
@@ -255,22 +229,17 @@ function nota_add_style(tag,dropdown=false) {
 
 window.nota_add_style = nota_add_style;
 
-var item_custom_values = {};
-const values_regex = /^(?<nome>.+?)=(?<valor>.+?)$/g;
-
-function update_item_values(text) {
-  item_custom_values = {};
-  let text_lines = text.split("\n");
-  for (var i = 0; i < text_lines.length; i++) {
-    for (var itag = 0; itag < (text_lines[i].match(values_regex) || []).length; itag++) {
-      let values_regex_match;
-
-      while ((values_regex_match = values_regex.exec(text_lines[i])) !== null) {
-        item_custom_values[values_regex_match.groups.nome] = values_regex_match.groups.valor;
-        nota.update_preview();
-      }
-    }
+function parse_custom_values(text) {
+  const values = {};
+  for (const line of String(text ?? "").split(/\r?\n/)) {
+    const match = line.match(/^(?<nome>.+?)=(?<valor>.+?)$/);
+    if (match) values[match.groups.nome.trim()] = match.groups.valor;
   }
+  return values;
+}
+
+function update_item_values() {
+  nota.update_preview();
 }
 
 window.update_item_values = update_item_values;
@@ -278,7 +247,8 @@ window.update_item_values = update_item_values;
 function get_string_url(text) {
   return text.linkify({
     className: "nota_link text-blue-500",
-    target: "_blank"
+    target: "_blank",
+    attributes: { rel: "noopener noreferrer" }
   });
 }
 
@@ -297,30 +267,49 @@ export function style_text_with_tags(text,item_data) {
   text = text.replaceAll(/(?<!\\)\{iichan_face}/g,"<img src='assets/img/iichan_face.png' class='w-[96px] h-[103px] inline'>");
   text = text.replaceAll(/(?<!\\)\{eto_bleh}/g,"<img src='https://media.tenor.com/XnGK5CaQTt4AAAAd/ah-eto-bleh-anime.gif' class='w-full'>");
 
-  //VALORES
-  text = text.replaceAll(/(?<!\\)\$progresso\b/g,item_data.progresso);
-  text = text.replaceAll(/(?<!\\)\$final\b/g,item_data.final);
-  text = text.replaceAll(/(?<!\\)\$moji\b/g,item_data.moji);
-  text = text.replaceAll(/(?<!\\)\$volumes\b/g,item_data.volumes);
-  text = text.replaceAll(/(?<!\\)\$repeticoes\b/g,item_data.repeticoes);
-  text = text.replaceAll(/(?<!\\)\$h\b/g,item_data.horas);
-  text = text.replaceAll(/(?<!\\)\$H\b/g,String(item_data.horas).padStart(2, '0'));
-  text = text.replaceAll(/(?<!\\)\$m\b/g,item_data.minutos);
-  text = text.replaceAll(/(?<!\\)\$M\b/g,String(item_data.minutos).padStart(2, '0'));
-  text = text.replaceAll(/(?<!\\)\$prog_min\b/g,item_data.prog_min);
-  text = text.replaceAll(/(?<!\\)\$tempo\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0')+":"+String((item_data.progresso*item_data.prog_min)%60).padStart(2, '0'));
-  text = text.replaceAll(/(?<!\\)\$tempo_h\b/g,Math.trunc((item_data.progresso*item_data.prog_min)/60));
-  text = text.replaceAll(/(?<!\\)\$tempo_H\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)/60)).padStart(2, '0'));
-  text = text.replaceAll(/(?<!\\)\$tempo_m\b/g,Math.trunc((item_data.progresso*item_data.prog_min)%60));
-  text = text.replaceAll(/(?<!\\)\$tempo_M\b/g,String(Math.trunc((item_data.progresso*item_data.prog_min)%60)).padStart(2, '0'));
+  text = text.replaceAll(/(?<!\\)\{stars-0}/g,"{icon:star:regular}{icon:star:regular}{icon:star:regular}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-1}/g,"{icon:star:solid}{icon:star:regular}{icon:star:regular}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-2}/g,"{icon:star:solid}{icon:star:solid}{icon:star:regular}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-3}/g,"{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-4}/g,"{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-5}/g,"{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:solid}");
 
-  if(item_data.custom_values != "" && item_data.custom_values != null) update_item_values(item_data.custom_values);
+  text = text.replaceAll(/(?<!\\)\{stars-0.5}/g,"{icon:star-half-stroke:solid}{icon:star:regular}{icon:star:regular}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-1.5}/g,"{icon:star:solid}{icon:star-half-stroke:solid}{icon:star:regular}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-2.5}/g,"{icon:star:solid}{icon:star:solid}{icon:star-half-stroke:solid}{icon:star:regular}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-3.5}/g,"{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star-half-stroke:solid}{icon:star:regular}");
+  text = text.replaceAll(/(?<!\\)\{stars-4.5}/g,"{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star:solid}{icon:star-half-stroke:solid}");
 
-  if (item_custom_values != "") {
-    for (var i = 0; i < Object.keys(item_custom_values).length; i++) {
-      let regex = new RegExp(String.raw`\$${Object.keys(item_custom_values)[i]}\b`, "g");
-      text = text.replaceAll(regex,item_custom_values[Object.keys(item_custom_values)[i]]);
-    }
+  //VALORES PADRÕES
+  const total_minutos = (Number(item_data.progresso) || 0) * (Number(item_data.prog_min) || 0);
+  const tempo_horas = Math.trunc(total_minutos / 60);
+  const tempo_minutos = Math.trunc(total_minutos % 60);
+  const builtin_values = {
+    progresso: item_data.progresso,
+    final: item_data.final,
+    moji: item_data.moji,
+    volumes: item_data.volumes,
+    repeticoes: item_data.repeticoes,
+    h: item_data.horas,
+    H: String(item_data.horas).padStart(2, '0'),
+    m: item_data.minutos,
+    M: String(item_data.minutos).padStart(2, '0'),
+    prog_min: item_data.prog_min,
+    tempo: String(tempo_horas).padStart(2, '0')+":"+String(total_minutos%60).padStart(2, '0'),
+    tempo_h: tempo_horas,
+    tempo_H: String(tempo_horas).padStart(2, '0'),
+    tempo_m: tempo_minutos,
+    tempo_M: String(tempo_minutos).padStart(2, '0'),
+  };
+
+  for (const [name, value] of Object.entries(builtin_values)) {
+    text = text.replaceAll(new RegExp(String.raw`(?<!\\)\$${name}\b`, "g"), () => util.escape_text(value));
+  }
+
+  //VALORES PERSONALIZADOS
+  for (const [name, value] of Object.entries(parse_custom_values(item_data.custom_values))) {
+    const regex = new RegExp(String.raw`\$${util.escape_regex(name)}(?![\p{L}\p{N}_])`, "gu");
+    text = text.replaceAll(regex, () => util.escape_text(value));
   }
 
   //NEWLINE TAG
@@ -393,52 +382,76 @@ const all_presets = {
 
 //TAGS (WITH PARAMETERS)
 const style_tags = {
-  pre: (text, [nome]) => (all_presets[nome] ? all_presets[nome](text) : text),
+  pre: (text, [nome]) => (Object.hasOwn(all_presets, nome) ? all_presets[nome](text) : text),
 
   cor: (text, [color]) => {
-    return `<span class="text-[${color}]">${text}</span>`;
+    const c = util.safe_param(color);
+    if (!c) return text;
+    return `<span class="text-[${c}]">${text}</span>`;
   },
 
   bg: (text, [color]) => {
-    return `<span class="bg-[${color}]">${text}</span>`;
+    const c = util.safe_param(color);
+    if (!c) return text;
+    return `<span class="bg-[${c}]">${text}</span>`;
   },
 
   grd: (text, [direction, color1, color2, position1 = "", position2 = ""]) => {
-    const dir_class = direction_classes[direction];
-    if (position2 != "") return `<span class="${dir_class} from-[${color1}] from-[${position1}] to-[${color2}] to-[${position2}] bg-clip-text text-transparent">${text}</span>`;
-    return `<span class="${dir_class} from-[${color1}] to-[${color2}] bg-clip-text text-transparent">${text}</span>`;
+    const dir_class = Object.hasOwn(direction_classes, direction) ? direction_classes[direction] : direction_classes.horizontal;
+    const c1 = util.safe_param(color1);
+    const c2 = util.safe_param(color2);
+    if (!c1 || !c2) return text;
+    const p1 = util.safe_param(position1);
+    const p2 = util.safe_param(position2);
+    if (p1 && p2) return `<span class="${dir_class} from-[${c1}] from-[${p1}] to-[${c2}] to-[${p2}] bg-clip-text text-transparent">${text}</span>`;
+    return `<span class="${dir_class} from-[${c1}] to-[${c2}] bg-clip-text text-transparent">${text}</span>`;
   },
 
-  brd: (text, [color, size = "1"]) => {
-    return `<span class="border-${size} border-[${color}]">${text}</span>`;
+  brd: (text, params) => {
+    let size = "1";
+    let color = "";
+    //tanto faz a ordem, se X ou XX = tamanho, se não = cor
+    for (const param of params) {
+      if (/^\d{1,2}$/.test(param)) size = param;
+      else if (param !== "") color = param;
+    }
+    const c = util.safe_param(color);
+    if (!c) return `<span class="border-${size}">${text}</span>`;
+    return `<span class="border-${size} border-[${c}]">${text}</span>`;
   },
 
   sdw: (text, [color, size = "md", opacity]) => {
-    return `<span class="text-shadow-${size} text-shadow-[${color}]/${opacity}">${text}</span>`;
+    const c = util.safe_param(color);
+    if (!c) return text;
+    const s = util.safe_token(size, "md");
+    const o = /^\d{1,3}$/.test(opacity ?? "") ? `/${opacity}` : "";
+    return `<span class="text-shadow-${s} text-shadow-[${c}]${o}">${text}</span>`;
   },
 
   ssdw: (text, [color, x = "1px", y = "1px"]) => {
-    return `<span class="drop-shadow-[${x}_${y}_${color}]">${text}</span>`;
+    const c = util.safe_param(color);
+    if (!c) return text;
+    const sx = util.safe_param(x, "1px");
+    const sy = util.safe_param(y, "1px");
+    return `<span class="drop-shadow-[${sx}_${sy}_${c}]">${text}</span>`;
   },
 
   bdg: (text, [text_color, bg_color]) => {
-    return `<span class="text-[${text_color}] bg-[${bg_color}] rounded-md shadow-md py-1 px-2 h-min w-fit">${text}</span>`;
+    const tc = util.safe_param(text_color);
+    const bc = util.safe_param(bg_color);
+    if (!tc || !bc) return text;
+    return `<span class="text-[${tc}] bg-[${bc}] rounded-md shadow-md py-1 px-2 h-min w-fit">${text}</span>`;
   },
 
   furi: (text, [furigana = ""]) => {
-    return `<ruby>${text}<rt>${furigana}</rt></ruby>`;
+    return `<ruby>${text}<rt>${util.escape_text(furigana)}</rt></ruby>`;
   },
 
   fltr: (text, [type, value]) => {
-    if (type == "blur") return `<span class="blur-${value}">${text}</span>`;
-    if (type == "brightness") return `<span class="brightness-${value}">${text}</span>`;
-    if (type == "contrast") return `<span class="contrast-${value}">${text}</span>`;
-    if (type == "grayscale") return `<span class="grayscale-${value}">${text}</span>`;
-    if (type == "hue-rotate") return `<span class="hue-rotate-${value}">${text}</span>`;
-    if (type == "invert") return `<span class="invert-${value}">${text}</span>`;
-    if (type == "saturate") return `<span class="saturate-${value}">${text}</span>`;
-    if (type == "sepia") return `<span class="sepia-${value}">${text}</span>`;
-    return text;
+    const filters = ["blur", "brightness", "contrast", "grayscale", "hue-rotate", "invert", "saturate", "sepia"];
+    const v = util.safe_token(value);
+    if (!filters.includes(type) || !v) return text;
+    return `<span class="${type}-${v}">${text}</span>`;
   },
 
   b: (text, []) => {
@@ -450,50 +463,37 @@ const style_tags = {
   },
 
   hira: (text, []) => {
-    let converted_text = convertToHiragana(text);
-    return `<span>${converted_text}</span>`;
+    return `<span>${map_text_nodes(text, convertToHiragana)}</span>`;
   },
 
   kata: (text, []) => {
-    let converted_text = convertToKatakana(text);
-    return `<span>${converted_text}</span>`;
+    return `<span>${map_text_nodes(text, convertToKatakana)}</span>`;
   },
 
   hkat: (text, []) => {
-    let converted_text = kanaFullToHalf(text);
-    return `<span>${converted_text}</span>`;
+    return `<span>${map_text_nodes(text, kanaFullToHalf)}</span>`;
   },
 
   fkat: (text, []) => {
-    let converted_text = kanaHalfToFull(text);
-    return `<span>${converted_text}</span>`;
+    return `<span>${map_text_nodes(text, kanaHalfToFull)}</span>`;
   },
 };
 
 //ELEMENTS (TAGS NO TEXT)
 const style_tags_notext = {
   icon: ([id, style]) => {
-    return `<i class="fa-${style} fa-${id}"></i>`;
+    return `<i class="fa-${util.safe_token(style, "solid")} fa-${util.safe_token(id, "circle-question")}"></i>`;
   },
 
   bar: ([value, max]) => {
-    return `<progress class="rounded-md shadow-md border border-gray-400" value="${value}" max="${max}"></progress>`;
+    return `<progress class="rounded-md shadow-md border border-gray-400" value="${util.finite_number(value)}" max="${util.finite_number(max)}"></progress>`;
   },
 
   mark: ([start, value, end, type = "simples"]) => {
-
-    if (isNaN(start)) start = 0;
-    if (isNaN(value)) value = 0;
-    if (isNaN(end)) end = 0;
-
-    let real_value = Number(value) - Number(start);
-    let max = Number(end) - Number(start);
-    let result = (100 * real_value) / max;
-    let result_show = Math.trunc(result);
-
-    if (isNaN(real_value)) real_value = 0;
-    if (isNaN(max)) max = 0;
-    if (isNaN(result_show)) result_show = 0;
+    //inválido -> 0, final = começo -> 0%
+    const real_value = util.finite_number(value) - util.finite_number(start);
+    const max = util.finite_number(end) - util.finite_number(start);
+    const result_show = max !== 0 ? Math.trunc((100 * real_value) / max) : 0;
 
     if (type == "porcentagem") return `<span>${result_show}%</span>`;
     if (type == "barra") return `<progress class="rounded-md shadow-md border border-gray-400" value="${real_value}" max="${max}"></progress>`;
@@ -501,51 +501,35 @@ const style_tags_notext = {
   },
 
   calc: ([tipo, operacao, valor1, valor2]) => {
+    //inválido -> 0
+    const number = (value) => (Number.isFinite(value) ? value : 0);
 
     if (tipo == "normal") {
-      if (operacao == "soma") {
-        let resultado = Number(valor1) + Number(valor2);
-        return `<span>${resultado}</span>`;
-      }
-
-      if (operacao == "sub") {
-        let resultado = Number(valor1) - Number(valor2);
-        return `<span>${resultado}</span>`;
-      }
-      if (operacao == "mult") {
-        let resultado = Number(valor1) * Number(valor2);
-        return `<span>${resultado}</span>`;
-      }
-
-      if (operacao == "div") {
-        let resultado = Number(valor1) / Number(valor2);
-        return `<span>${resultado}</span>`;
-      }
+      if (operacao == "soma") return `<span>${number(Number(valor1) + Number(valor2))}</span>`;
+      if (operacao == "sub") return `<span>${number(Number(valor1) - Number(valor2))}</span>`;
+      if (operacao == "mult") return `<span>${number(Number(valor1) * Number(valor2))}</span>`;
+      if (operacao == "div") return `<span>${number(Number(valor1) / Number(valor2))}</span>`;
     }
 
     if (tipo == "tempo") {
-      if (operacao == "soma" || operacao == "sub") {
-        let resultado = get_tempo_procentagem(operacao,valor1,valor2);
-        return resultado;
-      }
+      if (operacao == "soma" || operacao == "sub") return get_tempo_procentagem(operacao, valor1, valor2);
     }
 
     if (tipo == "especial") {
-      if (operacao == "porcentagem") {
-        let resultado = (Number(valor1) / Number(valor2)) * 100;
-        return `<span>${resultado}%</span>`;
-      }
+      if (operacao == "porcentagem") return `<span>${number((Number(valor1) / Number(valor2)) * 100)}%</span>`;
     }
+
+    return undefined;
   },
 };
 
 function get_tempo_procentagem(operacao, valor1, valor2) {
   //00:00:00 = tempoX[0],tempoX[1],tempoX[2]
-  let tempo1 = valor1.split("-");
-  let tempo2 = valor2.split("-");
+  let tempo1 = String(valor1 ?? "").split("-");
+  let tempo2 = String(valor2 ?? "").split("-");
 
-  tempo1 = [Number(tempo1[0]), Number(tempo1[1]), Number(tempo1[2])];
-  tempo2 = [Number(tempo2[0]), Number(tempo2[1]), Number(tempo2[2])];
+  tempo1 = [util.finite_number(tempo1[0]), util.finite_number(tempo1[1]), util.finite_number(tempo1[2])];
+  tempo2 = [util.finite_number(tempo2[0]), util.finite_number(tempo2[1]), util.finite_number(tempo2[2])];
 
   tempo1[0] = tempo1[0] * 60 * 60;
   tempo1[1] = tempo1[1] * 60;
@@ -561,43 +545,57 @@ function get_tempo_procentagem(operacao, valor1, valor2) {
   return `<span>${resultado[0]}:${String(resultado[1]).padStart(2, '0')}:${String(resultado[2]).padStart(2, '0')}</span>`;
 }
 
+//evitar loop infinito
+const MAX_TAG_PASSES = 100;
+
 function apply_tags(text) {
   let before_str;
+  let passes = 0;
   do {
     before_str = text;
     text = text.replace(tag_regex_notext, (match, ...args) => {
       const { tag, params } = args.at(-1);
-      const render = style_tags_notext[tag];
-      if (!render) return tag;
-      return render(params ? params.split(":") : []);
+      if (!Object.hasOwn(style_tags_notext, tag)) return tag;
+      const html = style_tags_notext[tag](params ? params.split(":") : []);
+      return html ?? match;
     });
-  } while (text !== before_str);
+  } while (text !== before_str && ++passes < MAX_TAG_PASSES);
 
+  passes = 0;
   do {
     before_str = text;
     text = text.replace(tag_regex, (match, ...args) => {
       const { tag, params, real_text } = args.at(-1);
-      const render = style_tags[tag];
-      if (!render) return real_text;
-      return render(real_text, params ? params.split(":") : []);
+      if (!Object.hasOwn(style_tags, tag)) return real_text;
+      return style_tags[tag](real_text, params ? params.split(":") : []);
     });
-  } while (text !== before_str);
+  } while (text !== before_str && ++passes < MAX_TAG_PASSES);
 
   return text;
 }
 
 //DOCS
 var custom_info_data = [];
+var custom_info_built = false;
 
 async function fetch_custom_info() {
-  if (custom_info_data == "") {
-    let file_object = await fetch("data/estilos.json");
-    let json_data = await file_object.json();
+  //evita refazer tudo de novo
+  if (custom_info_built) return;
 
-    custom_info_data = json_data;
+  if (custom_info_data == "") {
+    try {
+      let file_object = await fetch("data/estilos.json");
+      if (!file_object.ok) throw new Error("HTTP " + file_object.status);
+      custom_info_data = await file_object.json();
+    } catch (err) {
+      console.error(err);
+      util.show_message("Não foi possível carregar a documentação de estilos das anotações.", "error");
+      return;
+    }
   }
 
   create_custom_info();
+  custom_info_built = true;
 }
 
 window.fetch_custom_info = fetch_custom_info;
