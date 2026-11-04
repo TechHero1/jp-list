@@ -250,7 +250,6 @@ function read_form() {
       "autotime": document.querySelector(".autotime_input").checked,
       "prog_min": util.safe_number(document.querySelector(".prog_min_input").value),
       "nota": estilos.update_old_tags(document.querySelector(".nota_input").value),
-      //"nota": estilos.update_old_tags(document.querySelector(".nota_input").value).replaceAll(/\n/g,"\\n"),
       "img": document.querySelector(".img_input").value.trim(),
       "custom_values": document.querySelector(".values_input").value,
       "last_edited": Date.now()

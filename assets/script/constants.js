@@ -82,9 +82,7 @@ export const TAGS_TO_ADD = {
   //comandos
   "bold": "**$text**",
   "italic": "*$text*",
-  //"hr": "\\l",
   "hr": "\n---\n",
-  //"newline": "\\n",
   "color": "[cor:#000000]$text[/cor]",
   "bg": "[bg:#FFFFFF]$text[/bg]",
   "border": "[brd:#000000:1]$text[/brd]",

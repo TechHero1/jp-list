@@ -323,13 +323,10 @@ export function style_text_with_tags(text,item_data) {
   }
 
   //LINE TAG
-  //text = text.replaceAll(/\\l/g,"<hr>");
-  console.log(text)
   text = text.replaceAll(/\n---\n/g,"<hr>");
   text = text.replaceAll(/^---$/gm,"<hr>");
 
   //NEWLINE TAG
-  //text = text.replaceAll(/\\n/g,"<br>");
   text = text.replaceAll(/\n/g,"<br>");
 
   //BOLD TAG
