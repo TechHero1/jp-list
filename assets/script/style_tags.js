@@ -20,11 +20,17 @@ export function update_old_tags(text="") {
   text = text.replaceAll("[/gradient_percent]","[/grd]");
 
   //tags without att
-  text = text.replaceAll("[bold]","[b]");
-  text = text.replaceAll("[/bold]","[/b]");
+  text = text.replaceAll("[bold]","**");
+  text = text.replaceAll("[/bold]","**");
 
-  text = text.replaceAll("[italic]","[i]");
-  text = text.replaceAll("[/italic]","[/i]");
+  text = text.replaceAll("[b]","**");
+  text = text.replaceAll("[/b]","**");
+
+  text = text.replaceAll("[italic]","*");
+  text = text.replaceAll("[/italic]","*");
+
+  text = text.replaceAll("[i]","*");
+  text = text.replaceAll("[/i]","*");
 
   //tags with att
   text = text.replaceAll("[color:","[cor:");
@@ -256,9 +262,9 @@ export function style_text_with_tags(text,item_data) {
   text = get_string_url(text);
 
   //SECRET ELEMENTS
-  text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
-  text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
-  text = text.replaceAll(/(?<!\\)\{chap_prog_arc}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_arc}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
   text = text.replaceAll(/(?<!\\)\{mashutan}/g,"<img src='assets/img/mashutan.png' class='w-[59px] h-[68px] inline'>");
   text = text.replaceAll(/(?<!\\)\{mashutan_med}/g,"<img src='assets/img/mashutan.png' class='w-[131px] h-[151px] inline'>");
   text = text.replaceAll(/(?<!\\)\{mashutan_big}/g,"<img src='assets/img/mashutan.png' class='w-[227px] h-[262px] inline'>");
@@ -317,6 +323,13 @@ export function style_text_with_tags(text,item_data) {
 
   //LINE TAG
   text = text.replaceAll(/\\l/g,"<hr>");
+  //text = text.replaceAll(/^---$/g,"<hr>");
+
+  //BOLD TAG
+  text = text.replaceAll(/(?<!\\)__(.+?)(?<!\\)__/g,`<b>$1</b>`).replaceAll(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/g,`<b>$1</b>`);
+
+  //ITALIC TAG
+  text = text.replaceAll(/(?<!\\)_(.+?)(?<!\\)_/g,`<i>$1</i>`).replaceAll(/(?<!\\)\*(.+?)(?<!\\)\*/g,`<i>$1</i>`);
 
   text = apply_tags(text);
 
@@ -325,6 +338,9 @@ export function style_text_with_tags(text,item_data) {
 
   text = text.replace(/\\(\{)/g, "{");
   text = text.replace(/\\(\})/g, "}");
+
+  text = text.replace(/\\(\*)/g, "*");
+  text = text.replace(/\\(_)/g, "_");
 
   return text;
 }
@@ -452,14 +468,6 @@ const style_tags = {
     const v = util.safe_token(value);
     if (!filters.includes(type) || !v) return text;
     return `<span class="${type}-${v}">${text}</span>`;
-  },
-
-  b: (text, []) => {
-    return `<b>${text}</b>`;
-  },
-
-  i: (text, []) => {
-    return `<i>${text}</i>`;
   },
 
   hira: (text, []) => {

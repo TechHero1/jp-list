@@ -80,8 +80,8 @@ export const MEDIAS = {
 
 export const TAGS_TO_ADD = {
   //comandos
-  "bold": "[b]$text[/b]",
-  "italic": "[i]$text[/i]",
+  "bold": "**$text**",
+  "italic": "*$text*",
   "hr": "\\l",
   "newline": "\\n",
   "color": "[cor:#000000]$text[/cor]",
