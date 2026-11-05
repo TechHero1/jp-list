@@ -178,7 +178,7 @@ function switch_custom_dropdown(dropdown_id) {
 window.switch_custom_dropdown = switch_custom_dropdown;
 
 //click fora do dropdown -> fecha
-const CUSTOM_DROPDOWNS = ["gradient", "shadow", "mark", "progress", "styles", "values", "kana", "calc", "fltr"];
+const CUSTOM_DROPDOWNS = ["gradient", "shadow", "stars", "progress", "styles", "values", "kana", "calc", "fltr"];
 
 window.addEventListener('click', function(e){
   for (const id of CUSTOM_DROPDOWNS) {
@@ -622,6 +622,117 @@ function apply_tags(text) {
   } while (text !== before_str && ++passes < MAX_TAG_PASSES);
 
   return text;
+}
+
+//STAR LOGIC
+function star_option_reset() {
+  let stars_half = [
+    document.querySelector(".star-icon-05"),
+    document.querySelector(".star-icon-15"),
+    document.querySelector(".star-icon-25"),
+    document.querySelector(".star-icon-35"),
+    document.querySelector(".star-icon-45")
+  ]
+
+  let stars = [
+    document.querySelector(".star-icon-1"),
+    document.querySelector(".star-icon-2"),
+    document.querySelector(".star-icon-3"),
+    document.querySelector(".star-icon-4"),
+    document.querySelector(".star-icon-5")
+  ]
+
+  for (const star_half of stars_half) {
+    star_half.classList.toggle("hidden!", true);
+    star_half.classList.toggle("inline-block!", false);
+  }
+
+  for (const star of stars) {
+    star.classList.toggle("fa-regular", true);
+    star.classList.toggle("fa-solid", false);
+  }
+}
+
+window.star_option_reset = star_option_reset;
+
+function star_option_hover(value) {
+  star_option_reset();
+
+  let star_05 = document.querySelector(".star-icon-05");
+  let star_1 = document.querySelector(".star-icon-1");
+  let star_15 = document.querySelector(".star-icon-15");
+  let star_2 = document.querySelector(".star-icon-2");
+  let star_25 = document.querySelector(".star-icon-25");
+  let star_3 = document.querySelector(".star-icon-3");
+  let star_35 = document.querySelector(".star-icon-35");
+  let star_4 = document.querySelector(".star-icon-4");
+  let star_45 = document.querySelector(".star-icon-45");
+  let star_5 = document.querySelector(".star-icon-5");
+
+  switch (value) {
+    case 0.5:
+      star_option_show_half(star_05);
+      break;
+    case 1:
+      star_option_show_full(star_1);
+      break;
+    case 1.5:
+      star_option_show_full(star_1);
+      star_option_show_half(star_15);
+      break;
+    case 2:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      break;
+    case 2.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_half(star_25);
+      break;
+    case 3:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      break;
+    case 3.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_half(star_35);
+      break;
+    case 4:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      break;
+    case 4.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      star_option_show_half(star_45);
+      break;
+    case 5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      star_option_show_full(star_5);
+      break;
+  }
+}
+
+window.star_option_hover = star_option_hover;
+
+function star_option_show_full(star) {
+  star.classList.toggle("fa-regular", false);
+  star.classList.toggle("fa-solid", true);
+}
+
+function star_option_show_half(star) {
+  star.classList.toggle("hidden!", false);
+  star.classList.toggle("inline-block!", true);
 }
 
 //DOCS
