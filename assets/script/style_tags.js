@@ -322,6 +322,52 @@ export function style_text_with_tags(text,item_data) {
     text = text.replaceAll(regex, () => util.escape_text(value));
   }
 
+  text = apply_tags(text);
+
+  // text = text.replaceAll("nota_link","classelinktemp");
+  // text = text.replaceAll("_blank","newtabtemp");
+  // text = text.replaceAll("badge_pos","badgepostemp");
+  // text = text.replaceAll("badge_neg","badgenegtemp");
+  // text = text.replaceAll("rainbow_h","rainbowhtemp");
+  // text = text.replaceAll("rainbow_v","rainbowvtemp");
+  // text = text.replaceAll("rainbow_dg","rainbowdgtemp");
+  // text = text.replaceAll("to_bottom_right","tobottomrighttemp");
+  // text = text.replaceAll("to_right","torighttemp");
+  // text = text.replaceAll("to_bottom","tobottomtemp");
+  // text = text.replaceAll("sombra_deltarune_cor","sombradeltarunecortemp");
+  // text = text.replaceAll("sombra_deltarune","sombradeltarunetemp");
+  // text = text.replaceAll("amarelo_deltarune_cor","amarelodeltarunecortemp");
+  // text = text.replaceAll("amarelo_deltarune","amarelodeltarunetemp");
+  // text = text.replaceAll("vermelho_deltarune_cor","vermelhodeltarunecortemp");
+  // text = text.replaceAll("vermelho_deltarune","vermelhodeltarunetemp");
+  // text = text.replaceAll("azul_deltarune_cor","azuldeltarunecortemp");
+  // text = text.replaceAll("azul_deltarune","azuldeltarunetemp");
+  // text = text.replaceAll("verde_deltarune_cor","verdedeltarunecortemp");
+  // text = text.replaceAll("verde_deltarune","verdedeltarunetemp");
+  // text = text.replaceAll("profecia_cor_simples","profeciacorsimplestemp");
+  // text = text.replaceAll("profecia_cor","profeciacortemp");
+  // text = text.replaceAll("profecia_simples","profeciasimplestemp");
+  // text = text.replaceAll("profecia_sangue","profeciasanguetemp");
+  // text = text.replaceAll("[animation:floating_3s_ease-in-out_alternate_infinite]","animfloatingtemp");
+  // text = text.replaceAll("[animation:scroll-background_30s_linear_infinite]","animscrollbgtemp");
+  // text = text.replaceAll("IMAGE_DEPTH","imgdepthtemp");
+  // text = text.replaceAll("iichan_face","iichanfacetemp");
+
+  text = text.replaceAll("nota_link","classelinktemp");
+  text = text.replaceAll("_blank","newtabtemp");
+  text = text.replaceAll("badge_pos","badgepostemp");
+  text = text.replaceAll("badge_neg","badgenegtemp");
+  text = text.replaceAll("to_bottom_right","tobottomrighttemp");
+  text = text.replaceAll("to_right","torighttemp");
+  text = text.replaceAll("to_bottom","tobottomtemp");
+  text = text.replaceAll("[animation:floating_3s_ease-in-out_alternate_infinite]","animfloatingtemp");
+  text = text.replaceAll("[animation:scroll-background_30s_linear_infinite]","animscrollbgtemp");
+  text = text.replaceAll("IMAGE_DEPTH","imgdepthtemp");
+  text = text.replaceAll("iichan_face","iichanfacetemp");
+  text = text.replaceAll("1px_1px_","1pixeldropshadowtemp");
+  text = text.replaceAll("0.7px_0.7px_","07pixeldropshadowtemp");
+  text = text.replaceAll("[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]","umimoddropshadowtemp");
+
   //LINE TAG
   text = text.replaceAll(/\n---\n/g,"<hr>");
   text = text.replaceAll(/^---$/gm,"<hr>");
@@ -335,8 +381,6 @@ export function style_text_with_tags(text,item_data) {
   //ITALIC TAG
   text = text.replaceAll(/(?<!\\)_(.+?)(?<!\\)_/g,`<i>$1</i>`).replaceAll(/(?<!\\)\*(.+?)(?<!\\)\*/g,`<i>$1</i>`);
 
-  text = apply_tags(text);
-
   text = text.replace(/\\(\[)/g, "[");
   text = text.replace(/\\(\])/g, "]");
 
@@ -345,6 +389,50 @@ export function style_text_with_tags(text,item_data) {
 
   text = text.replace(/\\(\*)/g, "*");
   text = text.replace(/\\(_)/g, "_");
+
+  // text = text.replaceAll("classelinktemp","nota_link");
+  // text = text.replaceAll("newtabtemp","_blank");
+  // text = text.replaceAll("badgepostemp","badge_pos");
+  // text = text.replaceAll("badgenegtemp","badge_neg");
+  // text = text.replaceAll("rainbowhtemp","rainbow_h");
+  // text = text.replaceAll("rainbowvtemp","rainbow_v");
+  // text = text.replaceAll("rainbowdgtemp","rainbow_dg");
+  // text = text.replaceAll("tobottomrighttemp","to_bottom_right");
+  // text = text.replaceAll("torighttemp","to_right");
+  // text = text.replaceAll("tobottomtemp","to_bottom");
+  // text = text.replaceAll("sombradeltarunecortemp","sombra_deltarune_cor");
+  // text = text.replaceAll("sombradeltarunetemp","sombra_deltarune");
+  // text = text.replaceAll("amarelodeltarunecortemp","amarelo_deltarune_cor");
+  // text = text.replaceAll("amarelodeltarunetemp","amarelo_deltarune");
+  // text = text.replaceAll("vermelhodeltarunecortemp","vermelho_deltarune_cor");
+  // text = text.replaceAll("vermelhodeltarunetemp","vermelho_deltarune");
+  // text = text.replaceAll("azuldeltarunecortemp","azul_deltarune_cor");
+  // text = text.replaceAll("azuldeltarunetemp","azul_deltarune");
+  // text = text.replaceAll("verdedeltarunecortemp","verde_deltarune_cor");
+  // text = text.replaceAll("verdedeltarunetemp","verde_deltarune");
+  // text = text.replaceAll("profeciacorsimplestemp","profecia_cor_simples");
+  // text = text.replaceAll("profeciacortemp","profecia_cor");
+  // text = text.replaceAll("profeciasimplestemp","profecia_simples");
+  // text = text.replaceAll("profeciasanguetemp","profecia_sangue");
+  // text = text.replaceAll("animfloatingtemp","[animation:floating_3s_ease-in-out_alternate_infinite]");
+  // text = text.replaceAll("animscrollbgtemp","[animation:scroll-background_30s_linear_infinite]");
+  // text = text.replaceAll("imgdepthtemp","IMAGE_DEPTH");
+  // text = text.replaceAll("iichanfacetemp","iichan_face");
+
+  text = text.replaceAll("classelinktemp","nota_link");
+  text = text.replaceAll("newtabtemp","_blank");
+  text = text.replaceAll("badgepostemp","badge_pos");
+  text = text.replaceAll("badgenegtemp","badge_neg");
+  text = text.replaceAll("tobottomrighttemp","to_bottom_right");
+  text = text.replaceAll("torighttemp","to_right");
+  text = text.replaceAll("tobottomtemp","to_bottom");
+  text = text.replaceAll("animfloatingtemp","[animation:floating_3s_ease-in-out_alternate_infinite]");
+  text = text.replaceAll("animscrollbgtemp","[animation:scroll-background_30s_linear_infinite]");
+  text = text.replaceAll("imgdepthtemp","IMAGE_DEPTH");
+  text = text.replaceAll("iichanfacetemp","iichan_face");
+  text = text.replaceAll("1pixeldropshadowtemp","1px_1px_");
+  text = text.replaceAll("07pixeldropshadowtemp","0.7px_0.7px_");
+  text = text.replaceAll("umimoddropshadowtemp","[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]");
 
   return text;
 }
