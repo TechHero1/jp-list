@@ -274,20 +274,23 @@ const UNDERLINE_TEMP_FIX_STRINGS = {
   "[animation:scroll-background_30s_linear_infinite]": "animscrollbgtemp",
   "IMAGE_DEPTH": "imgdepthtemp",
   "iichan_face": "iichanfacetemp",
-  "1px_1px_": "1pixeldropshadowtemp",
-  "0.7px_0.7px_": "07pixeldropshadowtemp",
   "[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]": "umimoddropshadowtemp"
 }
+
+const DROPSHADOW_SIZES = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_/g;
+const DROPSHADOW_SIZES_REVERSE = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp/g;
 
 function underline_temp_fix(text,mode="normal") {
   if (mode == "normal") {
     for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
       text = text.replaceAll(normal, temp);
     }
+    text = text.replaceAll(DROPSHADOW_SIZES,`$1$2temp$3$4temp`);
   } else {
     for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
       text = text.replaceAll(temp, normal);
     }
+    text = text.replaceAll(DROPSHADOW_SIZES_REVERSE,`$1$2_$3$4_`);
   }
 
   return text;
