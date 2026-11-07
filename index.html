@@ -457,16 +457,7 @@
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)]">
             <div class="flex flex-col gap-3 w-full">
                 <label for="nota_textarea">Anotações</label>
-                <textarea class="nota_input textinput w-full" type="textarea" id="nota_textarea" name="nota_textarea" onfocus="select_field(this, true);update_preview_nota()" onblur="select_field(this,false)" onclick="set_selection(this.selectionStart,this.selectionEnd)" onselect="set_selection(this.selectionStart,this.selectionEnd)" oninput="set_selection(this.selectionStart,this.selectionEnd);update_preview_nota()"></textarea>
-                <script>
-                    document.querySelector(".nota_input").addEventListener("keypress", function(event) {
-                        if (event.key === "Enter") {
-                            event.preventDefault();
-                            nota_add_style("newline");
-                            update_preview_nota();
-                        }
-                    });
-                </script>
+                <textarea class="nota_input textinput w-full" type="textarea" rows="8" id="nota_textarea" name="nota_textarea" onfocus="select_field(this, true);update_preview_nota()" onblur="select_field(this,false)" onclick="set_selection(this.selectionStart,this.selectionEnd)" onselect="set_selection(this.selectionStart,this.selectionEnd)" oninput="set_selection(this.selectionStart,this.selectionEnd);update_preview_nota()"></textarea>
             </div>
         </div>
 
@@ -522,16 +513,70 @@
                         <button title="Badge" class="button" onclick="nota_add_style('badge');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-tag"></i></button>
                         <button title="Ícones" class="button" onclick="nota_add_style('icon');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-icons"></i></button>
 
-                        <button title="Marco" class="button custom_dropdown_button_mark" onclick="switch_custom_dropdown('mark')"><i class="fa-solid fa-arrows-down-to-line"></i> <i class="custom_dropdown_icon_mark fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_mark absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                        <button title="Estrelas" class="button custom_dropdown_button_stars" onclick="switch_custom_dropdown('stars')"><i class="fa-solid fa-star"></i> <i class="custom_dropdown_icon_stars fa-solid fa-angle-down"></i></button>
+                        <div class="custom_dropdown_stars absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                            <div role="none" class="py-1">
+                                <div class="flex flex-row max-w-fit" onmouseleave="star_option_reset()">
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(0.5)" onclick="nota_add_style('stars-0.5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-05 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                        </button>
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(1)" onclick="nota_add_style('stars-1',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-1 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(1.5)" onclick="nota_add_style('stars-1.5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-15 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                        </button>
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(2)" onclick="nota_add_style('stars-2',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-2 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(2.5)" onclick="nota_add_style('stars-2.5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-25 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                        </button>
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(3)" onclick="nota_add_style('stars-3',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-3 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(3.5)" onclick="nota_add_style('stars-3.5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-35 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                        </button>
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(4)" onclick="nota_add_style('stars-4',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-4 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(4.5)" onclick="nota_add_style('stars-4.5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-45 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                        </button>
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(5)" onclick="nota_add_style('stars-5',true);select_field(this,false);update_preview_nota()">
+                                            <i class="star-icon-5 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="flex flex-row size-[30px] relative">
+                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onclick="nota_add_style('stars-0',true);select_field(this,false);update_preview_nota()">
+                                            <i class="fa-xl fa-solid fa-xmark pointer-events-none"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button title="Marcos e barras de progresso" class="button custom_dropdown_button_progress" onclick="switch_custom_dropdown('progress')"><i class="fa-solid fa-bars-progress"></i> <i class="custom_dropdown_icon_progress fa-solid fa-angle-down"></i></button>
+                        <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
                                 <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark',true);select_field(this,false);update_preview_nota()">Marco simples</a>
                                 <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark_p',true);select_field(this,false);update_preview_nota()">Marco em porcentagem</a>
                             </div>
-                        </div>
-
-                        <button title="Barras de progresso" class="button custom_dropdown_button_progress" onclick="switch_custom_dropdown('progress')"><i class="fa-solid fa-bars-progress"></i> <i class="custom_dropdown_icon_progress fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
                             <div role="none" class="py-1">
                                 <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar',true);select_field(this,false);update_preview_nota()">Barra de progresso</a>
                                 <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar_mark',true);select_field(this,false);update_preview_nota()">Marco em barra</a>

@@ -20,11 +20,21 @@ export function update_old_tags(text="") {
   text = text.replaceAll("[/gradient_percent]","[/grd]");
 
   //tags without att
-  text = text.replaceAll("[bold]","[b]");
-  text = text.replaceAll("[/bold]","[/b]");
+  text = text.replaceAll("[bold]","**");
+  text = text.replaceAll("[/bold]","**");
 
-  text = text.replaceAll("[italic]","[i]");
-  text = text.replaceAll("[/italic]","[/i]");
+  text = text.replaceAll("[b]","**");
+  text = text.replaceAll("[/b]","**");
+
+  text = text.replaceAll("[italic]","*");
+  text = text.replaceAll("[/italic]","*");
+
+  text = text.replaceAll("[i]","*");
+  text = text.replaceAll("[/i]","*");
+
+  text = text.replaceAll("\\n","\n");
+
+  text = text.replaceAll("\\l","\n---\n");
 
   //tags with att
   text = text.replaceAll("[color:","[cor:");
@@ -168,7 +178,7 @@ function switch_custom_dropdown(dropdown_id) {
 window.switch_custom_dropdown = switch_custom_dropdown;
 
 //click fora do dropdown -> fecha
-const CUSTOM_DROPDOWNS = ["gradient", "shadow", "mark", "progress", "styles", "values", "kana", "calc", "fltr"];
+const CUSTOM_DROPDOWNS = ["gradient", "shadow", "stars", "progress", "styles", "values", "kana", "calc", "fltr"];
 
 window.addEventListener('click', function(e){
   for (const id of CUSTOM_DROPDOWNS) {
@@ -252,13 +262,47 @@ function get_string_url(text) {
   });
 }
 
+const UNDERLINE_TEMP_FIX_STRINGS = {
+  "nota_link": "classelinktemp",
+  "_blank": "newtabtemp",
+  "badge_pos": "badgepostemp",
+  "badge_neg": "badgenegtemp",
+  "to_bottom_right": "tobottomrighttemp",
+  "to_right": "torighttemp",
+  "to_bottom": "tobottomtemp",
+  "[animation:floating_3s_ease-in-out_alternate_infinite]": "animfloatingtemp",
+  "[animation:scroll-background_30s_linear_infinite]": "animscrollbgtemp",
+  "IMAGE_DEPTH": "imgdepthtemp",
+  "iichan_face": "iichanfacetemp",
+  "[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]": "umimoddropshadowtemp"
+}
+
+const DROPSHADOW_SIZES = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_/g;
+const DROPSHADOW_SIZES_REVERSE = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp/g;
+
+function underline_temp_fix(text,mode="normal") {
+  if (mode == "normal") {
+    for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
+      text = text.replaceAll(normal, temp);
+    }
+    text = text.replaceAll(DROPSHADOW_SIZES,`$1$2temp$3$4temp`);
+  } else {
+    for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
+      text = text.replaceAll(temp, normal);
+    }
+    text = text.replaceAll(DROPSHADOW_SIZES_REVERSE,`$1$2_$3$4_`);
+  }
+
+  return text;
+}
+
 export function style_text_with_tags(text,item_data) {
   text = get_string_url(text);
 
   //SECRET ELEMENTS
-  text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
-  text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
-  text = text.replaceAll(/(?<!\\)\{chap_prog_arc}/g,"[b]$atual {icon:solid:arrow-right} $proximo[/b]<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
+  text = text.replaceAll(/(?<!\\)\{chap_prog_arc}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$atual_real:$fim:barra}<br>{mark:$comeco:$atual_real:$fim:simples} ({mark:$comeco:$atual_real:$fim:porcentagem})<hr>{mark:$comeco_real:$atual_real:$fim:simples}");
   text = text.replaceAll(/(?<!\\)\{mashutan}/g,"<img src='assets/img/mashutan.png' class='w-[59px] h-[68px] inline'>");
   text = text.replaceAll(/(?<!\\)\{mashutan_med}/g,"<img src='assets/img/mashutan.png' class='w-[131px] h-[151px] inline'>");
   text = text.replaceAll(/(?<!\\)\{mashutan_big}/g,"<img src='assets/img/mashutan.png' class='w-[227px] h-[262px] inline'>");
@@ -312,19 +356,33 @@ export function style_text_with_tags(text,item_data) {
     text = text.replaceAll(regex, () => util.escape_text(value));
   }
 
-  //NEWLINE TAG
-  text = text.replaceAll(/\\n/g,"<br>");
+  text = apply_tags(text);
+
+  text = underline_temp_fix(text,"normal");
 
   //LINE TAG
-  text = text.replaceAll(/\\l/g,"<hr>");
+  text = text.replaceAll(/\n---\n/g,"<hr>");
+  text = text.replaceAll(/^---$/gm,"<hr>");
 
-  text = apply_tags(text);
+  //NEWLINE TAG
+  text = text.replaceAll(/\n/g,"<br>");
+
+  //BOLD TAG
+  text = text.replaceAll(/(?<!\\)__(.+?)(?<!\\)__/g,`<b>$1</b>`).replaceAll(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/g,`<b>$1</b>`);
+
+  //ITALIC TAG
+  text = text.replaceAll(/(?<!\\)_(.+?)(?<!\\)_/g,`<i>$1</i>`).replaceAll(/(?<!\\)\*(.+?)(?<!\\)\*/g,`<i>$1</i>`);
 
   text = text.replace(/\\(\[)/g, "[");
   text = text.replace(/\\(\])/g, "]");
 
   text = text.replace(/\\(\{)/g, "{");
   text = text.replace(/\\(\})/g, "}");
+
+  text = text.replace(/\\(\*)/g, "*");
+  text = text.replace(/\\(_)/g, "_");
+
+  text = underline_temp_fix(text,"reverse");
 
   return text;
 }
@@ -454,14 +512,6 @@ const style_tags = {
     return `<span class="${type}-${v}">${text}</span>`;
   },
 
-  b: (text, []) => {
-    return `<b>${text}</b>`;
-  },
-
-  i: (text, []) => {
-    return `<i>${text}</i>`;
-  },
-
   hira: (text, []) => {
     return `<span>${map_text_nodes(text, convertToHiragana)}</span>`;
   },
@@ -572,6 +622,117 @@ function apply_tags(text) {
   } while (text !== before_str && ++passes < MAX_TAG_PASSES);
 
   return text;
+}
+
+//STAR LOGIC
+function star_option_reset() {
+  let stars_half = [
+    document.querySelector(".star-icon-05"),
+    document.querySelector(".star-icon-15"),
+    document.querySelector(".star-icon-25"),
+    document.querySelector(".star-icon-35"),
+    document.querySelector(".star-icon-45")
+  ]
+
+  let stars = [
+    document.querySelector(".star-icon-1"),
+    document.querySelector(".star-icon-2"),
+    document.querySelector(".star-icon-3"),
+    document.querySelector(".star-icon-4"),
+    document.querySelector(".star-icon-5")
+  ]
+
+  for (const star_half of stars_half) {
+    star_half.classList.toggle("hidden!", true);
+    star_half.classList.toggle("inline-block!", false);
+  }
+
+  for (const star of stars) {
+    star.classList.toggle("fa-regular", true);
+    star.classList.toggle("fa-solid", false);
+  }
+}
+
+window.star_option_reset = star_option_reset;
+
+function star_option_hover(value) {
+  star_option_reset();
+
+  let star_05 = document.querySelector(".star-icon-05");
+  let star_1 = document.querySelector(".star-icon-1");
+  let star_15 = document.querySelector(".star-icon-15");
+  let star_2 = document.querySelector(".star-icon-2");
+  let star_25 = document.querySelector(".star-icon-25");
+  let star_3 = document.querySelector(".star-icon-3");
+  let star_35 = document.querySelector(".star-icon-35");
+  let star_4 = document.querySelector(".star-icon-4");
+  let star_45 = document.querySelector(".star-icon-45");
+  let star_5 = document.querySelector(".star-icon-5");
+
+  switch (value) {
+    case 0.5:
+      star_option_show_half(star_05);
+      break;
+    case 1:
+      star_option_show_full(star_1);
+      break;
+    case 1.5:
+      star_option_show_full(star_1);
+      star_option_show_half(star_15);
+      break;
+    case 2:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      break;
+    case 2.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_half(star_25);
+      break;
+    case 3:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      break;
+    case 3.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_half(star_35);
+      break;
+    case 4:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      break;
+    case 4.5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      star_option_show_half(star_45);
+      break;
+    case 5:
+      star_option_show_full(star_1);
+      star_option_show_full(star_2);
+      star_option_show_full(star_3);
+      star_option_show_full(star_4);
+      star_option_show_full(star_5);
+      break;
+  }
+}
+
+window.star_option_hover = star_option_hover;
+
+function star_option_show_full(star) {
+  star.classList.toggle("fa-regular", false);
+  star.classList.toggle("fa-solid", true);
+}
+
+function star_option_show_half(star) {
+  star.classList.toggle("hidden!", false);
+  star.classList.toggle("inline-block!", true);
 }
 
 //DOCS

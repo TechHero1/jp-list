@@ -1,14 +1,19 @@
 {
     "caracteres": [
         {
-            "funcao": "Quebrar linha",
-            "comando": "<code>\\n</code>",
-            "render": "Linha 1<br>Linha 2"
+            "funcao": "Negrito",
+            "comando": "<code class='text-[#905]'>**</code><code>Texto</code><code class='text-[#905]'>**</code>",
+            "render": "<b>Texto</b>"
+        },
+        {
+            "funcao": "Itálico",
+            "comando": "<code class='text-[#905]'>*</code><code>Texto</code><code class='text-[#905]'>*</code>",
+            "render": "<i>Texto</i>"
         },
         {
             "funcao": "Divisória",
-            "comando": "<code>\\l</code>",
-            "render": "Linha 1<hr>Linha 2"
+            "comando": "<code>---</code><br><br>Linha 1<br><code>---</code><br>Linha 2",
+            "render": "<hr><br><br>Linha 1<hr>Linha 2"
         },
         {
             "funcao": "Valores padrões",
@@ -342,32 +347,6 @@
         }
     ],
     "comandos": [
-        {
-            "nome": "Negrito",
-            "comando": "b",
-            "modelo": [
-                {
-                    "texto": "Texto",
-                    "parametros": [
-                        
-                    ],
-                    "render": "<b>$texto</b>"
-                }
-            ]
-        },
-        {
-            "nome": "Itálico",
-            "comando": "i",
-            "modelo": [
-                {
-                    "texto": "Texto",
-                    "parametros": [
-                        
-                    ],
-                    "render": "<i>$texto</i>"
-                }
-            ]
-        },
         {
             "nome": "Texto colorido",
             "comando": "cor",
