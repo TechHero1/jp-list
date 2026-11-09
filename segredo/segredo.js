@@ -86,6 +86,7 @@ function load_content() {
             let item_status = get_status(cur_category_content[cur_item].items[cur_conjunto_item].status);
             let item_notas = "";
             let img_data = "";
+            let item_chips = "";
 
             if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("notas")) {
               item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
@@ -95,7 +96,11 @@ function load_content() {
               img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
             }
 
-            create_item(`.conjunto-content-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,true);
+            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("chips")) {
+              item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
+            }
+
+            create_item(`.conjunto-content-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips,true);
           }
         }
         else {
@@ -103,6 +108,7 @@ function load_content() {
           let item_status = get_status(cur_category_content[cur_item].status);
           let item_notas = "";
           let img_data = "";
+          let item_chips = "";
 
           if (cur_category_content[cur_item].hasOwnProperty("notas")) {
             item_notas = create_notas(cur_category_content[cur_item].notas);
@@ -112,7 +118,11 @@ function load_content() {
             img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
           }
 
-          create_item(`.category-content-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data);
+          if (cur_category_content[cur_item].hasOwnProperty("chips")) {
+            item_chips = create_chips(cur_category_content[cur_item].chips);
+          }
+
+          create_item(`.category-content-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips);
         }
       }
     }
@@ -137,6 +147,7 @@ function load_content() {
             let item_status = get_status(cur_category_content[cur_item].items[cur_conjunto_item].status);
             let item_notas = "";
             let img_data = "";
+            let item_chips = "";
 
             if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("notas")) {
               item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
@@ -146,7 +157,11 @@ function load_content() {
               img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
             }
 
-            create_item(`.conjunto-cemiterio-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,true);
+            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("chips")) {
+              item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
+            }
+
+            create_item(`.conjunto-cemiterio-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips,true);
           }
         }
         else {
@@ -154,6 +169,7 @@ function load_content() {
           let item_status = get_status(cur_category_content[cur_item].status);
           let item_notas = "";
           let img_data = "";
+          let item_chips = "";
 
           if (cur_category_content[cur_item].hasOwnProperty("notas")) {
             item_notas = create_notas(cur_category_content[cur_item].notas);
@@ -163,7 +179,11 @@ function load_content() {
             img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
           }
 
-          create_item(`.category-cemiterio-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data);
+          if (cur_category_content[cur_item].hasOwnProperty("chips")) {
+            item_chips = create_chips(cur_category_content[cur_item].chips);
+          }
+
+          create_item(`.category-cemiterio-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips);
         }
       }
     }
@@ -220,7 +240,7 @@ function get_status(id) {
   }
 }
 
-function create_item(category_class,url,nome,status,plataforma,notas,img="",conjunto=false) {
+function create_item(category_class,url,nome,status,plataforma,notas,img="",chips="",conjunto=false) {
   let flex_direction = "flex-row";
   if (conjunto) flex_direction = "flex-col xl:flex-row";
   document.querySelector(category_class).innerHTML += `
@@ -235,6 +255,7 @@ function create_item(category_class,url,nome,status,plataforma,notas,img="",conj
               <br>
               <p class="item_plataforma_tags flex flex-col gap-2">${plataforma}</p>
               ${notas}
+              ${chips}
           </div>
       </div>
     </a>
@@ -261,6 +282,21 @@ function create_notas(string) {
 
 function create_img(string,conjunto=false) {
   return `<img src="${string}" class="w-[50px] h-[50px] rounded-full">`;
+}
+
+function create_chips(chips) {
+  let resultado = "";
+  for (const item of chips) {
+    let item_chips = "";
+    for (const cur_chip of item.itens) {
+      item_chips += `<span class="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-normal bg-[#2c2c2c] text-white">${cur_chip}</span>`;
+    }
+    resultado += `<div class="flex flex-wrap gap-1 py-1">
+      <span>${item.label}</span>
+      ${item_chips}
+    </div>`;
+  }
+  return `${resultado}`;
 }
 
 function update_string(id) {
