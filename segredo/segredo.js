@@ -72,14 +72,14 @@ function load_content() {
       let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
       let category_items = "";
 
-      content_list.innerHTML += create_category(category_id,"content");
+      content_list.insertAdjacentHTML('beforeend', create_category(category_id,"content"));
 
       for (var cur_item = 0; cur_item < cur_category_content.length; cur_item++) {
         if(cur_category_content[cur_item].hasOwnProperty("conjunto")) {
-          document.querySelector(".category-content-"+category_id).innerHTML += `
+          document.querySelector(".category-content-"+category_id).insertAdjacentHTML('beforeend', `
             <div class="conjunto-content-${category_id}-${cur_item} content_item flex flex-row items-stretch overflow-x-auto">
             </div>
-          `;
+          `);
 
           for (var cur_conjunto_item = 0; cur_conjunto_item < cur_category_content[cur_item].items.length; cur_conjunto_item++) {
             let item_plataforma = get_plataforma(cur_category_content[cur_item].items[cur_conjunto_item].url);
@@ -133,14 +133,14 @@ function load_content() {
       let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
       let category_items = "";
 
-      cemiterio_list.innerHTML += create_category(category_id,"cemiterio");
+      cemiterio_list.insertAdjacentHTML('beforeend', create_category(category_id,"cemiterio"));
 
       for (var cur_item = 0; cur_item < cur_category_content.length; cur_item++) {
         if(cur_category_content[cur_item].hasOwnProperty("conjunto")) {
-          document.querySelector(".category-cemiterio-"+category_id).innerHTML += `
+          document.querySelector(".category-cemiterio-"+category_id).insertAdjacentHTML('beforeend', `
             <div class="conjunto-cemiterio-${category_id}-${cur_item} content_item flex flex-row items-stretch overflow-x-auto">
             </div>
-          `;
+          `);
 
           for (var cur_conjunto_item = 0; cur_conjunto_item < cur_category_content[cur_item].items.length; cur_conjunto_item++) {
             let item_plataforma = get_plataforma(cur_category_content[cur_item].items[cur_conjunto_item].url);
@@ -197,7 +197,7 @@ function load_content() {
     let cur_username = Object.keys(site_content.usernames)[cur_user];
     let cur_user_plat = site_content.usernames[cur_username];
 
-    document.querySelector(`.user_list`).innerHTML += `
+    document.querySelector(".user_list").insertAdjacentHTML('beforeend', `
       <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 transition-all duration-150 group hover:bg-gray-200">
           <div class="user_item item-${cur_username} p-1 w-[100%]">
               <b>${cur_username}</b>
@@ -208,9 +208,9 @@ function load_content() {
               </p>
           </div>
       </div>
-    `;
+    `);
 
-    for (var cur_plat = 0; cur_plat < cur_user_plat.length; cur_plat++) document.querySelector(`.item-${cur_username}_tags`).innerHTML += get_plataforma(cur_user_plat[cur_plat]);
+    for (var cur_plat = 0; cur_plat < cur_user_plat.length; cur_plat++) document.querySelector(`.item-${cur_username}_tags`).insertAdjacentHTML('beforeend', get_plataforma(cur_user_plat[cur_plat]));
   }
 }
 
@@ -243,7 +243,7 @@ function get_status(id) {
 function create_item(category_class,url,nome,status,plataforma,notas,img="",chips="",conjunto=false) {
   let flex_direction = "flex-row";
   if (conjunto) flex_direction = "flex-col xl:flex-row";
-  document.querySelector(category_class).innerHTML += `
+  document.querySelector(category_class).insertAdjacentHTML('beforeend', `
     <a class="content_item w-full" href="${url}" target="_blank">
       <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 cursor-pointer transition-all duration-150 group hover:bg-gray-200">
           <div class="p-1 w-[100%]">
@@ -259,7 +259,7 @@ function create_item(category_class,url,nome,status,plataforma,notas,img="",chip
           </div>
       </div>
     </a>
-  `;
+  `);
 }
 
 function create_category(id,type) {
@@ -314,36 +314,36 @@ var debugged = false;
 
 function debug() {
   if (!debugged && Object.hasOwn(site_content, "update")) {
-    document.body.innerHTML += `<div id="Debug" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">`;
-    document.querySelector(".tab").innerHTML += `<button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Debug')" id="Debug_tab"><i class="fa-solid fa-gear"></i></button>`;
+    document.body.insertAdjacentHTML('beforeend', `<div id="Debug" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">`);
+    document.querySelector(".tab").insertAdjacentHTML('beforeend', `<button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Debug')" id="Debug_tab"><i class="fa-solid fa-gear"></i></button>`);
     
     for (var i = 0; i < (Object.keys(site_content)).length; i++) {
       if (Object.keys(site_content)[i] == "plataformas") {
-        document.querySelector("#Debug").innerHTML += `
+        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
           <br>
           <b>${Object.keys(site_content)[i]}</b><br>
-          <div class="flex flex-row gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`;
+          <div class="flex flex-row gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`);
         for (var cur_plat = 0; cur_plat < (Object.keys(site_content.plataformas)).length; cur_plat++) {
-          document.querySelector(".plataformas_all").innerHTML += get_plataforma(Object.keys(site_content.plataformas)[cur_plat]);
+          document.querySelector(".plataformas_all").insertAdjacentHTML('beforeend', get_plataforma(Object.keys(site_content.plataformas)[cur_plat]));
         }
       }
 
       else if (Object.keys(site_content)[i] == "img") {
-        document.querySelector("#Debug").innerHTML += `
+        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
           <br>
           <b>${Object.keys(site_content)[i]}</b><br>
-          <div class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-2 items-center img_all"></div>`;
+          <div class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-2 items-center img_all"></div>`);
         for (var cur_img = 0; cur_img < (Object.keys(site_content.img)).length; cur_img++) {
-          document.querySelector(".img_all").innerHTML += `<img class="w-auto max-w-[200px] h-auto max-h-[200px] m-auto" src="${site_content.img[Object.keys(site_content.img)[cur_img]]}" title="${Object.keys(site_content.img)[cur_img]}">`;
+          document.querySelector(".img_all").insertAdjacentHTML('beforeend', `<img class="w-auto max-w-[200px] h-auto max-h-[200px] m-auto" src="${site_content.img[Object.keys(site_content.img)[cur_img]]}" title="${Object.keys(site_content.img)[cur_img]}">`);
         }
       }
 
       else {
-        document.querySelector("#Debug").innerHTML += `
+        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
           <br><p>
           <b>${Object.keys(site_content)[i]}</b><br>
           <span>${JSON.stringify(site_content[Object.keys(site_content)[i]])}</span>
-          </p>`;
+          </p>`);
       }
     }
     debugged = true;
