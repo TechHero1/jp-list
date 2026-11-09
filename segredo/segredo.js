@@ -1,31 +1,26 @@
-Array.prototype.sample = function(){
-  return this[Math.floor(Math.random()*this.length)];
+function sample(array) {
+  return array[Math.floor(Math.random()*array.length)];
+}
+
+function clear_active_tabs() {
+  for (const tab of document.getElementsByClassName("tablinks")) {
+    tab.classList.toggle("active", false);
+  }
 }
 
 function remote_open_tab(tab_name) {
-    var tablinks;
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-        if (tab_name+"_tab" == tablinks[i].id) {
-            tablinks[i].click();
-            return
-        }
-    }
+  clear_active_tabs();
+  const tab = [...document.getElementsByClassName("tablinks")].find(t => t.id == tab_name+"_tab");
+  if (tab) tab.click();
 }
 
 function open_tab(evt, tab_name) {
-  var tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+  for (const content of document.getElementsByClassName("tabcontent")) {
+    content.classList.toggle("hidden", true);
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tab_name).style.display = "block";
-  evt.currentTarget.className += " active";
+  clear_active_tabs();
+  document.getElementById(tab_name).classList.toggle("hidden", false);
+  evt.currentTarget.classList.toggle("active", true);
 }
 
 var site_content = {};
@@ -35,13 +30,11 @@ function upload_content(files) {
     let reader = new FileReader();
 
     reader.onload = function(e) {
-      let result = JSON.parse(e.target.result);
-      let formatted = JSON.stringify(result, null, 2);
-      site_content = JSON.parse(formatted);
+      site_content = JSON.parse(e.target.result);
       load_content();
-      document.querySelector(".info_tab").classList.remove("hidden");
-      document.querySelector(".user_tab").classList.remove("hidden");
-      document.querySelector(".cemiterio_tab").classList.remove("hidden");
+      for (const tab of ["info_tab", "user_tab", "cemiterio_tab"]) {
+        document.querySelector("."+tab).classList.toggle("hidden", false);
+      }
       remote_open_tab('Visualizar');
     }
 
@@ -55,188 +48,84 @@ function load_content() {
   if (site_content.options.debug) debug();
   document.title = site_content.title;
 
-  //PRINCIPAL
-  let content_list = document.querySelector(".content_list");
+  const content_list = document.querySelector(".content_list");
   content_list.innerHTML = "";
 
-  //CEMITÉRIO
-  let cemiterio_list = document.querySelector(".cemiterio_list");
+  const cemiterio_list = document.querySelector(".cemiterio_list");
   cemiterio_list.innerHTML = "";
 
-  for (var cur_category = 0; cur_category < Object.keys(site_content.categorias).length; cur_category++) {
-    let category_id = Object.keys(site_content.categorias)[cur_category];
-
-    //PRINCIPAL
-    if (Object.hasOwn(site_content.conteudo, category_id)) {
-      let cur_category_content = site_content.conteudo[Object.keys(site_content.categorias)[cur_category]];
-      let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
-      let category_items = "";
-
-      content_list.insertAdjacentHTML('beforeend', create_category(category_id,"content"));
-
-      for (var cur_item = 0; cur_item < cur_category_content.length; cur_item++) {
-        if(cur_category_content[cur_item].hasOwnProperty("conjunto")) {
-          document.querySelector(".category-content-"+category_id).insertAdjacentHTML('beforeend', `
-            <div class="conjunto-content-${category_id}-${cur_item} content_item flex flex-row items-stretch overflow-x-auto">
-            </div>
-          `);
-
-          for (var cur_conjunto_item = 0; cur_conjunto_item < cur_category_content[cur_item].items.length; cur_conjunto_item++) {
-            let item_plataforma = get_plataforma(cur_category_content[cur_item].items[cur_conjunto_item].url);
-            let item_status = get_status(cur_category_content[cur_item].items[cur_conjunto_item].status);
-            let item_notas = "";
-            let img_data = "";
-            let item_chips = "";
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "notas")) {
-              item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
-            }
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "img") && site_content.options.img) {
-              img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
-            }
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "chips")) {
-              item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
-            }
-
-            create_item(`.conjunto-content-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips,true);
-          }
-        }
-        else {
-          let item_plataforma = get_plataforma(cur_category_content[cur_item].url);
-          let item_status = get_status(cur_category_content[cur_item].status);
-          let item_notas = "";
-          let img_data = "";
-          let item_chips = "";
-
-          if (Object.hasOwn(cur_category_content[cur_item], "notas")) {
-            item_notas = create_notas(cur_category_content[cur_item].notas);
-          }
-
-          if (Object.hasOwn(cur_category_content[cur_item], "img") && site_content.options.img) {
-            img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
-          }
-
-          if (Object.hasOwn(cur_category_content[cur_item], "chips")) {
-            item_chips = create_chips(cur_category_content[cur_item].chips);
-          }
-
-          create_item(`.category-content-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips);
-        }
-      }
-    }
-
-    //CEMITÉRIO
-    if (Object.hasOwn(site_content.cemiterio, category_id)) {
-      let cur_category_content = site_content.cemiterio[Object.keys(site_content.categorias)[cur_category]];
-      let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
-      let category_items = "";
-
-      cemiterio_list.insertAdjacentHTML('beforeend', create_category(category_id,"cemiterio"));
-
-      for (var cur_item = 0; cur_item < cur_category_content.length; cur_item++) {
-        if(cur_category_content[cur_item].hasOwnProperty("conjunto")) {
-          document.querySelector(".category-cemiterio-"+category_id).insertAdjacentHTML('beforeend', `
-            <div class="conjunto-cemiterio-${category_id}-${cur_item} content_item flex flex-row items-stretch overflow-x-auto">
-            </div>
-          `);
-
-          for (var cur_conjunto_item = 0; cur_conjunto_item < cur_category_content[cur_item].items.length; cur_conjunto_item++) {
-            let item_plataforma = get_plataforma(cur_category_content[cur_item].items[cur_conjunto_item].url);
-            let item_status = get_status(cur_category_content[cur_item].items[cur_conjunto_item].status);
-            let item_notas = "";
-            let img_data = "";
-            let item_chips = "";
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "notas")) {
-              item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
-            }
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "img") && site_content.options.img) {
-              img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
-            }
-
-            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "chips")) {
-              item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
-            }
-
-            create_item(`.conjunto-cemiterio-${category_id}-${cur_item}`,cur_category_content[cur_item].items[cur_conjunto_item].url,cur_category_content[cur_item].items[cur_conjunto_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips,true);
-          }
-        }
-        else {
-          let item_plataforma = get_plataforma(cur_category_content[cur_item].url);
-          let item_status = get_status(cur_category_content[cur_item].status);
-          let item_notas = "";
-          let img_data = "";
-          let item_chips = "";
-
-          if (Object.hasOwn(cur_category_content[cur_item], "notas")) {
-            item_notas = create_notas(cur_category_content[cur_item].notas);
-          }
-
-          if (Object.hasOwn(cur_category_content[cur_item], "img") && site_content.options.img) {
-            img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
-          }
-
-          if (Object.hasOwn(cur_category_content[cur_item], "chips")) {
-            item_chips = create_chips(cur_category_content[cur_item].chips);
-          }
-
-          create_item(`.category-cemiterio-${category_id}`,cur_category_content[cur_item].url,cur_category_content[cur_item].nome,item_status,item_plataforma,item_notas,img_data,item_chips);
-        }
-      }
-    }
-
+  for (const category_id of Object.keys(site_content.categorias)) {
+    render_category(category_id, "content",   site_content.conteudo,  content_list);
+    render_category(category_id, "cemiterio", site_content.cemiterio, cemiterio_list);
   }
 
-  let user_list = document.querySelector(".user_list");
+  load_usernames();
+}
+
+function render_category(category_id, type, source, list) {
+  if (!Object.hasOwn(source, category_id)) return;
+
+  list.insertAdjacentHTML('beforeend', create_category(category_id, type));
+  const category_class = `.category-${type}-${category_id}`;
+
+  source[category_id].forEach((item, index) => {
+    if (Object.hasOwn(item, "conjunto")) {
+      const conjunto_name = `conjunto-${type}-${category_id}-${index}`;
+      document.querySelector(category_class).insertAdjacentHTML('beforeend', create_conjunto(conjunto_name));
+      for (const sub_item of item.items) add_item("."+conjunto_name, sub_item, true);
+    }
+    else {
+      add_item(category_class, item);
+    }
+  });
+}
+
+function add_item(container_class, item, conjunto = false) {
+  const plataforma = get_plataforma(item.url);
+  const status = get_status(item.status);
+  const notas = Object.hasOwn(item, "notas") ? create_notas(item.notas) : "";
+  const img = Object.hasOwn(item, "img") && site_content.options.img ? create_img(site_content.img[item.img]) : "";
+  const chips = Object.hasOwn(item, "chips") ? create_chips(item.chips) : "";
+
+  create_item(container_class, item.url, item.nome, status, plataforma, notas, img, chips, conjunto);
+}
+
+function load_usernames() {
+  const user_list = document.querySelector(".user_list");
   user_list.innerHTML = "";
 
-  for (var cur_user = 0; cur_user < Object.keys(site_content.usernames).length; cur_user++) {
-    let cur_username = Object.keys(site_content.usernames)[cur_user];
-    let cur_user_plat = site_content.usernames[cur_username];
-
-    document.querySelector(".user_list").insertAdjacentHTML('beforeend', `
+  for (const [username, urls] of Object.entries(site_content.usernames)) {
+    user_list.insertAdjacentHTML('beforeend', `
       <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 transition-all duration-150 group hover:bg-gray-200">
-          <div class="user_item item-${cur_username} p-1 w-[100%]">
-              <b>${cur_username}</b>
-              <br>
-              <p class="flex flex-col gap-2">
-                <span>Visto em:</span>
-                <div class="item-${cur_username}_tags flex flex-wrap gap-2"></div>
-              </p>
-          </div>
+        <div class="user_item item-${username} p-1 w-[100%]">
+          <b>${username}</b>
+          <br>
+          <p class="flex flex-col gap-2">
+            <span>Visto em:</span>
+            <div class="item-${username}_tags flex flex-wrap gap-2"></div>
+          </p>
+        </div>
       </div>
     `);
 
-    for (var cur_plat = 0; cur_plat < cur_user_plat.length; cur_plat++) document.querySelector(`.item-${cur_username}_tags`).insertAdjacentHTML('beforeend', get_plataforma(cur_user_plat[cur_plat]));
+    for (const url of urls) document.querySelector(`.item-${username}_tags`).insertAdjacentHTML('beforeend', get_plataforma(url));
   }
 }
 
 function get_plataforma(url) {
-  for (var i = 0; i < Object.keys(site_content.plataformas).length; i++) {
+  for (const [id, plataforma] of Object.entries(site_content.plataformas)) {
+    const { nome, cor } = plataforma;
 
-    let cur_plataforma_id = Object.keys(site_content.plataformas)[i];
-    let cur_plataforma_nome = site_content.plataformas[cur_plataforma_id].nome;
-    let cur_plataforma_cor = site_content.plataformas[cur_plataforma_id].cor;
-
-    if (url.includes(cur_plataforma_id)) {
-      if (site_content.options.plataforma_color) return `<span class="${cur_plataforma_cor} rounded-md shadow-md py-1 px-2 h-min w-fit">${cur_plataforma_nome}</span>`;
-      else return `<span class="bg-blue-200 rounded-md shadow-md py-1 px-2 h-min w-fit">${cur_plataforma_nome}</span>`;
+    if (url.includes(id)) {
+      const classe_cor = site_content.options.plataforma_color ? cor : "bg-blue-200";
+      return `<span class="${classe_cor} rounded-md shadow-md py-1 px-2 h-min w-fit">${nome}</span>`;
     }
   }
 }
 
 function get_status(id) {
-  for (var i = 0; i < Object.keys(site_content.status).length; i++) {
-
-    let cur_status_id = Object.keys(site_content.status)[i];
-    let cur_status_nome = site_content.status[Object.keys(site_content.status)[i]];
-
-    if (id == cur_status_id) {
-      return cur_status_nome;
-    }
+  for (const [status_id, nome] of Object.entries(site_content.status)) {
+    if (id == status_id) return nome;
   }
 }
 
@@ -246,20 +135,24 @@ function create_item(category_class,url,nome,status,plataforma,notas,img="",chip
   document.querySelector(category_class).insertAdjacentHTML('beforeend', `
     <a class="content_item w-full" href="${url}" target="_blank">
       <div class="p-1 rounded-md m-2 sm:p-5 shadow-md border border-gray-200 cursor-pointer transition-all duration-150 group hover:bg-gray-200">
-          <div class="p-1 w-[100%]">
-              <div class="flex ${flex_direction} gap-2 items-center w-fit">
-                ${img}
-                <b>${nome}</b>
-              </div>
-              <p class="item_status">${status}</p>
-              <br>
-              <p class="item_plataforma_tags flex flex-col gap-2">${plataforma}</p>
-              ${notas}
-              ${chips}
+        <div class="p-1 w-[100%]">
+          <div class="flex ${flex_direction} gap-2 items-center w-fit">
+            ${img}
+            <b>${nome}</b>
           </div>
+          <p class="item_status">${status}</p>
+          <br>
+          <p class="item_plataforma_tags flex flex-col gap-2">${plataforma}</p>
+          ${notas}
+          ${chips}
+        </div>
       </div>
     </a>
   `);
+}
+
+function create_conjunto(conjunto_name) {
+  return `<div class="${conjunto_name} content_item flex flex-row items-stretch overflow-x-auto"></div>`;
 }
 
 function create_category(id,type) {
@@ -280,8 +173,12 @@ function create_notas(string) {
     </p>`;
 }
 
-function create_img(string,conjunto=false) {
+function create_img(string) {
   return `<img src="${string}" class="w-[50px] h-[50px] rounded-full">`;
+}
+
+function create_simple_chip(text) {
+  return `<span class="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-normal bg-[#2c2c2c] text-white">${text}</span>`;
 }
 
 function create_chips(chips) {
@@ -289,65 +186,65 @@ function create_chips(chips) {
   for (const item of chips) {
     let item_chips = "";
     for (const cur_chip of item.itens) {
-      item_chips += `<span class="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-normal bg-[#2c2c2c] text-white">${cur_chip}</span>`;
+      item_chips += create_simple_chip(cur_chip);
     }
     resultado += `<div class="flex flex-wrap gap-1 py-1">
       <span>${item.label}</span>
       ${item_chips}
     </div>`;
   }
-  return `${resultado}`;
+  return resultado;
 }
 
 function update_string(id) {
   if (id == "update") {
-    document.querySelector(".update_string").innerHTML = `Última atualização: ${site_content.update}`;
-    return;
+    document.querySelector(".update_string").innerHTML = `${site_content.update.label} ${create_simple_chip(site_content.update.string)}`;
   }
-  if (id == "cemiterio") {
-    document.querySelector(".cemiterio_string").innerHTML = `${site_content.tumulos.sample()}`;
-    return;
+  else if (id == "cemiterio") {
+    document.querySelector(".cemiterio_string").innerHTML = `${sample(site_content.tumulos)}`;
   }
 }
 
 var debugged = false;
 
 function debug() {
-  if (!debugged && Object.hasOwn(site_content, "update")) {
-    document.body.insertAdjacentHTML('beforeend', `<div id="Debug" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">`);
-    document.querySelector(".tab").insertAdjacentHTML('beforeend', `<button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Debug')" id="Debug_tab"><i class="fa-solid fa-gear"></i></button>`);
-    
-    for (var i = 0; i < (Object.keys(site_content)).length; i++) {
-      if (Object.keys(site_content)[i] == "plataformas") {
-        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
-          <br>
-          <b>${Object.keys(site_content)[i]}</b><br>
-          <div class="flex flex-wrap gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`);
-        for (var cur_plat = 0; cur_plat < (Object.keys(site_content.plataformas)).length; cur_plat++) {
-          document.querySelector(".plataformas_all").insertAdjacentHTML('beforeend', get_plataforma(Object.keys(site_content.plataformas)[cur_plat]));
-        }
-      }
+  if (debugged || !Object.hasOwn(site_content, "update")) return;
 
-      else if (Object.keys(site_content)[i] == "img") {
-        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
-          <br>
-          <b>${Object.keys(site_content)[i]}</b><br>
-          <div class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-2 items-center img_all"></div>`);
-        for (var cur_img = 0; cur_img < (Object.keys(site_content.img)).length; cur_img++) {
-          document.querySelector(".img_all").insertAdjacentHTML('beforeend', `<img class="w-auto max-w-[200px] h-auto max-h-[200px] m-auto" src="${site_content.img[Object.keys(site_content.img)[cur_img]]}" title="${Object.keys(site_content.img)[cur_img]}">`);
-        }
-      }
+  document.body.insertAdjacentHTML('beforeend', `<div id="Debug" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden"></div>`);
+  document.querySelector(".tab").insertAdjacentHTML('beforeend', `<button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Debug')" id="Debug_tab"><i class="fa-solid fa-gear"></i></button>`);
 
-      else {
-        document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
-          <br><p>
-          <b>${Object.keys(site_content)[i]}</b><br>
-          <span>${JSON.stringify(site_content[Object.keys(site_content)[i]])}</span>
-          </p>`);
+  const debug_tab = document.querySelector("#Debug");
+
+  for (const [key, value] of Object.entries(site_content)) {
+    if (key == "plataformas") {
+      debug_tab.insertAdjacentHTML('beforeend', `
+        <br>
+        <b>${key}</b><br>
+        <div class="flex flex-wrap gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`);
+      for (const id of Object.keys(value)) {
+        document.querySelector(".plataformas_all").insertAdjacentHTML('beforeend', get_plataforma(id));
       }
     }
-    debugged = true;
+
+    else if (key == "img") {
+      debug_tab.insertAdjacentHTML('beforeend', `
+        <br>
+        <b>${key}</b><br>
+        <div class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-2 items-center img_all"></div>`);
+      for (const [img_name, img_src] of Object.entries(value)) {
+        document.querySelector(".img_all").insertAdjacentHTML('beforeend', `<img class="w-auto max-w-[200px] h-auto max-h-[200px] m-auto" src="${img_src}" title="${img_name}">`);
+      }
+    }
+
+    else {
+      debug_tab.insertAdjacentHTML('beforeend', `
+        <br><p>
+        <b>${key}</b><br>
+        <span>${JSON.stringify(value)}</span>
+        </p>`);
+    }
   }
+  debugged = true;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
