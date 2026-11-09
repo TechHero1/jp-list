@@ -42,7 +42,7 @@ export function do_debug_action(id) {
     let debug_values = "atual=1\nproximo=2\ncomeco=0\nfim=10";
 
     if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
-    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+    else manage.list.itens[id].dados.nota += "\n" + debug_nota;
 
     if (manage.list.itens[id].dados.custom_values == "") manage.list.itens[id].dados.custom_values = debug_values;
     else manage.list.itens[id].dados.custom_values += "\n" + debug_values;
@@ -55,7 +55,7 @@ export function do_debug_action(id) {
     let debug_values = "atual=1\nproximo=2\ncomeco=0\npages=0\nfim=10";
 
     if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
-    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+    else manage.list.itens[id].dados.nota += "\n" + debug_nota;
 
     if (manage.list.itens[id].dados.custom_values == "") manage.list.itens[id].dados.custom_values = debug_values;
     else manage.list.itens[id].dados.custom_values += "\n" + debug_values;
@@ -68,7 +68,7 @@ export function do_debug_action(id) {
     let debug_values = "atual=1\nproximo=2\ncomeco_real=0\ncomeco=0\natual_real=0\nfim=10";
 
     if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
-    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+    else manage.list.itens[id].dados.nota += "\n" + debug_nota;
 
     if (manage.list.itens[id].dados.custom_values == "") manage.list.itens[id].dados.custom_values = debug_values;
     else manage.list.itens[id].dados.custom_values += "\n" + debug_values;
@@ -77,11 +77,11 @@ export function do_debug_action(id) {
   }
 
   if (debug_action == "chap_prog_arc_audiobook") {
-    let debug_nota = "{chap_prog_arc}\\n\\n{calc:tempo:sub:$atual_tempo:$comeco_tempo} de $final_tempo";
+    let debug_nota = "{chap_prog_arc}\n\n{calc:tempo:sub:$atual_tempo:$comeco_tempo} de $final_tempo";
     let debug_values = "atual=1\nproximo=2\ncomeco_real=0\ncomeco=0\natual_real=0\nfim=10\ncomeco_tempo=0-00-00\natual_tempo=0-00-00\nfinal_tempo=0:00:00";
 
     if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
-    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+    else manage.list.itens[id].dados.nota += "\n" + debug_nota;
 
     if (manage.list.itens[id].dados.custom_values == "") manage.list.itens[id].dados.custom_values = debug_values;
     else manage.list.itens[id].dados.custom_values += "\n" + debug_values;
@@ -93,7 +93,7 @@ export function do_debug_action(id) {
     let debug_nota = `{${debug_action}}`;
 
     if (manage.list.itens[id].dados.nota == "") manage.list.itens[id].dados.nota = debug_nota;
-    else manage.list.itens[id].dados.nota += "\\n" + debug_nota;
+    else manage.list.itens[id].dados.nota += "\n" + debug_nota;
 
     manage.list.itens[id].dados.last_edited = Date.now();
   }

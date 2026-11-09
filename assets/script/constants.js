@@ -80,10 +80,9 @@ export const MEDIAS = {
 
 export const TAGS_TO_ADD = {
   //comandos
-  "bold": "[b]$text[/b]",
-  "italic": "[i]$text[/i]",
-  "hr": "\\l",
-  "newline": "\\n",
+  "bold": "**$text**",
+  "italic": "*$text*",
+  "hr": "\n---\n",
   "color": "[cor:#000000]$text[/cor]",
   "bg": "[bg:#FFFFFF]$text[/bg]",
   "border": "[brd:#000000:1]$text[/brd]",
@@ -118,6 +117,17 @@ export const TAGS_TO_ADD = {
   "calc_tempo_soma": "{calc:tempo:soma:01-00-00:00-30-00}",
   "calc_tempo_sub": "{calc:tempo:sub:01-00-00:00-30-00}",
   "calc_porcentagem": "{calc:especial:porcentagem:1:10}",
+  "stars-0": "{stars-0}",
+  "stars-0.5": "{stars-0.5}",
+  "stars-1": "{stars-1}",
+  "stars-1.5": "{stars-1.5}",
+  "stars-2": "{stars-2}",
+  "stars-2.5": "{stars-2.5}",
+  "stars-3": "{stars-3}",
+  "stars-3.5": "{stars-3.5}",
+  "stars-4": "{stars-4}",
+  "stars-4.5": "{stars-4.5}",
+  "stars-5": "{stars-5}",
   //presets
   "legenda": "[pre:legenda]$text[/pre]",
   "sombreado": "[pre:sombra]$text[/pre]",
