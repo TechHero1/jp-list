@@ -67,7 +67,7 @@ function load_content() {
     let category_id = Object.keys(site_content.categorias)[cur_category];
 
     //PRINCIPAL
-    if (site_content.conteudo.hasOwnProperty(category_id)) {
+    if (Object.hasOwn(site_content.conteudo, category_id)) {
       let cur_category_content = site_content.conteudo[Object.keys(site_content.categorias)[cur_category]];
       let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
       let category_items = "";
@@ -88,15 +88,15 @@ function load_content() {
             let img_data = "";
             let item_chips = "";
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("notas")) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "notas")) {
               item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
             }
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("img") && site_content.options.img) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "img") && site_content.options.img) {
               img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
             }
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("chips")) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "chips")) {
               item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
             }
 
@@ -110,15 +110,15 @@ function load_content() {
           let img_data = "";
           let item_chips = "";
 
-          if (cur_category_content[cur_item].hasOwnProperty("notas")) {
+          if (Object.hasOwn(cur_category_content[cur_item], "notas")) {
             item_notas = create_notas(cur_category_content[cur_item].notas);
           }
 
-          if (cur_category_content[cur_item].hasOwnProperty("img") && site_content.options.img) {
+          if (Object.hasOwn(cur_category_content[cur_item], "img") && site_content.options.img) {
             img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
           }
 
-          if (cur_category_content[cur_item].hasOwnProperty("chips")) {
+          if (Object.hasOwn(cur_category_content[cur_item], "chips")) {
             item_chips = create_chips(cur_category_content[cur_item].chips);
           }
 
@@ -128,7 +128,7 @@ function load_content() {
     }
 
     //CEMITÉRIO
-    if (site_content.cemiterio.hasOwnProperty(category_id)) {
+    if (Object.hasOwn(site_content.cemiterio, category_id)) {
       let cur_category_content = site_content.cemiterio[Object.keys(site_content.categorias)[cur_category]];
       let category_name = site_content.categorias[Object.keys(site_content.categorias)[cur_category]];
       let category_items = "";
@@ -149,15 +149,15 @@ function load_content() {
             let img_data = "";
             let item_chips = "";
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("notas")) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "notas")) {
               item_notas = create_notas(cur_category_content[cur_item].items[cur_conjunto_item].notas);
             }
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("img") && site_content.options.img) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "img") && site_content.options.img) {
               img_data = create_img(site_content.img[cur_category_content[cur_item].items[cur_conjunto_item].img]);
             }
 
-            if (cur_category_content[cur_item].items[cur_conjunto_item].hasOwnProperty("chips")) {
+            if (Object.hasOwn(cur_category_content[cur_item].items[cur_conjunto_item], "chips")) {
               item_chips = create_chips(cur_category_content[cur_item].items[cur_conjunto_item].chips);
             }
 
@@ -171,15 +171,15 @@ function load_content() {
           let img_data = "";
           let item_chips = "";
 
-          if (cur_category_content[cur_item].hasOwnProperty("notas")) {
+          if (Object.hasOwn(cur_category_content[cur_item], "notas")) {
             item_notas = create_notas(cur_category_content[cur_item].notas);
           }
 
-          if (cur_category_content[cur_item].hasOwnProperty("img") && site_content.options.img) {
+          if (Object.hasOwn(cur_category_content[cur_item], "img") && site_content.options.img) {
             img_data = create_img(site_content.img[cur_category_content[cur_item].img]);
           }
 
-          if (cur_category_content[cur_item].hasOwnProperty("chips")) {
+          if (Object.hasOwn(cur_category_content[cur_item], "chips")) {
             item_chips = create_chips(cur_category_content[cur_item].chips);
           }
 
@@ -313,7 +313,7 @@ function update_string(id) {
 var debugged = false;
 
 function debug() {
-  if (!debugged && site_content.hasOwnProperty("update")) {
+  if (!debugged && Object.hasOwn(site_content, "update")) {
     document.body.innerHTML += `<div id="Debug" class="tabcontent rounded-md m-2 sm:p-5 bg-white shadow-md hidden">`;
     document.querySelector(".tab").innerHTML += `<button class="tablinks cursor-pointer p-3 bg-inherit transition-all duration-150" onclick="open_tab(event, 'Debug')" id="Debug_tab"><i class="fa-solid fa-gear"></i></button>`;
     
