@@ -204,7 +204,7 @@ function load_content() {
               <br>
               <p class="flex flex-col gap-2">
                 <span>Visto em:</span>
-                <div class="item-${cur_username}_tags flex flex-row gap-2"></div>
+                <div class="item-${cur_username}_tags flex flex-wrap gap-2"></div>
               </p>
           </div>
       </div>
@@ -322,7 +322,7 @@ function debug() {
         document.querySelector("#Debug").insertAdjacentHTML('beforeend', `
           <br>
           <b>${Object.keys(site_content)[i]}</b><br>
-          <div class="flex flex-row gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`);
+          <div class="flex flex-wrap gap-2 plataformas_all whitespace-nowrap overflow-x-auto py-3"></div>`);
         for (var cur_plat = 0; cur_plat < (Object.keys(site_content.plataformas)).length; cur_plat++) {
           document.querySelector(".plataformas_all").insertAdjacentHTML('beforeend', get_plataforma(Object.keys(site_content.plataformas)[cur_plat]));
         }
