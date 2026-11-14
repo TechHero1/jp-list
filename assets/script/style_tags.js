@@ -2,6 +2,7 @@ import * as dicts from "../yomitan/japanese-kana-romaji-dicts.js";
 import * as nota from "./nota.js";
 import * as constants from "./constants.js";
 import * as util from "./util.js";
+import * as markdown from './markdown.js';
 
 export function update_old_tags(text="") {
   //old umineko ids
@@ -178,7 +179,7 @@ function switch_custom_dropdown(dropdown_id) {
 window.switch_custom_dropdown = switch_custom_dropdown;
 
 //click fora do dropdown -> fecha
-const CUSTOM_DROPDOWNS = ["gradient", "shadow", "stars", "progress", "styles", "values", "kana", "calc", "fltr"];
+const CUSTOM_DROPDOWNS = ["gradient", "shadow", "stars", "progress", "styles", "values", "kana", "calc", "fltr", "headings", "lists", "code", "tables"];
 
 window.addEventListener('click', function(e){
   for (const id of CUSTOM_DROPDOWNS) {
@@ -254,51 +255,7 @@ function update_item_values() {
 
 window.update_item_values = update_item_values;
 
-function get_string_url(text) {
-  return text.linkify({
-    className: "nota_link text-blue-500",
-    target: "_blank",
-    attributes: { rel: "noopener noreferrer" }
-  });
-}
-
-const UNDERLINE_TEMP_FIX_STRINGS = {
-  "nota_link": "classelinktemp",
-  "_blank": "newtabtemp",
-  "badge_pos": "badgepostemp",
-  "badge_neg": "badgenegtemp",
-  "to_bottom_right": "tobottomrighttemp",
-  "to_right": "torighttemp",
-  "to_bottom": "tobottomtemp",
-  "[animation:floating_3s_ease-in-out_alternate_infinite]": "animfloatingtemp",
-  "[animation:scroll-background_30s_linear_infinite]": "animscrollbgtemp",
-  "IMAGE_DEPTH": "imgdepthtemp",
-  "iichan_face": "iichanfacetemp",
-  "[-0.04rem_0px_#000000,0px_-0.04rem_#000000,0px_0.04rem_#000000,0.04rem_0px_#000000]": "umimoddropshadowtemp"
-}
-
-const DROPSHADOW_SIZES = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)_/g;
-const DROPSHADOW_SIZES_REVERSE = /(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp(.+?)(px|rem|em|cm|mm|in|pt|pc|ex|ch|vw|vh|vmin|vmax|%)temp/g;
-
-function underline_temp_fix(text,mode="normal") {
-  if (mode == "normal") {
-    for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
-      text = text.replaceAll(normal, temp);
-    }
-    text = text.replaceAll(DROPSHADOW_SIZES,`$1$2temp$3$4temp`);
-  } else {
-    for (const [normal, temp] of Object.entries(UNDERLINE_TEMP_FIX_STRINGS)) {
-      text = text.replaceAll(temp, normal);
-    }
-    text = text.replaceAll(DROPSHADOW_SIZES_REVERSE,`$1$2_$3$4_`);
-  }
-
-  return text;
-}
-
 export function style_text_with_tags(text,item_data) {
-  text = get_string_url(text);
-
   //SECRET ELEMENTS
   text = text.replaceAll(/(?<!\\)\{chap_prog_moji}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$moji:$fim:barra}<br>{mark:$comeco:$moji:$fim:simples} ({mark:$comeco:$moji:$fim:porcentagem})");
   text = text.replaceAll(/(?<!\\)\{chap_prog_page}/g,"**$atual {icon:solid:arrow-right} $proximo**<br>{mark:$comeco:$pages:$fim:barra}<br>{mark:$comeco:$pages:$fim:simples} ({mark:$comeco:$pages:$fim:porcentagem})");
@@ -358,31 +315,7 @@ export function style_text_with_tags(text,item_data) {
 
   text = apply_tags(text);
 
-  text = underline_temp_fix(text,"normal");
-
-  //LINE TAG
-  text = text.replaceAll(/\n---\n/g,"<hr>");
-  text = text.replaceAll(/^---$/gm,"<hr>");
-
-  //NEWLINE TAG
-  text = text.replaceAll(/\n/g,"<br>");
-
-  //BOLD TAG
-  text = text.replaceAll(/(?<!\\)__(.+?)(?<!\\)__/g,`<b>$1</b>`).replaceAll(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/g,`<b>$1</b>`);
-
-  //ITALIC TAG
-  text = text.replaceAll(/(?<!\\)_(.+?)(?<!\\)_/g,`<i>$1</i>`).replaceAll(/(?<!\\)\*(.+?)(?<!\\)\*/g,`<i>$1</i>`);
-
-  text = text.replace(/\\(\[)/g, "[");
-  text = text.replace(/\\(\])/g, "]");
-
-  text = text.replace(/\\(\{)/g, "{");
-  text = text.replace(/\\(\})/g, "}");
-
-  text = text.replace(/\\(\*)/g, "*");
-  text = text.replace(/\\(_)/g, "_");
-
-  text = underline_temp_fix(text,"reverse");
+  text = markdown.md.render(text);
 
   return text;
 }
@@ -767,7 +700,21 @@ function create_custom_info() {
   document.querySelector(".custom_info").innerHTML += `
     <div>Informações sobre a estilização das anotações</div>
     <details>
-      <summary class="cursor-pointer button w-fit">Caracteres e valores especiais</summary>
+      <summary class="cursor-pointer button w-fit">Formatação</summary>
+      <div class="markdown_container rounded-md shadow-md border border-gray-300 flex flex-col sm:px-2 py-5 gap-5 w-[90vw]">
+        <div class="hidden md:flex flex-row w-full overflow-x-auto">
+          <div class="textinput w-full">${constants.DOCS_MARKDOWN.replaceAll(/\n/g,"<br>")}</div>
+          <div class="textinput w-full">${markdown.md.render(constants.DOCS_MARKDOWN)}</div>
+        </div>
+        <div class="block md:hidden w-full overflow-x-auto">
+          <div class="button w-full text-center mb-1" onclick="docs_switch_markdown()">Trocar visualização</div>
+          <div class="docs_markdown_text textinput w-full">${constants.DOCS_MARKDOWN.replaceAll(/\n/g,"<br>")}</div>
+          <div class="docs_markdown_render textinput w-full hidden">${markdown.md.render(constants.DOCS_MARKDOWN)}</div>
+        </div>
+      </div>
+    </details>
+    <details>
+      <summary class="cursor-pointer button w-fit">Valores especiais</summary>
       <div class="caracteres_container rounded-md shadow-md border border-gray-300 flex flex-col sm:px-2 py-5 gap-5 w-[90vw]"></div>
     </details>
     <details>
@@ -1027,3 +974,10 @@ function create_custom_info() {
     }
   }
 }
+
+function docs_switch_markdown() {
+  document.querySelector(".docs_markdown_text").classList.toggle("hidden");
+  document.querySelector(".docs_markdown_render").classList.toggle("hidden");
+}
+
+window.docs_switch_markdown = docs_switch_markdown;

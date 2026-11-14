@@ -38,8 +38,7 @@ export function update_preview() {
     preview_html = "<span class='text-danger'>Erro ao interpretar a anotação.</span>";
   }
   document.querySelector(".nota_input_preview").innerHTML = preview_html;
-  if (nota_input.includes("\\") || nota_input.includes("[") || nota_input.includes("$") || nota_input.includes("{") || nota_input.includes("*") || nota_input.includes("_") || nota_input.includes("-") || /[\S]+\.[\S]+/g.test(nota_input)) document.querySelector(".nota_preview_container").classList.remove('hidden');
-  else document.querySelector(".nota_preview_container").classList.add('hidden');
+  document.querySelector(".nota_preview_container").classList.toggle('hidden', nota_input == "");
 }
 
 window.update_preview_nota = update_preview;

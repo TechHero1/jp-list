@@ -79,10 +79,29 @@ export const MEDIAS = {
 };
 
 export const TAGS_TO_ADD = {
-  //comandos
+  //markdown
   "bold": "**$text**",
   "italic": "*$text*",
   "hr": "\n---\n",
+  "strike": "~~$text~~",
+  "code_inline": "`$text`",
+  "link": "[$text](link_aqui)",
+  "image": "![$text](link_da_imagem)",
+  "heading1": "\n# $text\n",
+  "heading2": "\n## $text\n",
+  "heading3": "\n### $text\n",
+  "heading4": "\n#### $text\n",
+  "heading5": "\n##### $text\n",
+  "heading6": "\n###### $text\n",
+  "quote": "\n> $text\n",
+  "list_ul": "\n- $text\n",
+  "list_ol": "\n1. $text\n",
+  "code_block": "\n```\n$text\n```\n",
+  "table": "\n|  Item  | Descrição |\n| ------ | --------- |\n| item 1 | descrição do item 1 aqui |\n| item 2 | descrição do item 2 nesse aqui |\n| item 3 | descrição do item 3 agora aqui nesse |\n",
+  "table_left": "\n|  Item  | Descrição |\n| :----- | :-------- |\n| item 1 | descrição do item 1 aqui |\n| item 2 | descrição do item 2 nesse aqui |\n| item 3 | descrição do item 3 agora aqui nesse |\n",
+  "table_center": "\n|  Item  | Descrição |\n| :----: | :-------: |\n| item 1 | descrição do item 1 aqui |\n| item 2 | descrição do item 2 nesse aqui |\n| item 3 | descrição do item 3 agora aqui nesse |\n",
+  "table_right": "\n|  Item  | Descrição |\n| -----: | --------: |\n| item 1 | descrição do item 1 aqui |\n| item 2 | descrição do item 2 nesse aqui |\n| item 3 | descrição do item 3 agora aqui nesse |\n",
+  //comandos
   "color": "[cor:#000000]$text[/cor]",
   "bg": "[bg:#FFFFFF]$text[/bg]",
   "border": "[brd:#000000:1]$text[/brd]",
@@ -177,3 +196,123 @@ export const TAGS_TO_ADD = {
   "value_tempo_m": "$tempo_m",
   "value_tempo_M": "$tempo_M"
 };
+
+export const DOCS_MARKDOWN = `# Cabeçalho 1
+## Cabeçalho 2
+### Cabeçalho 3
+#### Cabeçalho 4
+##### Cabeçalho 5
+###### Cabeçalho 6
+
+
+## Linha divisória
+
+___
+
+---
+
+***
+
+
+## Ênfase
+
+**Texto em negrito**
+
+__Texto em negrito__
+
+*Texto em itálico*
+
+_Texto em itálico_
+
+~~Texto riscado~~
+
+
+## Bloco de citação
+
+
+> Blocos de citação também podem estar aninhados...
+>> ...usando mais sinais de "maior-que", um logo após o outro...
+> > > ...ou com espaços entre eles.
+
+
+## Listas
+
+Não ordenada
+
++ Crie uma lista ao começar uma linha com \`+\`, \`-\`, ou \`*\`
++ Sub-listas são feitas ao adicionar 2 espaços antes:
+  - Mudar o caractere marcador força o início de uma nova lista:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Muito fácil!
+
+Ordenada
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. Você pode usar números sequenciais...
+1. ...ou manter todos os números como \`1.\`
+
+Começando listas numeradas com deslocamento:
+
+57. foo
+1. bar
+
+
+## Código
+
+Código \`na linha\`
+
+Blocos de código
+
+\`\`\`
+Texto de exemplo aqui...
+\`\`\`
+
+## Tabelas
+
+|  Item  | Descrição |
+| ------ | --------- |
+| item 1 | descrição do item 1 aqui |
+| item 2 | descrição do item 2 nesse aqui |
+| item 3 | descrição do item 3 agora aqui nesse |
+
+Colunas alinhadas à direita
+
+|  Item  | Descrição |
+| -----: | --------: |
+| item 1 | descrição do item 1 aqui |
+| item 2 | descrição do item 2 nesse aqui |
+| item 3 | descrição do item 3 agora aqui nesse |
+
+Colunas alinhadas ao meio
+
+|  Item  | Descrição |
+| :----: | :-------: |
+| item 1 | descrição do item 1 aqui |
+| item 2 | descrição do item 2 nesse aqui |
+| item 3 | descrição do item 3 agora aqui nesse |
+
+
+## Links
+
+[Texto do link](https://techhero1.github.io/)
+
+Link autoconvertido https://techhero1.github.io/jp-list
+
+
+## Imagens
+
+![iichan de apoio](https://techhero1.github.io/jp-list/assets/img/iichan.png)
+
+![Texto alternativo][nome_da_imagem]
+
+[nome_da_imagem]: https://techhero1.github.io/jp-list/assets/img/iichan_face.png "iichan rosto"
+
+---
+
+Tradução parcial da [demo do markdown-it](https://markdown-it.github.io/)`;

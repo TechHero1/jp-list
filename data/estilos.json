@@ -1,21 +1,6 @@
 {
     "caracteres": [
         {
-            "funcao": "Negrito",
-            "comando": "<code class='text-[#905]'>**</code><code>Texto</code><code class='text-[#905]'>**</code>",
-            "render": "<b>Texto</b>"
-        },
-        {
-            "funcao": "Itálico",
-            "comando": "<code class='text-[#905]'>*</code><code>Texto</code><code class='text-[#905]'>*</code>",
-            "render": "<i>Texto</i>"
-        },
-        {
-            "funcao": "Divisória",
-            "comando": "<code>---</code><br><br>Linha 1<br><code>---</code><br>Linha 2",
-            "render": "<hr><br><br>Linha 1<hr>Linha 2"
-        },
-        {
             "funcao": "Valores padrões",
             "comando": "<code>$progresso<br>$final<br>$volumes<br>$moji<br>$repeticoes<br><br>$h<br>$H<br>$m<br>$M<br><br>$prog_min<br>$tempo<br><br>$tempo_h<br>$tempo_H<br>$tempo_m<br>$tempo_M</code>",
             "render": "Progresso<br>Final<br>Volumes<br>Caracteres (moji)<br>Repetições<br><br>Horas (H)<br>Horas (HH)<br>Minutos (M)<br>Minutos (MM)<br><br>Minutos por progresso<br>Tempo automático (HH:MM)<br><br>Horas automáticas (H)<br>Horas automáticas (HH)<br>Minutos automáticos (M)<br>Minutos automáticos (MM)"

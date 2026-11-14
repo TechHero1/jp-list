@@ -5,8 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JP List</title>
     <script type="module" src="assets/main.js"></script>
-    <script defer src="assets/linkify/linkify.min.js"></script>
-    <script defer src="assets/linkify/linkify-string.min.js"></script>
     <script defer src="assets/plotly/plotly-4.0.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://techhero1.github.io/shared/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
@@ -462,241 +460,297 @@
         </div>
 
         <div class="p-3 flex flex-col md:flex-row gap-3 md:gap-10 w-full md:w-[clamp(300px,80%,1300px)] nota_styles_thing">
-            <div class="nota_styles_container flex flex-col gap-3 w-full">
+            <div class="nota_styles_container relative flex flex-col gap-3 w-full">
                 <div class="line w-full">
-                    <center>
-                        <button title="Negrito" class="button" onclick="nota_add_style('bold');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-bold"></i></button>
-                        <button title="Itálico" class="button" onclick="nota_add_style('italic');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-italic"></i></button>
-                        <button title="Linha divisória" class="button w-[38px] h-[42px]" onclick="nota_add_style('hr');select_field(this,false);update_preview_nota()">—</button>
-
-                        <button title="Japonês" class="button custom_dropdown_button_kana" onclick="switch_custom_dropdown('kana')"><svg xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] mt-[-4px] inline-block stroke-content"><path d="M2.42064 2.88601h9.52827M8.92775 14.04106c4.64794-.2324 5.11273-2.78876 5.12992-4.21415.01933-1.60201-1.62623-3.97684-5.22508-4.05209-4.78517-.10004-8.34375 4.35907-6.4074 6.96794 1.72067 2.31827 6.03777-.32848 7.43215-6.3708M5.67419 1.02685c-.2324 6.7395.06942 8.31184.4648 11.61984" fill="none" stroke-width="1.85917" stroke-linejoin="round"/></svg> <i class="custom_dropdown_icon_kana fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_kana absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('furigana',true);select_field(this,false);update_preview_nota()">Furigana</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('hira',true);select_field(this,false);update_preview_nota()">Hiragana (あ)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('kata',true);select_field(this,false);update_preview_nota()">Katakana (ア)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('halfkana',true);select_field(this,false);update_preview_nota()">Katakana (ア -> ｱ)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fullkana',true);select_field(this,false);update_preview_nota()">Katakana (ｱ -> ア)</a>
-                            </div>
-                        </div>
-
-                        <span class="p-1 hidden sm:inline"></span>
-                        <p class="py-1 block sm:hidden"></p>
-
-                        <button title="Cor do texto" class="button" onclick="nota_add_style('color');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-palette"></i></button>
-                        <button title="Cor do fundo" class="button" onclick="nota_add_style('bg');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-paint-roller"></i></button>
-                        <button title="Borda" class="button" onclick="nota_add_style('border');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-border-top-left"></i></button>
-                        
-                        <button title="Degradê" class="button custom_dropdown_button_gradient" onclick="switch_custom_dropdown('gradient')"><i class="fa-solid fa-circle-half-stroke"></i> <i class="custom_dropdown_icon_gradient fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_gradient absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradient',true);select_field(this,false);update_preview_nota()">Degradê Simples</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradpercent',true);select_field(this,false);update_preview_nota()">Degradê Ajustável</a>
-                            </div>
-                        </div>
-
-                        <button title="Sombra" class="button custom_dropdown_button_shadow" onclick="switch_custom_dropdown('shadow')"><i class="fa-solid fa-umbrella-beach"></i> <i class="custom_dropdown_icon_shadow fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_shadow absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('shadow',true);select_field(this,false);update_preview_nota()">Sombra Suave</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('solidshadow',true);select_field(this,false);update_preview_nota()">Sombra Sólida</a>
-                            </div>
-                        </div>
-
-                        <span class="p-1 hidden sm:inline"></span>
-                        <p class="py-1 block sm:hidden"></p>
-
-                        <button title="Badge" class="button" onclick="nota_add_style('badge');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-tag"></i></button>
-                        <button title="Ícones" class="button" onclick="nota_add_style('icon');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-icons"></i></button>
-
-                        <button title="Estrelas" class="button custom_dropdown_button_stars" onclick="switch_custom_dropdown('stars')"><i class="fa-solid fa-star"></i> <i class="custom_dropdown_icon_stars fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_stars absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <div class="flex flex-row max-w-fit" onmouseleave="star_option_reset()">
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(0.5)" onclick="nota_add_style('stars-0.5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-05 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
-                                        </button>
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(1)" onclick="nota_add_style('stars-1',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-1 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
-                                        </button>
+                    <div class="nota_toolbar flex flex-wrap justify-center items-start gap-x-4 gap-y-2">
+                        <div role="group" aria-label="Texto" class="flex flex-wrap justify-center items-start gap-1">
+                            <button title="Negrito" class="button" onclick="nota_add_style('bold');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-bold"></i></button>
+                            <button title="Itálico" class="button" onclick="nota_add_style('italic');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-italic"></i></button>
+                            <button title="Texto riscado" class="button" onclick="nota_add_style('strike');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-strikethrough"></i></button>
+                            <button title="Linha divisória" class="button w-[38px] h-[42px]" onclick="nota_add_style('hr');select_field(this,false);update_preview_nota()">—</button>
+                            <div class="lg:relative">
+                                <button title="Japonês" class="button custom_dropdown_button_kana" onclick="switch_custom_dropdown('kana')"><svg xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] mt-[-4px] inline-block stroke-content"><path d="M2.42064 2.88601h9.52827M8.92775 14.04106c4.64794-.2324 5.11273-2.78876 5.12992-4.21415.01933-1.60201-1.62623-3.97684-5.22508-4.05209-4.78517-.10004-8.34375 4.35907-6.4074 6.96794 1.72067 2.31827 6.03777-.32848 7.43215-6.3708M5.67419 1.02685c-.2324 6.7395.06942 8.31184.4648 11.61984" fill="none" stroke-width="1.85917" stroke-linejoin="round"/></svg> <i class="custom_dropdown_icon_kana fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_kana absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('furigana',true);select_field(this,false);update_preview_nota()">Furigana</a>
                                     </div>
-
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(1.5)" onclick="nota_add_style('stars-1.5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-15 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
-                                        </button>
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(2)" onclick="nota_add_style('stars-2',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-2 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
-                                        </button>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('hira',true);select_field(this,false);update_preview_nota()">Hiragana (あ)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('kata',true);select_field(this,false);update_preview_nota()">Katakana (ア)</a>
                                     </div>
-
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(2.5)" onclick="nota_add_style('stars-2.5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-25 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
-                                        </button>
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(3)" onclick="nota_add_style('stars-3',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-3 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
-                                        </button>
-                                    </div>
-
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(3.5)" onclick="nota_add_style('stars-3.5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-35 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
-                                        </button>
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(4)" onclick="nota_add_style('stars-4',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-4 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
-                                        </button>
-                                    </div>
-
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(4.5)" onclick="nota_add_style('stars-4.5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-45 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
-                                        </button>
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(5)" onclick="nota_add_style('stars-5',true);select_field(this,false);update_preview_nota()">
-                                            <i class="star-icon-5 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
-                                        </button>
-                                    </div>
-
-                                    <div class="flex flex-row size-[30px] relative">
-                                        <button class="cursor-pointer group w-[15px] h-[30px] absolute" onclick="nota_add_style('stars-0',true);select_field(this,false);update_preview_nota()">
-                                            <i class="fa-xl fa-solid fa-xmark pointer-events-none"></i>
-                                        </button>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('halfkana',true);select_field(this,false);update_preview_nota()">Katakana (ア -> ｱ)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fullkana',true);select_field(this,false);update_preview_nota()">Katakana (ｱ -> ア)</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <button title="Marcos e barras de progresso" class="button custom_dropdown_button_progress" onclick="switch_custom_dropdown('progress')"><i class="fa-solid fa-bars-progress"></i> <i class="custom_dropdown_icon_progress fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark',true);select_field(this,false);update_preview_nota()">Marco simples</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark_p',true);select_field(this,false);update_preview_nota()">Marco em porcentagem</a>
+                        <div role="group" aria-label="Blocos e links" class="flex flex-wrap justify-center items-start gap-1">
+                            <div class="lg:relative">
+                                <button title="Cabeçalhos" class="button custom_dropdown_button_headings" onclick="switch_custom_dropdown('headings')"><i class="fa-solid fa-heading"></i> <i class="custom_dropdown_icon_headings fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_headings absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading1',true);select_field(this,false);update_preview_nota()">Cabeçalho 1</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading2',true);select_field(this,false);update_preview_nota()">Cabeçalho 2</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading3',true);select_field(this,false);update_preview_nota()">Cabeçalho 3</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading4',true);select_field(this,false);update_preview_nota()">Cabeçalho 4</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading5',true);select_field(this,false);update_preview_nota()">Cabeçalho 5</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('heading6',true);select_field(this,false);update_preview_nota()">Cabeçalho 6</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar',true);select_field(this,false);update_preview_nota()">Barra de progresso</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar_mark',true);select_field(this,false);update_preview_nota()">Marco em barra</a>
+                            <button title="Bloco de citação" class="button" onclick="nota_add_style('quote');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-quote-left"></i></button>
+                            <div class="lg:relative">
+                                <button title="Listas" class="button custom_dropdown_button_lists" onclick="switch_custom_dropdown('lists')"><i class="fa-solid fa-list-ul"></i> <i class="custom_dropdown_icon_lists fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_lists absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('list_ul',true);select_field(this,false);update_preview_nota()">Lista não ordenada</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('list_ol',true);select_field(this,false);update_preview_nota()">Lista ordenada</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:relative">
+                                <button title="Código" class="button custom_dropdown_button_code" onclick="switch_custom_dropdown('code')"><i class="fa-solid fa-code"></i> <i class="custom_dropdown_icon_code fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_code absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('code_inline',true);select_field(this,false);update_preview_nota()">Código na linha</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('code_block',true);select_field(this,false);update_preview_nota()">Bloco de código</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:relative">
+                                <button title="Tabelas" class="button custom_dropdown_button_tables" onclick="switch_custom_dropdown('tables')"><i class="fa-solid fa-table"></i> <i class="custom_dropdown_icon_tables fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_tables absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('table',true);select_field(this,false);update_preview_nota()">Sem alinhamento</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('table_left',true);select_field(this,false);update_preview_nota()">Alinhada à esquerda</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('table_center',true);select_field(this,false);update_preview_nota()">Alinhada ao meio</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('table_right',true);select_field(this,false);update_preview_nota()">Alinhada à direita</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <button title="Link" class="button" onclick="nota_add_style('link');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-link"></i></button>
+                            <button title="Imagem" class="button" onclick="nota_add_style('image');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-image"></i></button>
+                        </div>
+                        <div role="group" aria-label="Cores e efeitos" class="flex flex-wrap justify-center items-start gap-1">
+                            <button title="Cor do texto" class="button" onclick="nota_add_style('color');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-palette"></i></button>
+                            <button title="Cor do fundo" class="button" onclick="nota_add_style('bg');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-paint-roller"></i></button>
+                            <button title="Borda" class="button" onclick="nota_add_style('border');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-border-top-left"></i></button>
+                            <div class="lg:relative">
+                                <button title="Degradê" class="button custom_dropdown_button_gradient" onclick="switch_custom_dropdown('gradient')"><i class="fa-solid fa-circle-half-stroke"></i> <i class="custom_dropdown_icon_gradient fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_gradient absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradient',true);select_field(this,false);update_preview_nota()">Degradê Simples</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('gradpercent',true);select_field(this,false);update_preview_nota()">Degradê Ajustável</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:relative">
+                                <button title="Sombra" class="button custom_dropdown_button_shadow" onclick="switch_custom_dropdown('shadow')"><i class="fa-solid fa-umbrella-beach"></i> <i class="custom_dropdown_icon_shadow fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_shadow absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('shadow',true);select_field(this,false);update_preview_nota()">Sombra Suave</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('solidshadow',true);select_field(this,false);update_preview_nota()">Sombra Sólida</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:relative">
+                                <button title="Filtros" class="button custom_dropdown_button_fltr" onclick="switch_custom_dropdown('fltr')"><i class="fa-solid fa-brush"></i> <i class="custom_dropdown_icon_fltr fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_fltr absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_blur',true);select_field(this,false);update_preview_nota()">Borrar</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_brightness',true);select_field(this,false);update_preview_nota()">Brilho</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_contrast',true);select_field(this,false);update_preview_nota()">Contraste</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_grayscale',true);select_field(this,false);update_preview_nota()">Escala de Cinza</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_hue',true);select_field(this,false);update_preview_nota()">Rotação de Matiz</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_invert',true);select_field(this,false);update_preview_nota()">Inverter</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_saturate',true);select_field(this,false);update_preview_nota()">Saturação</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_sepia',true);select_field(this,false);update_preview_nota()">Sépia</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div role="group" aria-label="Elementos" class="flex flex-wrap justify-center items-start gap-1">
+                            <button title="Badge" class="button" onclick="nota_add_style('badge');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-tag"></i></button>
+                            <button title="Ícones" class="button" onclick="nota_add_style('icon');select_field(this,false);update_preview_nota()"><i class="fa-solid fa-icons"></i></button>
+                            <div class="lg:relative">
+                                <button title="Estrelas" class="button custom_dropdown_button_stars" onclick="switch_custom_dropdown('stars')"><i class="fa-solid fa-star"></i> <i class="custom_dropdown_icon_stars fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_stars absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <div class="flex flex-row max-w-fit mx-auto" onmouseleave="star_option_reset()">
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(0.5)" onclick="nota_add_style('stars-0.5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-05 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                                </button>
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(1)" onclick="nota_add_style('stars-1',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-1 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                                </button>
+                                            </div>
 
-                        <span class="p-1 hidden sm:inline"></span>
-                        <p class="py-1 block sm:hidden"></p>
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(1.5)" onclick="nota_add_style('stars-1.5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-15 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                                </button>
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(2)" onclick="nota_add_style('stars-2',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-2 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                                </button>
+                                            </div>
 
-                        <button title="Cálculo" class="button custom_dropdown_button_calc" onclick="switch_custom_dropdown('calc')"><i class="fa-solid fa-calculator"></i> <i class="custom_dropdown_icon_calc fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_calc absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_soma',true);select_field(this,false);update_preview_nota()">Soma</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_sub',true);select_field(this,false);update_preview_nota()">Subtração</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_mult',true);select_field(this,false);update_preview_nota()">Multiplicação</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_div',true);select_field(this,false);update_preview_nota()">Divisão</a>
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(2.5)" onclick="nota_add_style('stars-2.5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-25 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                                </button>
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(3)" onclick="nota_add_style('stars-3',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-3 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(3.5)" onclick="nota_add_style('stars-3.5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-35 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                                </button>
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(4)" onclick="nota_add_style('stars-4',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-4 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onmouseenter="star_option_hover(4.5)" onclick="nota_add_style('stars-4.5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-45 fa-xl hidden! fa-solid fa-star-half pointer-events-none"></i>
+                                                </button>
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute left-[50%]" onmouseenter="star_option_hover(5)" onclick="nota_add_style('stars-5',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="star-icon-5 fa-xl fa-regular fa-star pointer-events-none ml-[-100%]"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="flex flex-row size-[30px] relative">
+                                                <button class="cursor-pointer group w-[15px] h-[30px] absolute" onclick="nota_add_style('stars-0',true);select_field(this,false);update_preview_nota()">
+                                                    <i class="fa-xl fa-solid fa-xmark pointer-events-none"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_soma',true);select_field(this,false);update_preview_nota()">Soma de tempos</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_sub',true);select_field(this,false);update_preview_nota()">Subtração de tempos</a>
+                            <div class="lg:relative">
+                                <button title="Marcos e barras de progresso" class="button custom_dropdown_button_progress" onclick="switch_custom_dropdown('progress')"><i class="fa-solid fa-bars-progress"></i> <i class="custom_dropdown_icon_progress fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_progress absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark',true);select_field(this,false);update_preview_nota()">Marco simples</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('mark_p',true);select_field(this,false);update_preview_nota()">Marco em porcentagem</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar',true);select_field(this,false);update_preview_nota()">Barra de progresso</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('bar_mark',true);select_field(this,false);update_preview_nota()">Marco em barra</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_porcentagem',true);select_field(this,false);update_preview_nota()">Porcentagem</a>
+                            <div class="lg:relative">
+                                <button title="Cálculo" class="button custom_dropdown_button_calc" onclick="switch_custom_dropdown('calc')"><i class="fa-solid fa-calculator"></i> <i class="custom_dropdown_icon_calc fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_calc absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_soma',true);select_field(this,false);update_preview_nota()">Soma</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_sub',true);select_field(this,false);update_preview_nota()">Subtração</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_mult',true);select_field(this,false);update_preview_nota()">Multiplicação</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_div',true);select_field(this,false);update_preview_nota()">Divisão</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_soma',true);select_field(this,false);update_preview_nota()">Soma de tempos</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_tempo_sub',true);select_field(this,false);update_preview_nota()">Subtração de tempos</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('calc_porcentagem',true);select_field(this,false);update_preview_nota()">Porcentagem</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <button title="Valores" class="button custom_dropdown_button_values" onclick="switch_custom_dropdown('values')"><i class="fa-solid fa-database"></i> <i class="custom_dropdown_icon_values fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_values absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_progresso',true);select_field(this,false);update_preview_nota()">Progresso</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_final',true);select_field(this,false);update_preview_nota()">Final</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_volumes',true);select_field(this,false);update_preview_nota()">Volumes</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_moji',true);select_field(this,false);update_preview_nota()">Caracteres (moji)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_repeticoes',true);select_field(this,false);update_preview_nota()">Repetições</a>
+                        <div role="group" aria-label="Valores e estilos prontos" class="flex flex-wrap justify-center items-start gap-1">
+                            <div class="lg:relative">
+                                <button title="Valores" class="button custom_dropdown_button_values" onclick="switch_custom_dropdown('values')"><i class="fa-solid fa-database"></i> <i class="custom_dropdown_icon_values fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_values absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_progresso',true);select_field(this,false);update_preview_nota()">Progresso</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_final',true);select_field(this,false);update_preview_nota()">Final</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_volumes',true);select_field(this,false);update_preview_nota()">Volumes</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_moji',true);select_field(this,false);update_preview_nota()">Caracteres (moji)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_repeticoes',true);select_field(this,false);update_preview_nota()">Repetições</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_h',true);select_field(this,false);update_preview_nota()">Horas (H)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_H',true);select_field(this,false);update_preview_nota()">Horas (HH)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_m',true);select_field(this,false);update_preview_nota()">Minutos (M)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_M',true);select_field(this,false);update_preview_nota()">Minutos (MM)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_prog_min',true);select_field(this,false);update_preview_nota()">Minutos por progresso</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo',true);select_field(this,false);update_preview_nota()">Tempo automático (HH:MM)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_h',true);select_field(this,false);update_preview_nota()">Horas automáticas (H)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_H',true);select_field(this,false);update_preview_nota()">Horas automáticas (HH)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_m',true);select_field(this,false);update_preview_nota()">Minutos automáticos (M)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_M',true);select_field(this,false);update_preview_nota()">Minutos automáticos (MM)</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_h',true);select_field(this,false);update_preview_nota()">Horas (H)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_H',true);select_field(this,false);update_preview_nota()">Horas (HH)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_m',true);select_field(this,false);update_preview_nota()">Minutos (M)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_M',true);select_field(this,false);update_preview_nota()">Minutos (MM)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_prog_min',true);select_field(this,false);update_preview_nota()">Minutos por progresso</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo',true);select_field(this,false);update_preview_nota()">Tempo automático (HH:MM)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_h',true);select_field(this,false);update_preview_nota()">Horas automáticas (H)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_H',true);select_field(this,false);update_preview_nota()">Horas automáticas (HH)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_m',true);select_field(this,false);update_preview_nota()">Minutos automáticos (M)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('value_tempo_M',true);select_field(this,false);update_preview_nota()">Minutos automáticos (MM)</a>
-                            </div>
-                        </div>
-
-                        <button title="Filtros" class="button custom_dropdown_button_fltr" onclick="switch_custom_dropdown('fltr')"><i class="fa-solid fa-brush"></i> <i class="custom_dropdown_icon_fltr fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_fltr absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_blur',true);select_field(this,false);update_preview_nota()">Borrar</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_brightness',true);select_field(this,false);update_preview_nota()">Brilho</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_contrast',true);select_field(this,false);update_preview_nota()">Contraste</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_grayscale',true);select_field(this,false);update_preview_nota()">Escala de Cinza</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_hue',true);select_field(this,false);update_preview_nota()">Rotação de Matiz</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_invert',true);select_field(this,false);update_preview_nota()">Inverter</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_saturate',true);select_field(this,false);update_preview_nota()">Saturação</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('fltr_sepia',true);select_field(this,false);update_preview_nota()">Sépia</a>
-                            </div>
-                        </div>
-
-                        <button title="Estilos pré-definidos" class="button custom_dropdown_button_styles" onclick="switch_custom_dropdown('styles')"><i class="fa-solid fa-swatchbook"></i> <i class="custom_dropdown_icon_styles fa-solid fa-angle-down"></i></button>
-                        <div class="custom_dropdown_styles absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 lg:translate-x-1/2 origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('legenda',true);select_field(this,false);update_preview_nota()">Legenda de YouTube</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombreado',true);select_field(this,false);update_preview_nota()">Sombreado</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune_cor',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE (fonte padrão)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune_cor',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE (fonte padrão)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune_cor',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE (fonte padrão)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune_cor',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE (fonte padrão)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune_cor',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE (fonte padrão)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia',true);select_field(this,false);update_preview_nota()">Profecia</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_simples',true);select_field(this,false);update_preview_nota()">Profecia (simples)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor_simples',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão/simples)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_sangue',true);select_field(this,false);update_preview_nota()">Profecia (sangue)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko',true);select_field(this,false);update_preview_nota()">Vermelho Umineko</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko',true);select_field(this,false);update_preview_nota()">Azul Umineko</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko',true);select_field(this,false);update_preview_nota()">Roxo Umineko</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko',true);select_field(this,false);update_preview_nota()">Dourado Umineko</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko_mod',true);select_field(this,false);update_preview_nota()">Vermelho Umineko (Mod)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko_mod',true);select_field(this,false);update_preview_nota()">Azul Umineko (Mod)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko_mod',true);select_field(this,false);update_preview_nota()">Roxo Umineko (Mod)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko_mod',true);select_field(this,false);update_preview_nota()">Dourado Umineko (Mod)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_umineko_mod',true);select_field(this,false);update_preview_nota()">Verde Umineko (Mod)</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_pos',true);select_field(this,false);update_preview_nota()">Badge Positiva</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_neg',true);select_field(this,false);update_preview_nota()">Badge Negativa</a>
-                            </div>
-                            <div role="none" class="py-1">
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_h',true);select_field(this,false);update_preview_nota()">Arco-íris (Horizontal)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_v',true);select_field(this,false);update_preview_nota()">Arco-íris (Vertical)</a>
-                                <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_dg',true);select_field(this,false);update_preview_nota()">Arco-íris (Diagonal)</a>
+                            <div class="lg:relative">
+                                <button title="Estilos pré-definidos" class="button custom_dropdown_button_styles" onclick="switch_custom_dropdown('styles')"><i class="fa-solid fa-swatchbook"></i> <i class="custom_dropdown_icon_styles fa-solid fa-angle-down"></i></button>
+                                <div class="custom_dropdown_styles absolute z-10 max-h-[300px] sm:max-h-[350px] overflow-y-auto w-[90vw] sm:w-112 lg:w-112 left-1/2 -translate-x-1/2 text-center origin-top divide-y divide-border rounded-md bg-background-content shadow-lg ring-1 ring-content/5 focus:outline-hidden hidden">
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('legenda',true);select_field(this,false);update_preview_nota()">Legenda de YouTube</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombreado',true);select_field(this,false);update_preview_nota()">Sombreado</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('sombra_deltarune_cor',true);select_field(this,false);update_preview_nota()">Sombra DELTARUNE (fonte padrão)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('amarelo_deltarune_cor',true);select_field(this,false);update_preview_nota()">Amarelo DELTARUNE (fonte padrão)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_deltarune_cor',true);select_field(this,false);update_preview_nota()">Vermelho DELTARUNE (fonte padrão)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_deltarune_cor',true);select_field(this,false);update_preview_nota()">Azul DELTARUNE (fonte padrão)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_deltarune_cor',true);select_field(this,false);update_preview_nota()">Verde DELTARUNE (fonte padrão)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia',true);select_field(this,false);update_preview_nota()">Profecia</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_simples',true);select_field(this,false);update_preview_nota()">Profecia (simples)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_cor_simples',true);select_field(this,false);update_preview_nota()">Profecia (fonte padrão/simples)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('profecia_sangue',true);select_field(this,false);update_preview_nota()">Profecia (sangue)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko',true);select_field(this,false);update_preview_nota()">Vermelho Umineko</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko',true);select_field(this,false);update_preview_nota()">Azul Umineko</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko',true);select_field(this,false);update_preview_nota()">Roxo Umineko</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko',true);select_field(this,false);update_preview_nota()">Dourado Umineko</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('vermelho_umineko_mod',true);select_field(this,false);update_preview_nota()">Vermelho Umineko (Mod)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('azul_umineko_mod',true);select_field(this,false);update_preview_nota()">Azul Umineko (Mod)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('roxo_umineko_mod',true);select_field(this,false);update_preview_nota()">Roxo Umineko (Mod)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('dourado_umineko_mod',true);select_field(this,false);update_preview_nota()">Dourado Umineko (Mod)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('verde_umineko_mod',true);select_field(this,false);update_preview_nota()">Verde Umineko (Mod)</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_pos',true);select_field(this,false);update_preview_nota()">Badge Positiva</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('badge_neg',true);select_field(this,false);update_preview_nota()">Badge Negativa</a>
+                                    </div>
+                                    <div role="none" class="py-1">
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_h',true);select_field(this,false);update_preview_nota()">Arco-íris (Horizontal)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_v',true);select_field(this,false);update_preview_nota()">Arco-íris (Vertical)</a>
+                                        <a tabindex="0" role="menuitem" class="block px-4 py-2 text-sm text-content-dropdown hover:bg-background-dropdown transition-all duration-150 cursor-pointer" onclick="nota_add_style('rainbow_dg',true);select_field(this,false);update_preview_nota()">Arco-íris (Diagonal)</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </center>
+                    </div>
                 </div>
             </div>
         </div>
